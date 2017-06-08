@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_bussinessDirectory"
+            android:icon="@drawable/ic_action_cls"
+            android:title="Business Directory " />
+        <item
+            android:id="@+id/nav_Classifieds"
+            android:icon="@drawable/ic_action_classifieds"
+            android:title="Classifieds " />
+        <item
+            android:id="@+id/nav_Events"
+            android:icon="@drawable/ic_action_name"
+            android:title="Events " />
+        <item
+            android:id="@+id/nav_sublistings"
+            android:title="Submit Listings">
+            <menu>
+                <item
+                    android:id="@+id/nav_addBusinessDirectory"
+                    android:icon="@drawable/ic_action_cls"
+                    android:title="Add Business Directory" />
+<!--                    android:icon="@drawable/ic_action_subListing"
+-->                <item
+                    android:id="@+id/nav_addClassifieds"
+                    android:icon="@drawable/ic_action_classifieds"
+                    android:title="Add Classifieds" />
+                <item
+                    android:id="@+id/nav_addEvents"
+                    android:icon="@drawable/ic_action_name"
+                    android:title="Add Events" />
+            </menu>
+        </item>
+        <item
+            android:id="@+id/nav_AboutUs"
+            android:icon="@drawable/ic_action_aboutus"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_FAQ"
+            android:icon="@drawable/ic_action_faq"
+            android:title="FAQ" />
+
+        <item
+            android:id="@+id/nav_Enquiry"
+            android:icon="@drawable/ic_action_enquiry"
+            android:title="Enquiry" />
+        <item
+            android:id="@+id/nav_ContactUs"
+            android:icon="@drawable/ic_action_contactus"
+            android:title="Contact Us" />
+
+
+    </group>
+
+    <!--<item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_stat_name"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_stat_name"
+                android:title="Send" />
+        </menu>
+    </item>-->
+
+</menu>
+
+    <!--<?xml version="1.0" encoding="utf-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item android:title="About Us">
+            <menu>
+                <item
+                    android:id="@+id/nav_profile"
+                    android:title="Company Profile" />
+                <item
+                    android:id="@+id/nav_mission"
+                    android:title="Vision Mission" />
+                <item
+                    android:id="@+id/nav_management"
+                    android:title="Management" />
+                <item
+                    android:id="@+id/nav_director"
+                    android:title="Director Message" />
+                <item
+                    android:id="@+id/nav_facilities"
+                    android:title="Facilities" />
+            </menu>
+        </item>
+
+        <item android:title="Treatment">
+            <menu>
+                <item
+                    android:id="@+id/nav_history"
+                    android:title="History" />
+                <item
+                    android:id="@+id/nav_departments"
+                    android:title="Departments" />
+                <item
+                    android:id="@+id/nav_treatment"
+                    android:title="Treatment Offer" />
+            </menu>
+        </item>
+
+        <item android:title="Accomodations">
+            <menu>
+                <item
+                    android:id="@+id/nav_accomodation"
+                    android:title="Accomodations" />
+            </menu>
+        </item>
+
+        <item android:title="Program">
+            <menu>
+                <item
+                    android:id="@+id/nav_program"
+                    android:title="Programs" />
+            </menu>
+        </item>
+
+        <item android:title="Media">
+            <menu>
+                <item
+                    android:id="@+id/nav_gallery"
+                    android:title="Gallery" />
+                <item
+                    android:id="@+id/nav_events"
+                    android:title="Events" />
+                <item
+                    android:id="@+id/nav_carrer"
+                    android:title="Carrer Opportunities" />
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/nav_contact"
+            android:title="Contact Us" />
+
+    </menu>-->

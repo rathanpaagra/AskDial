@@ -1,0 +1,194 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_gravity="center"
+    app:layout_anchorGravity="center"
+    android:fitsSystemWindows="true"
+    android:layout_centerInParent="true"
+    app:cardCornerRadius="5dp">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        tools:context="in.askdial.askdial.fragments.ContactUSFragment">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/contact_image"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="0dp"
+
+                app:srcCompat="@drawable/askdial_logo" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:weightSum="9">
+
+                <TextView
+                    android:id="@+id/company_head_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ASK DIAL LIMITED"
+                    android:textColor="@color/logoblue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="5dp">
+
+                    <TextView
+                    android:id="@+id/company_contactus_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="# 67, M-5 Galaxy, 3rd Floor, 5th Main, 9th Cross, Chamrajapet, Near T.R. Mill Circle,
+    Bangalore  560018"
+                    android:layout_weight="0.37" />
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                    android:id="@+id/company_telephone_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/logoblue"
+                    android:text="Telephone "
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="5dp">
+                <TextView
+                    android:id="@+id/company_contactus_telephone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="91 9591119000" /></android.support.v7.widget.CardView>
+
+                <TextView
+                    android:id="@+id/company_email_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Email Address "
+                    android:textColor="@color/logoblue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="5dp">
+
+                <TextView
+                    android:id="@+id/company_email_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="info@askdial.com" /></android.support.v7.widget.CardView>
+
+                <TextView
+                    android:id="@+id/company_wesite_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Website Address "
+                    android:textColor="@color/logoblue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="5dp">
+
+                <TextView
+                    android:id="@+id/company_contactus_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="www.askdial.com" />
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                    android:id="@+id/company_direction_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Location "
+                    android:textColor="@color/logoblue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:layout_width="71dp"
+                    android:id="@+id/google_map"
+                    android:layout_gravity="start"
+                    android:src="@drawable/google_icon"
+                    android:layout_height="70dp" />
+
+                <WebView
+                    android:id="@+id/webView_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></WebView>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.v7.widget.CardView>

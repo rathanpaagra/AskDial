@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    app:cardCornerRadius="5dp">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/company_profile_image"
+                android:layout_width="247dp"
+                android:layout_height="117dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/askdial_logo" />
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/blue700"
+                app:cardCornerRadius="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <WebView
+                        android:id="@+id/webView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <View style="@style/Divider"></View>
+
+                    <WebView
+                        android:id="@+id/webView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <View style="@style/Divider"></View>
+
+                    <WebView
+                        android:id="@+id/webView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <View style="@style/Divider"></View>
+
+                    <WebView
+                        android:id="@+id/webView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <View style="@style/Divider"></View>
+
+                    <WebView
+                        android:id="@+id/webView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <View style="@style/Divider"></View>
+
+                    <WebView
+                        android:id="@+id/webView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <View style="@style/Divider"></View>
+
+
+                    <WebView
+                        android:id="@+id/webView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <View style="@style/Divider"></View>
+
+                    <WebView
+                        android:id="@+id/webView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+
+        <!-- <android.support.v7.widget.CardView
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:background="@color/blue700"
+             android:layout_height="wrap_content"
+             app:cardCornerRadius="5dp">
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_margin="16dp"
+                 android:orientation="vertical">
+
+                 <TextView
+                     android:id="@+id/company_passage1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="5dp"
+                     android:drawablePadding="1dip"
+                     android:paddingLeft="1dip"
+                     android:layout_gravity="center_vertical|right"
+
+                     android:paddingRight="0dip"
+                     android:text="@string/aboutus_passage1"
+                     android:textColor="@color/black"
+                     android:textSize="17sp" />
+
+
+                 <View style="@style/Divider"></View>
+                 &lt;!&ndash;<View style="@style/Divider"/>&ndash;&gt;
+                 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                     xmlns:tools="http://schemas.android.com/tools"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     tools:context=".MainActivity" >
+                     <WebView
+                         android:id="@+id/webView1"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"/>
+                 </RelativeLayout>
+
+                 <TextView
+                     android:id="@+id/company_passage2"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:layout_marginBottom="5dp"
+                     android:layout_marginTop="16dp"
+                     android:drawablePadding="0dip"
+                     android:paddingLeft="1dip"
+                     android:paddingRight="0dip"
+                     android:text="@string/aboutus_passage2"
+                     android:textAlignment="gravity"
+
+                     android:textColor="@color/black"
+                     android:textSize="17sp" />
+                 <WebView
+                     android:id="@+id/webView2"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"/>
+
+                 <View style="@style/Divider"></View>
+
+
+                 <TextView
+                     android:id="@+id/company_passage3"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="5dp"
+                     android:layout_marginTop="16dp"
+
+                     android:text="@string/aboutus_passage3"
+                     android:textColor="@color/black"
+                     android:textSize="17sp" />
+
+                 <View style="@style/Divider"></View>
+
+                 <TextView
+                     android:id="@+id/company_passage4"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="5dp"
+                     android:layout_marginTop="16dp"
+                     android:text="@string/aboutus_passage4"
+                     android:textColor="@color/black"
+                     android:textSize="16sp" />
+
+                 <View style="@style/Divider"></View>
+                 \
+
+                 <TextView
+                     android:id="@+id/company_passage5"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="5dp"
+                     android:layout_marginTop="16dp"
+                     android:text="@string/aboutus_passage5"
+                     android:textColor="@color/black"
+                     android:textSize="16sp" />
+
+                 <View style="@style/Divider"></View>
+
+
+                 <TextView
+                     android:id="@+id/company_passage6"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="5dp"
+                     android:layout_marginTop="16dp"
+                     android:text="@string/aboutus_passage6"
+                     android:textColor="@color/black"
+                     android:textSize="16sp" />
+
+                 <View style="@style/Divider"></View>
+
+                 <TextView
+                     android:id="@+id/company_passage7"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="5dp"
+                     android:layout_marginTop="16dp"
+                     android:text="@string/aboutus_passage7"
+                     android:textColor="@color/black"
+                     android:textSize="16sp" />
+
+                 <View style="@style/Divider"></View>
+
+                 <TextView
+                     android:id="@+id/company_passage8"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="5dp"
+                     android:layout_marginTop="16dp"
+                     android:text="@string/aboutus_passage8"
+                     android:textColor="@color/black"
+                     android:textSize="16sp" />
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" />
+
+                 <View style="@style/Divider"></View>
+
+
+             </LinearLayout>
+         </android.support.v7.widget.CardView>-->
+
+
+    </android.support.v4.widget.NestedScrollView>
+</android.support.v7.widget.CardView>

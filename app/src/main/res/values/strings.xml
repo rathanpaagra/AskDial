@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">AskDial</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="bikedetails">
+        <item>Bike1</item>
+        <item>Bike2</item>
+        <item>Bike3</item>
+    </string-array>
+    <string name="action_enquiry">Logout</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="action_quit">Quit</string>
+
+    <string name="aboutus_passage1">ASK DIAL Limited is one of the leading company in providing web design services, ecommerce website development, content management systems.</string>
+    <string name="aboutus_passage2">In this Digital era, the technology innovates itself to provide access to even small bit of information in every possible way and to have a successful growing business one must adapt to latest technologies so that your business reach out to maximum number of users . Current technology is changing rapidly with many devices coming in market with different screen sizes and resolutions so it is must have situation where online business adapt to latest technology quickly.</string>
+    <string name="aboutus_passage3">ASK DIAL Limited is a leading firm that is a prominent service provider of services ranging from the web designing to search engine optimization services. With years of experience of working in the field of web design and development, we can come up to the expectations of our clients. Our web designers and professionals can turn the ideas of our clients in to reality of developing a strong an eye catching website.</string>
+
+    <string name="aboutus_passage4">We are a web page design and development company with a proven track record of more than eight years producing exemplary digital design for a diverse clientele. We’re a passionate creative team who combine fierce creativity with an extensive understanding of the world of digital commerce. Our talented team is always abreast of the latest digital trends whilst maintain a well-grounded understanding of staple web development concepts which lead to a successful site.</string>
+
+    <string name="aboutus_passage5">ASK DIAL Limited has a team of skilled professionals focused on providing quality work. Our expertise lies in a wide range of development services. We apply a holistic approach towards business and provide services at personalized level and complete projects through a combination of professionalism, passion and perfection.</string>
+
+    <string name="aboutus_passage6">Our team takes a unique approach to each project they work on; instead of trying to force clients into a one size fits all templates, our web designers take the time to understand the client’s vision for their brand and the philosophy behind it. </string>
+
+    <string name="aboutus_passage7">We understand the value and requirements for presentation to any industry especially in IT industry. Due to this, our web design and mobile application development services in this field give a one door solutions to all your needs.</string>
+
+    <string name="aboutus_passage8">At ASK DIAL Limited, we’re dedicated to developing long term relationships with all of our clients. We have developed a loyal customer base who’ve grown as we have and spans both private and public sectors. We have worked to implement strategic planning so that as the business grows, their digital presence does too. </string>
+
+    <string name="aboutus_passage9"></string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>

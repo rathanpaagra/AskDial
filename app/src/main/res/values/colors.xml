@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#ff4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="siverwhite">#C0C0C0</color>
+    <color name="black">#000000</color>
+    <color name="lightblue">#9999FF</color>
+
+    <color name="green400">#66bb6a</color>
+    <color name="buttonpressed">#FBC02D</color>
+    <color name="lightGrey">#bdbdbd</color>
+    <color name="duskYellow">#ffd600</color>
+    <color name="grey900">#212121</color>
+    <color name="grey200">#EEEEEE</color>
+    <color name="red">#FF0000</color>
+
+    <color name="darkyellow">#ffbe00</color>
+    <color name="darkyellow1">#999900</color>
+    <color name="logoblue">#1d409a</color>
+
+
+    <color name="askdialYellow">#ffbe00</color>
+
+    <color name="blue700">#1976D2</color>
+    <color name="gold">#ffd700</color>
+    <color name="gray">#808080</color>
+    <color name="silver">#C0C0C0</color>
+</resources>
