@@ -109,6 +109,7 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
             POJOValue content = arrayList.get(pos);
             lisiting_id = content.getCompany_lisiting_id();
 
+            //Parsing listingID to get Listing Details
             //new GetListings(lisiting_id, content).execute();
 
             String lisiting_category_name = content.getCompany_category_name();
@@ -123,8 +124,9 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
             bundle.putString("listing_id", lisiting_id);
             bundle.putString("listing_category_name", lisiting_category_name);
 
+            //region intenting all fields (right now not using it)
             //details to intent
-            bundle.putString("company_name", tv_comapny_name);
+           /* bundle.putString("company_name", tv_comapny_name);
             bundle.putString("company_email", tv_company_email);
             bundle.putString("category_website", tv_company_website);
             bundle.putString("category_mobile1", tv_company_mobile1);
@@ -137,13 +139,16 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
             bundle.putString("city_name", tv_company_city);
             bundle.putString("company_landmark", tv_company_landmark);
             bundle.putString("category_pincode", tv_company_pincode);
-            bundle.putString("company_address", tv_company_address);
+            bundle.putString("company_address", tv_company_address);*/
+            //endregion
 
             fragment.setArguments(bundle);
             fragmentTransaction.replace(R.id.container_main, fragment).addToBackStack(null).commit();
         }
     }
 
+
+    //region for parsing listing ID to get the listing details (right now not using it)
     public class GetListings extends AsyncTask<String, String, String> {
         String result = "";
         String listing_id;
@@ -302,4 +307,5 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
         }
         return result.toString();
     }
+    //endregion
 }

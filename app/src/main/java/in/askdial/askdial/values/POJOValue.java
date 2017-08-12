@@ -296,13 +296,6 @@ public class POJOValue {
         CompanyEmailNoExist = companyEmailNoExist;
     }
 
-   /* public POJOValue(String company_name, String company_area, String category_mobile1, String company_email) {
-        Company_name = company_name;
-        Company_area = company_area;
-        Category_mobile1 = category_mobile1;
-        Company_email = company_email;
-    }*/
-
     public String getCompany_name() {
         return Company_name;
     }

@@ -1,14 +1,18 @@
 package in.askdial.askdial.fragments.categories;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -44,15 +48,20 @@ public class Listing_Category_DetailsFragment extends Fragment {
     String s_comapny_name,s_company_area,s_company_city,s_company_contact_person,s_company_mobile1,s_company_mobile2,s_company_pincode,
             s_company_address,s_company_email,s_company_website,s_company_landline,s_company_fax,s_company_toll_free,s_company_landmark;
 
-    LinearLayout linearLayout_company_area,linearLayout__company_contact_details,linearLayout_company_contact_person,
-            linearLayout_company_mobile,linearLayout_company_adress,linearLayout_company_email,linearLayout_company_website,linearLayout_company_landline,
+    LinearLayout linearLayout_company_area,linearLayout_company_city,linearLayout__company_contact_details,linearLayout_company_contact_person,
+            linearLayout_company_mobile, linearLayout_company_mobile1, linearLayout_company_mobile2,linearLayout_company_adress,linearLayout_company_email,linearLayout_company_website,linearLayout_company_landline,
             linearLayout_company_fax,linearLayout_company_tollfree,linearLayout_company_landmark,linearLayout_company_pincode;
+
+    View style1,style2,style3,style4,style5,style6,style7,style8,style9;
 
     FunctionCalls functionCalls = new FunctionCalls();
     String LISTINGS_URL = DataApi.LISTINGS_URL;
     Thread mythread;
     POJOValue pojoValue;
     ConnectingTask task;
+    static ProgressDialog dialog = null;
+    private AVLoadingIndicatorView progressBar;
+
     public Listing_Category_DetailsFragment() {
         // Required empty public constructor
     }
@@ -70,21 +79,24 @@ public class Listing_Category_DetailsFragment extends Fragment {
         list_Category_Name=bundle.getString("listing_category_name");
         task = new ConnectingTask();
         pojoValue=new POJOValue();
+        progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loading_bar);
         //comapany details
         //details to intent
 
        // new GetListings(list_id).execute();
         ConnectingTask.GetListings login = task.new GetListings(list_id, pojoValue);
         login.execute();
-        mythread = null;
-        Runnable runnable = new LoginTimer();
-        mythread = new Thread(runnable);
-        mythread.start();
+        progressBar.setVisibility(View.VISIBLE);
+        //dialog = ProgressDialog.show(getActivity(), "", "Please Wait...", true);
+        //dialog.setCancelable(true);
+        ListThread();
+
         //Initialization
         tv_comapny_name= (TextView) view.findViewById(R.id.tv_listing_company_name);
         tv_company_area= (TextView) view.findViewById(R.id.tv_listing_company_area);
         tv_company_city= (TextView) view.findViewById(R.id.tv_listing_company_city);
         tv_company_email= (TextView) view.findViewById(R.id.tv_company_email);
+
         tv_company_contact_person= (TextView) view.findViewById(R.id.tv_contact_person);
         tv_company_mobile1= (TextView) view.findViewById(R.id.tv_contact_person_mobile1);
         tv_company_mobile2= (TextView) view.findViewById(R.id.tv_contact_person_mobile2);
@@ -97,8 +109,11 @@ public class Listing_Category_DetailsFragment extends Fragment {
         tv_company_landmark= (TextView) view.findViewById(R.id.tv_company_landmark);
 
         linearLayout_company_area= (LinearLayout) view.findViewById(R.id.ll_company_area);
+        linearLayout_company_city= (LinearLayout) view.findViewById(R.id.ll_company_city);
         linearLayout__company_contact_details= (LinearLayout) view.findViewById(R.id.ll_company_contact_details);
         linearLayout_company_mobile= (LinearLayout) view.findViewById(R.id.ll_listing_mobile);
+        linearLayout_company_mobile1= (LinearLayout) view.findViewById(R.id.ll_contact_mobile1);
+        linearLayout_company_mobile2= (LinearLayout) view.findViewById(R.id.ll_contact_mobile2);
         linearLayout_company_contact_person= (LinearLayout) view.findViewById(R.id.ll_listing_contact_person);
         linearLayout_company_adress= (LinearLayout) view.findViewById(R.id.ll_listing_address);
         linearLayout_company_email= (LinearLayout) view.findViewById(R.id.ll_listing_email);
@@ -108,6 +123,18 @@ public class Listing_Category_DetailsFragment extends Fragment {
         linearLayout_company_tollfree= (LinearLayout) view.findViewById(R.id.ll_listing_tollfree);
         linearLayout_company_landmark= (LinearLayout) view.findViewById(R.id.ll_listing_landmark);
         linearLayout_company_pincode= (LinearLayout) view.findViewById(R.id.ll_listing_pincode);
+
+        //divider Initialization
+
+        style1=view.findViewById(R.id.d1);
+        style2=view.findViewById(R.id.d2);
+        style3=view.findViewById(R.id.d3);
+        style4=view.findViewById(R.id.d4);
+        style5=view.findViewById(R.id.d5);
+        style6=view.findViewById(R.id.d6);
+        style7=view.findViewById(R.id.d7);
+        style8=view.findViewById(R.id.d8);
+        style9=view.findViewById(R.id.d9);
 
         /*tv_comapny_name.setText(s_comapny_name);
         tv_company_area.setText(s_company_area);
@@ -126,6 +153,13 @@ public class Listing_Category_DetailsFragment extends Fragment {
         //set Text in intent
 
         return  view;
+    }
+    private void ListThread() {
+        Log.d("debug", "MobileNo Suggest Timer Started");
+        mythread = null;
+        Runnable runnable = new LoginTimer();
+        mythread = new Thread(runnable);
+        mythread.start();
     }
     class LoginTimer implements Runnable {
 
@@ -151,12 +185,14 @@ public class Listing_Category_DetailsFragment extends Fragment {
                 try {
                     if (pojoValue.isListingbyIdRecivedSuccess()) {
                         pojoValue.setListingbyIdRecivedSuccess(false);
+                        progressBar.setVisibility(View.GONE);
+                        //dialog.dismiss();
                         Successview();
                         mythread.interrupt();
                     }
                     if (pojoValue.isListingbyIdRecivedFailure()) {
                         pojoValue.setListingbyIdRecivedFailure(true);
-
+                        dialog.dismiss();
                         mythread.interrupt();
                     }
                 } catch (Exception e) {
@@ -167,20 +203,103 @@ public class Listing_Category_DetailsFragment extends Fragment {
     }
 
     private void Successview() {
-        tv_comapny_name.setText(pojoValue.getCompany_name());
-        tv_company_area.setText(pojoValue.getCompany_area());
-        tv_company_city.setText(pojoValue.getCompany_city());
-        tv_company_email.setText(pojoValue.getCompany_email());
-        tv_company_contact_person.setText(pojoValue.getCompany_contact_person());
-        tv_company_mobile1.setText(pojoValue.getCategory_mobile1());
-        tv_company_mobile2.setText(pojoValue.getCompany_mobile2());
-        tv_company_pincode.setText(pojoValue.getCompany_pincode());
-        tv_company_address.setText(pojoValue.getCompany_address());
-        tv_company_website.setText(pojoValue.getCompany_website());
-        tv_company_landline.setText(pojoValue.getCompany_landline());
-        tv_company_fax.setText(pojoValue.getCompany_fax());
-        tv_company_toll_free.setText(pojoValue.getCompany_toll_free());
-        tv_company_landmark.setText(pojoValue.getCompany_landline());
+
+        s_comapny_name=pojoValue.getCompany_name();
+        tv_comapny_name.setText(s_comapny_name);
+
+        s_company_area=pojoValue.getCompany_area();
+        if(!s_company_area.equals("")){
+            linearLayout_company_area.setVisibility(View.VISIBLE);
+            tv_company_area.setText(s_company_area);
+        }
+
+        s_company_city=pojoValue.getCompany_city();
+        if(!s_company_city.equals("")){
+            linearLayout_company_city.setVisibility(View.VISIBLE);
+            tv_company_city.setText(s_company_city);
+        }
+
+
+        s_company_contact_person=pojoValue.getCompany_contact_person();
+        if(!s_company_contact_person.equals("")){
+            linearLayout_company_contact_person.setVisibility(View.VISIBLE);
+            tv_company_contact_person.setText(s_company_contact_person);
+            style1.setVisibility(View.VISIBLE);
+        }
+
+        s_company_mobile1=pojoValue.getCompany_mobile1();
+        if(!s_company_mobile1.equals("")) {
+            linearLayout_company_mobile.setVisibility(View.VISIBLE);
+            linearLayout_company_mobile1.setVisibility(View.VISIBLE);
+            tv_company_mobile1.setText(s_company_mobile1);
+            style2.setVisibility(View.VISIBLE);
+        }
+
+        s_company_mobile2=pojoValue.getCompany_mobile2();
+        if(!s_company_mobile2.equals("")){
+            linearLayout_company_mobile.setVisibility(View.VISIBLE);
+            linearLayout_company_mobile2.setVisibility(View.VISIBLE);
+            tv_company_mobile2.setText(s_company_mobile2);
+            style2.setVisibility(View.VISIBLE);
+        }
+
+        s_company_address=pojoValue.getCompany_address();
+        if(!s_company_address.equals("")){
+            linearLayout_company_adress.setVisibility(View.VISIBLE);
+            tv_company_address.setText(s_company_address);
+            style3.setVisibility(View.VISIBLE);
+        }
+
+        s_company_email=pojoValue.getCompany_email();
+        if(!s_company_email.equals("")){
+            linearLayout_company_email.setVisibility(View.VISIBLE);
+            tv_company_email.setText(s_company_email);
+            style4.setVisibility(View.VISIBLE);
+        }
+
+        s_company_website=pojoValue.getCompany_website();
+        if(!s_company_website.equals("")){
+            linearLayout_company_website.setVisibility(View.VISIBLE);
+            tv_company_website.setText(s_company_website);
+            style5.setVisibility(View.VISIBLE);
+        }
+
+        s_company_landline=pojoValue.getCompany_landline();
+        if(!s_company_landline.equals("")){
+            linearLayout_company_landline.setVisibility(View.VISIBLE);
+            tv_company_landline.setText(s_company_landline);
+            style6.setVisibility(View.VISIBLE);
+        }
+
+        s_company_fax=pojoValue.getCompany_fax();
+        if(!s_company_fax.equals("")){
+            linearLayout_company_fax.setVisibility(View.VISIBLE);
+            tv_company_fax.setText(s_company_fax);
+            style7.setVisibility(View.VISIBLE);
+        }
+
+
+        s_company_toll_free=pojoValue.getCompany_toll_free();
+        if(!s_company_toll_free.equals("")){
+            linearLayout_company_tollfree.setVisibility(View.VISIBLE);
+            tv_company_toll_free.setText(s_company_toll_free);
+            style8.setVisibility(View.VISIBLE);
+        }
+
+        s_company_landmark=pojoValue.getCompany_landmark();
+        if(!s_company_landmark.equals("")){
+            linearLayout_company_landmark.setVisibility(View.VISIBLE);
+            tv_company_landmark.setText(s_company_landmark);
+            style9.setVisibility(View.VISIBLE);
+        }
+
+        s_company_pincode=pojoValue.getCompany_pincode();
+        if(!s_company_pincode.equals("")){
+            linearLayout_company_pincode.setVisibility(View.VISIBLE);
+            tv_company_pincode.setText(s_company_pincode);
+        }
+
+
     }
    /* public class GetListings extends AsyncTask<String, String, String> {
         String result = "";

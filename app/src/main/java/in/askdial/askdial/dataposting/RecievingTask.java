@@ -153,14 +153,16 @@ public class RecievingTask {
                     if (Status.equals("Success")) {
                         Log.e(TAG, "Connect for fetching from server.");
 
-                        details = new POJOValue();
+                        //details = new POJOValue();
                         details.setListingbyIdRecivedSuccess(true);
+
                         String tv_comapny_name = jo.getString("company_name");
                         details.setCompany_name(tv_comapny_name);
                         String tv_company_area = jo.getString("company_area");
-                        details.setCompany_name(tv_company_area);
+                        details.setCompany_area(tv_company_area);
                         String tv_company_email = jo.getString("company_email");
                         details.setCompany_email(tv_company_email);
+
                         String tv_company_mobile1 = jo.getString("category_mobile1");
                         details.setCompany_mobile1(tv_company_mobile1);
                         String tv_company_website = jo.getString("category_website");

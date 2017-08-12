@@ -93,7 +93,7 @@ public class SendingTask {
         datamap.put("listing_id", listing_id);
 
         try {
-            response = UrlPostConnection("", datamap);
+            response = UrlPostConnection1("", datamap);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -227,4 +227,54 @@ public class SendingTask {
         return response;
     }
 
+    //only for Listing
+
+    private String UrlPostConnection1(String Post_Url, HashMap<String, String> datamap) throws IOException {
+        String response = "";
+        functionCalls.LogStatus("Connecting URL: " + LISTINGS_URL + Post_Url);
+        URL url = new URL(LISTINGS_URL + Post_Url);
+        functionCalls.LogStatus("URL Connection 1");
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        functionCalls.LogStatus("URL Connection 2");
+        conn.setReadTimeout(15000);
+        functionCalls.LogStatus("URL Connection 3");
+        conn.setConnectTimeout(15000);
+        functionCalls.LogStatus("URL Connection 4");
+        conn.setRequestMethod("POST");
+        functionCalls.LogStatus("URL Connection 5");
+        conn.setDoInput(true);
+        functionCalls.LogStatus("URL Connection 6");
+        conn.setDoOutput(true);
+        functionCalls.LogStatus("URL Connection 7");
+
+        OutputStream os = conn.getOutputStream();
+        functionCalls.LogStatus("URL Connection 8");
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+        functionCalls.LogStatus("URL Connection 9");
+        writer.write(getPostDataString(datamap));
+        functionCalls.LogStatus("URL Connection 10");
+        writer.flush();
+        functionCalls.LogStatus("URL Connection 11");
+        writer.close();
+        functionCalls.LogStatus("URL Connection 12");
+        os.close();
+        functionCalls.LogStatus("URL Connection 13");
+        int responseCode = conn.getResponseCode();
+        functionCalls.LogStatus("URL Connection 14");
+        if (responseCode == HttpsURLConnection.HTTP_OK) {
+            functionCalls.LogStatus("URL Connection 15");
+            String line;
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            functionCalls.LogStatus("URL Connection 16");
+            while ((line = br.readLine()) != null) {
+                response += line;
+            }
+            functionCalls.LogStatus("URL Connection 17");
+        } else {
+            response = "";
+            functionCalls.LogStatus("URL Connection 18");
+        }
+        functionCalls.LogStatus("URL Connection Response: " + response);
+        return response;
+    }
 }
