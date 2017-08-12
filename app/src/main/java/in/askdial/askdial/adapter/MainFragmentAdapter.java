@@ -2,8 +2,6 @@ package in.askdial.askdial.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +13,6 @@ import java.util.ArrayList;
 
 import in.askdial.askdial.R;
 import in.askdial.askdial.fragments.MainFragment;
-import in.askdial.askdial.fragments.MasterFragment;
 import in.askdial.askdial.values.POJOValue;
 
 /**
@@ -51,7 +48,6 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
         holder.tvhead.setText(pojoValue.getFirst_Level_Category_Name());
         /*holder.tvcontent.setText(content.getDepartmentcontent());*/
       //  holder.categoryimage.setImageResource(pojoValue.getFirst_Level_Category_Id());
-
     }
 
     @Override
@@ -76,11 +72,9 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
         public void onClick(View v) {
             int pos = getAdapterPosition();
 
-            POJOValue pojoValue = arrayList.get(pos);
-
+          /*  POJOValue pojoValue = arrayList.get(pos);
           //  int image = pojoValue.getDepartmentimgs();
             //String categoryHead = pojoValue.getFirst_Level_Category_Name();
-
             String categoryID= pojoValue.getFirst_Level_Category_Id();
             MasterFragment fragment = new MasterFragment();
             Bundle bundle = new Bundle();
@@ -90,7 +84,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
             bundle.putString("id",categoryID);
             //bundle.putString("name", categoryHead);
             fragment.setArguments(bundle);
-            fragmentTransaction.replace(R.id.container_main, fragment).addToBackStack(null).commit();
+            fragmentTransaction.replace(R.id.container_main, fragment).addToBackStack(null).commit();*/
         }
     }
 }

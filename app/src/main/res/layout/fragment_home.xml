@@ -1,148 +1,351 @@
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1"
-    tools:context="in.askdial.askdial.fragments.HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/partial_transparent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:context="in.askdial.askdial.fragments.HomeFragment">
 
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.CardView
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            app:cardCornerRadius="5dp">
+            android:layout_weight="1"
+            android:orientation="vertical">
+            //Onclick cardview site showing form
+           <!-- <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:weightSum="3">
+
+                    <ImageView
+                        android:id="@+id/imgView1"
+                        android:layout_width="109dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/prajwal_marketing"
+                        android:text="Prajwal Marketing"
+
+                        android:textColor="@color/blue700"
+                        tools:background="@android:color/holo_orange_light"></ImageView>
+
+                    &lt;!&ndash;<ImageView
+                        android:id="@+id/imgView1"
+                        android:layout_width="125dp"
+                        android:src="@drawable/prajwal_marketing"
+
+                        android:layout_height="match_parent"
+                        android:text="Prajwal Marketing"
+                        android:textColor="@color/blue700"
+                        tools:background="@android:color/holo_orange_light"></ImageView>&ndash;&gt;
+
+                    <ImageView
+                        android:id="@+id/imgView2"
+                        android:layout_width="109dp"
+                        android:layout_height="match_parent"
+
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/celebrate_parlours"
+                        android:text="Celebratelife"
+
+                        android:textColor="@color/blue700"
+                        tools:background="@android:color/holo_orange_light">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/imgView3"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="0.90"
+                        android:src="@drawable/ascent_elevators"
+                        android:text="Ascent"
+
+                        android:textColor="@color/blue700"
+                        tools:background="@android:color/holo_orange_light">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/imgView4"
+                        android:layout_width="109dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/rajalakshmi_logo"
+                        android:text="RajaLaxmi"
+                        android:textColor="@color/blue700"
+                        tools:background="@android:color/holo_orange_light">
+
+                    </ImageView>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"
+                android:text="PREMIUM LISTINGS"
+                android:textColor="@color/askdialYellow"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="190dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/white"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imgView1"
-                    android:layout_width="109dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    android:text="MOST VISITED CATEGORIES"
+                    android:textColor="@color/askdialYellow"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/prajwal_marketing"
-                    android:text="Prajwal Marketing"
+                    <Button
+                        android:id="@+id/btn_properties"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/home" />
 
-                    android:textColor="@color/blue700"
-                    tools:background="@android:color/holo_orange_light"></ImageView>
+                    <Button
+                        android:id="@+id/btn_Food"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/food" />
 
-                <!--<ImageView
-                    android:id="@+id/imgView1"
-                    android:layout_width="125dp"
-                    android:src="@drawable/prajwal_marketing"
+                    <Button
+                        android:id="@+id/btn_Movie"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/movie" />
 
-                    android:layout_height="match_parent"
-                    android:text="Prajwal Marketing"
-                    android:textColor="@color/blue700"
-                    tools:background="@android:color/holo_orange_light"></ImageView>-->
+                    <Button
+                        android:id="@+id/btn_Automotive"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/automotive" />
 
-                <ImageView
-                    android:id="@+id/imgView2"
-                    android:layout_width="109dp"
-                    android:layout_height="match_parent"
+                    <Button
+                        android:id="@+id/btn_Shoping"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/shoping" />
 
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/celebrate_parlours"
-                    android:text="Celebratelife"
-
-                    android:textColor="@color/blue700"
-                    tools:background="@android:color/holo_orange_light">
-
-                </ImageView>
-
-                <ImageView
-                    android:id="@+id/imgView3"
-                    android:layout_width="110dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="0.90"
-                    android:src="@drawable/ascent_elevators"
-                    android:text="Ascent"
-
-                    android:textColor="@color/blue700"
-                    tools:background="@android:color/holo_orange_light">
-
-                </ImageView>
+                </LinearLayout>
             </LinearLayout>
 
-
-
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            app:cardCornerRadius="5dp">
-
-            <android.support.v7.widget.RecyclerView
-
-                android:id="@+id/recyclerview_title1"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
 
-            </android.support.v7.widget.RecyclerView>
-        </android.support.v7.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    android:text="SEARCH CATEGORIES"
+                    android:textColor="@color/askdialYellow"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_title1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp">
+                </android.support.v7.widget.RecyclerView>
+              <!--  <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="5dp">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerview_title1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp">
+                        </android.support.v7.widget.RecyclerView>
+                </android.support.v7.widget.CardView>-->
+            </LinearLayout>
 
     </LinearLayout>
 
+    <!--
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="5dp">
 
-    <android.support.v7.widget.CardView
+                <ListView
+                    android:id="@+id/list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="286dp" />
+
+            </android.support.v7.widget.CardView>-->
+
+    <!--<WebView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        app:cardCornerRadius="5dp">
 
-        <ListView
-            android:id="@+id/list_view"
+        android:layout_height="56dp"></WebView>-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"
+            android:orientation="vertical">
 
-    </android.support.v7.widget.CardView>
-    <WebView
-        android:layout_width="match_parent"
-        android:layout_height="56dp"></WebView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"
+                android:text="FOLLOW US ON"
+                android:textColor="@color/askdialYellow"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_classifieds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="CLASSIFIEDS" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@color/black"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-</LinearLayout>
-</ScrollView>
+                <Button
+                    android:id="@+id/btn_fb_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/ic_fb_icon" />
+
+                <Button
+                    android:id="@+id/btn_twitter_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/ic_twitter_icon" />
+
+                <Button
+                    android:id="@+id/btn_gplus_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/ic_gplus_icon" />
+
+                <Button
+                    android:id="@+id/btn_linked_in_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/ic_linkedin_icon" />
+
+                <Button
+                    android:id="@+id/btn_pintrest_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/ic_pintrest_icon" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"
+                android:text="ASK DIAL LIMITED © 2017"
+                android:textColor="@color/color_white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout></ScrollView>

@@ -17,6 +17,12 @@ import javax.net.ssl.HttpsURLConnection;
 
 import in.askdial.askdial.values.FunctionCalls;
 
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Automotive;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Food;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Movie;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Property;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Shopping;
+
 /**
  * Created by Admin on 30-Dec-16.
  */
@@ -27,7 +33,8 @@ public class SendingTask {
 
     String CATEGORIES_URL = DataApi.CATEGORIES_URL;
     String LISTINGS_URL = DataApi.LISTINGS_URL;
-
+    String BASE_URL=DataApi.CATEGORIES_URL;
+    String SendCategory;
 
     public String GetFields() {
         String response = "";
@@ -42,10 +49,61 @@ public class SendingTask {
         return response;
     }
 
+
+    public String GetSearch(String search) {
+        String response = "";
+        HashMap<String, String> datamap = new HashMap<>();
+        datamap.put("search", search);
+        try {
+            response = UrlPostConnection("Staff1", datamap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+//Most Visited Categories Recived List
+    public String sendbyCategory(String cat) {
+
+        String category= cat;
+
+        if(category.equals("Food")){
+            SendCategory= CATEGORIES_URL_Food;
+        }else if(category.equals("Automotive")){
+            SendCategory= CATEGORIES_URL_Automotive;
+        }else if (category.equals("Property")){
+            SendCategory= CATEGORIES_URL_Property;
+        }else if(category.equals("Shopping")){
+            SendCategory= CATEGORIES_URL_Shopping;
+        }else if (category.equals("Movie")){
+            SendCategory= CATEGORIES_URL_Movie;
+        }
+        String response = "";
+        try {
+            response = UrlGetConnection(SendCategory);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    //senging listing by id
+    public String sendListing_id(String listing_id) {
+        String response = "";
+        HashMap<String, String> datamap = new HashMap<>();
+        datamap.put("listing_id", listing_id);
+
+        try {
+            response = UrlPostConnection("", datamap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
     private String UrlPostConnection(String Post_Url, HashMap<String, String> datamap) throws IOException {
         String response = "";
-        functionCalls.LogStatus("Connecting URL: " + Post_Url);
-        URL url = new URL(Post_Url);
+        functionCalls.LogStatus("Connecting URL: " + BASE_URL + Post_Url);
+        URL url = new URL(BASE_URL + Post_Url);
         functionCalls.LogStatus("URL Connection 1");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         functionCalls.LogStatus("URL Connection 2");

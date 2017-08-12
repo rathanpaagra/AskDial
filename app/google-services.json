@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "489096105367",
+    "project_id": "askdial-171510"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489096105367:android:d6b645f9389581fb",
+        "android_client_info": {
+          "package_name": "in.askdial.askdial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489096105367-mjmm89qcii8pr236g9qg3girch40tt21.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "489096105367-jqanr131mg4pejv6mejtaaf9er51fuh7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.askdial.askdial",
+            "certificate_hash": "e8ba163acc506c8cda18a61ea6321292da945195"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvvdbGefcD7qQsq2pohKRmcryL4PJItM0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import in.askdial.askdial.adapter.MainFragmentAdapter;
+import in.askdial.askdial.adapter.MasterFragmentAdapter;
 import in.askdial.askdial.values.POJOValue;
 
 /**
@@ -83,6 +84,117 @@ public class ConnectingTask {
         @Override
         protected void onPostExecute(String result) {
             recievingTask.CategoryDetails(result, details, arrayList,mainFragmentAdapter);
+        }
+    }
+//search for all Categories
+    public class SearchAll extends AsyncTask<String, String, String> {
+        String result = "", SearchingName;
+        POJOValue details;
+        java.util.HashSet<String> HashSet;
+
+        public SearchAll(String search, POJOValue detailsValue, HashSet<String> hashSet) {
+            this.SearchingName = search;
+            this.details = detailsValue;
+            this.HashSet = hashSet;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                result = sendingTask.GetSearch(SearchingName);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            recievingTask.GetSearchDetails(result, details, HashSet);
+        }
+    }
+
+    //All listings information
+
+    public class SingleListingsFields extends AsyncTask<String, String, String> {
+        String result = "", firstLevelCategory_id, category_name;
+        ArrayList<POJOValue> arrayList;
+        MasterFragmentAdapter masterFragmentAdapter;
+        POJOValue details;
+        Context context;
+        View Progressbar;
+        private LayoutInflater mInflater;
+
+        public SingleListingsFields(ArrayList<POJOValue> arrayList, String Category, MasterFragmentAdapter mainFragmentAdapter, POJOValue detailsValue,
+                                    Context context,View progressbar) {
+            this.arrayList=arrayList;
+            this.details = detailsValue;
+            this.category_name=Category;
+            this.masterFragmentAdapter = mainFragmentAdapter;
+            this.details = detailsValue;
+            Progressbar=progressbar;
+            this.context = context;
+        }
+        @Override
+        protected void onPreExecute() {
+            showProgress(true, context, Progressbar);
+           /* super.onPreExecute();*/
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Food="Food";
+                result = sendingTask.sendbyCategory(category_name);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            showProgress(false, context, Progressbar);
+            recievingTask.ListingDetails(result, details, arrayList,masterFragmentAdapter);
+        }
+    }
+
+
+    //getListing by id
+    public class GetListings extends AsyncTask<String, String, String> {
+        String result = "";
+        String listing_id;
+        POJOValue details;
+
+
+        public GetListings(String Listing_id, POJOValue details) {
+            listing_id = Listing_id;
+            this.details = details;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                result = sendingTask.sendListing_id(listing_id);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            recievingTask.ReciveListingDetails(result, details);
         }
     }
 

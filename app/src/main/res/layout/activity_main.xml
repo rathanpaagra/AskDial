@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/askdial_login_page"
     android:fitsSystemWindows="true"
     tools:context="in.askdial.askdial.main.MainActivity"
     android:weightSum="1">
@@ -21,20 +22,20 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_gravity="center"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_weight="0.37"
         android:orientation="vertical"
-        android:weightSum="1"
-        android:layout_weight="0.37">
+        android:weightSum="1">
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/login_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white">
 
 
             <android.support.design.widget.TextInputEditText
@@ -42,8 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:hint="Enter Username"
-                android:textColorHint="@color/blue700"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColorHint="@color/white" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -51,7 +52,8 @@
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
 
             >
 
@@ -60,7 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColorHint="@color/white" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -78,10 +81,9 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/side_nav_bar"
+                android:background="@drawable/buttonpressed"
                 android:text="Login"
-
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/reg_btn"
@@ -90,11 +92,39 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/side_nav_bar"
+                android:background="@drawable/buttonpressed"
                 android:text="Register "
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
+
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_facebook"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/facebook_blue"
+            android:drawableLeft="@mipmap/ic_facebook_box"
+            android:hint="Login with Facebook"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/btn_google"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/google_red"
+            android:drawableLeft="@mipmap/ic_google_box_icon"
+            android:hint="Sign in with Google"
+            android:textSize="20dp" />
+
 
     </LinearLayout>
 

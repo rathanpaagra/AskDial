@@ -13,7 +13,7 @@ import in.askdial.askdial.R;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button button;
+    Button btn_login, btn_Register, btn_login_fb,btn_login_google;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +24,19 @@ public class MainActivity extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
 
-        button= (Button) findViewById(R.id.login_btn);
-        button.setOnClickListener(new View.OnClickListener() {
+        btn_login = (Button) findViewById(R.id.login_btn);
+        btn_Register= (Button) findViewById(R.id.reg_btn);
+        btn_login_fb= (Button) findViewById(R.id.btn_facebook);
+        btn_login_google= (Button) findViewById(R.id.btn_google);
+
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(MainActivity.this, CategoryActivity.class);
                 startActivity(intent);
             }
         });
-
     }
 
     @Override

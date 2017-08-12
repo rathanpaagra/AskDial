@@ -3,7 +3,6 @@ package in.askdial.askdial.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +51,7 @@ public class EventsFragment extends Fragment  implements BaseSliderView.OnSlider
         file_maps.put("MRR Campus",R.drawable.app_ico);
         file_maps.put("MRR Accomadation",R.drawable.app_ico2);
         file_maps.put("MRR Gate",R.drawable.app_ico3);
-        file_maps.put("MRR Canteen", R.drawable.app_ico4);
+
 
 
 
