@@ -1,119 +1,114 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:background="@color/partial_transparent"
-        android:orientation="vertical"
-        android:weightSum="1"
-        tools:context="in.askdial.askdial.fragments.HomeFragment">
+        android:orientation="vertical">
 
-        <!-- TODO: Update blank fragment layout -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
+
             //Onclick cardview site showing form
-           <!-- <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                app:cardCornerRadius="5dp">
+            <!-- <android.support.v7.widget.CardView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:layout_marginLeft="5dp"
+                 android:layout_marginRight="5dp"
+                 android:layout_marginTop="5dp"
+                 app:cardCornerRadius="5dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:orientation="horizontal"
-                    android:visibility="gone"
-                    android:weightSum="3">
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="120dp"
+                     android:orientation="horizontal"
+                     android:visibility="gone"
+                     android:weightSum="3">
 
-                    <ImageView
-                        android:id="@+id/imgView1"
-                        android:layout_width="109dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/prajwal_marketing"
-                        android:text="Prajwal Marketing"
+                     <ImageView
+                         android:id="@+id/imgView1"
+                         android:layout_width="109dp"
+                         android:layout_height="match_parent"
+                         android:layout_marginLeft="5dp"
+                         android:layout_marginRight="5dp"
+                         android:layout_weight="1"
+                         android:src="@drawable/prajwal_marketing"
+                         android:text="Prajwal Marketing"
 
-                        android:textColor="@color/blue700"
-                        tools:background="@android:color/holo_orange_light"></ImageView>
+                         android:textColor="@color/blue700"
+                         tools:background="@android:color/holo_orange_light"></ImageView>
 
-                    &lt;!&ndash;<ImageView
-                        android:id="@+id/imgView1"
-                        android:layout_width="125dp"
-                        android:src="@drawable/prajwal_marketing"
+                     &lt;!&ndash;<ImageView
+                         android:id="@+id/imgView1"
+                         android:layout_width="125dp"
+                         android:src="@drawable/prajwal_marketing"
 
-                        android:layout_height="match_parent"
-                        android:text="Prajwal Marketing"
-                        android:textColor="@color/blue700"
-                        tools:background="@android:color/holo_orange_light"></ImageView>&ndash;&gt;
+                         android:layout_height="match_parent"
+                         android:text="Prajwal Marketing"
+                         android:textColor="@color/blue700"
+                         tools:background="@android:color/holo_orange_light"></ImageView>&ndash;&gt;
 
-                    <ImageView
-                        android:id="@+id/imgView2"
-                        android:layout_width="109dp"
-                        android:layout_height="match_parent"
+                     <ImageView
+                         android:id="@+id/imgView2"
+                         android:layout_width="109dp"
+                         android:layout_height="match_parent"
 
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/celebrate_parlours"
-                        android:text="Celebratelife"
+                         android:layout_marginLeft="5dp"
+                         android:layout_marginRight="5dp"
+                         android:layout_weight="1"
+                         android:src="@drawable/celebrate_parlours"
+                         android:text="Celebratelife"
 
-                        android:textColor="@color/blue700"
-                        tools:background="@android:color/holo_orange_light">
+                         android:textColor="@color/blue700"
+                         tools:background="@android:color/holo_orange_light">
 
-                    </ImageView>
+                     </ImageView>
 
-                    <ImageView
-                        android:id="@+id/imgView3"
-                        android:layout_width="110dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="0.90"
-                        android:src="@drawable/ascent_elevators"
-                        android:text="Ascent"
+                     <ImageView
+                         android:id="@+id/imgView3"
+                         android:layout_width="110dp"
+                         android:layout_height="match_parent"
+                         android:layout_marginLeft="5dp"
+                         android:layout_marginRight="5dp"
+                         android:layout_weight="0.90"
+                         android:src="@drawable/ascent_elevators"
+                         android:text="Ascent"
 
-                        android:textColor="@color/blue700"
-                        tools:background="@android:color/holo_orange_light">
+                         android:textColor="@color/blue700"
+                         tools:background="@android:color/holo_orange_light">
 
-                    </ImageView>
+                     </ImageView>
 
-                    <ImageView
-                        android:id="@+id/imgView4"
-                        android:layout_width="109dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/rajalakshmi_logo"
-                        android:text="RajaLaxmi"
-                        android:textColor="@color/blue700"
-                        tools:background="@android:color/holo_orange_light">
+                     <ImageView
+                         android:id="@+id/imgView4"
+                         android:layout_width="109dp"
+                         android:layout_height="match_parent"
+                         android:layout_marginLeft="5dp"
+                         android:layout_marginRight="5dp"
+                         android:layout_weight="1"
+                         android:src="@drawable/rajalakshmi_logo"
+                         android:text="RajaLaxmi"
+                         android:textColor="@color/blue700"
+                         tools:background="@android:color/holo_orange_light">
 
-                    </ImageView>
+                     </ImageView>
 
-                </LinearLayout>
+                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>-->
+             </android.support.v7.widget.CardView>-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:paddingLeft="10dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
                 android:text="PREMIUM LISTINGS"
                 android:textColor="@color/askdialYellow"
                 android:textSize="15dp"
@@ -122,214 +117,223 @@
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
                 android:layout_width="fill_parent"
+                android:layout_height="190dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_height="190dp" />
+                android:layout_marginRight="5dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="@color/white"
-                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_gravity="center"
-                    android:text="MOST VISITED CATEGORIES"
-                    android:textColor="@color/askdialYellow"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
+        </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btn_properties"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="2dp"
-                        android:background="@drawable/home" />
-
-                    <Button
-                        android:id="@+id/btn_Food"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="2dp"
-                        android:background="@drawable/food" />
-
-                    <Button
-                        android:id="@+id/btn_Movie"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="2dp"
-                        android:background="@drawable/movie" />
-
-                    <Button
-                        android:id="@+id/btn_Automotive"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="2dp"
-                        android:background="@drawable/automotive" />
-
-                    <Button
-                        android:id="@+id/btn_Shoping"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="2dp"
-                        android:background="@drawable/shoping" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"
-                android:orientation="vertical">
+                android:paddingLeft="10dp"
+                android:text="MOST VISITED CATEGORIES"
+                android:textColor="@color/askdialYellow"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:layout_gravity="center"
-                    android:text="SEARCH CATEGORIES"
-                    android:textColor="@color/askdialYellow"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerview_title1"
+                <Button
+                    android:id="@+id/btn_properties"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/home" />
+
+                <Button
+                    android:id="@+id/btn_Food"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/food" />
+
+                <Button
+                    android:id="@+id/btn_Movie"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/movie" />
+
+                <Button
+                    android:id="@+id/btn_Automotive"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/automotive" />
+
+                <Button
+                    android:id="@+id/btn_Shoping"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/shoping" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp"
+                android:text="SEARCH CATEGORIES"
+                android:textColor="@color/askdialYellow"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_title1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"></android.support.v7.widget.RecyclerView>
+            <!--  <android.support.v7.widget.CardView
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_gravity="center"
+                  android:layout_marginLeft="5dp"
+                  android:layout_marginRight="5dp"
+                  android:layout_marginTop="5dp"
+                  app:cardCornerRadius="5dp">
+
+                  <android.support.v7.widget.RecyclerView
+                      android:id="@+id/recyclerview_title1"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="5dp"
+                      android:layout_marginRight="5dp"
+                      android:layout_marginTop="10dp">
+                      </android.support.v7.widget.RecyclerView>
+              </android.support.v7.widget.CardView>-->
+            <TextView
+                android:id="@+id/tv_followus_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/buttonpressed"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="FOLLOW US ON"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <!--
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/white"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp">
-                </android.support.v7.widget.RecyclerView>
-              <!--  <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     app:cardCornerRadius="5dp">
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/recyclerview_title1"
+                    <ListView
+                        android:id="@+id/list_view"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="10dp">
-                        </android.support.v7.widget.RecyclerView>
+                        android:layout_height="286dp" />
+
                 </android.support.v7.widget.CardView>-->
-            </LinearLayout>
 
-    </LinearLayout>
-
-    <!--
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                app:cardCornerRadius="5dp">
-
-                <ListView
-                    android:id="@+id/list_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="286dp" />
-
-            </android.support.v7.widget.CardView>-->
-
-    <!--<WebView
-        android:layout_width="match_parent"
-
-        android:layout_height="56dp"></WebView>-->
-        <LinearLayout
+        <!--<WebView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:background="@color/black"
-            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:layout_gravity="center"
-                android:text="FOLLOW US ON"
-                android:textColor="@color/askdialYellow"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+            android:layout_height="56dp"></WebView>-->
+
+
+        <LinearLayout
+            android:id="@+id/ll_socialmedia_links"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#8e0382bc"
+            android:visibility="gone"
+            android:orientation="vertical"
+            >
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="5dp"
-                android:background="@color/black"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_fb_icon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/ic_fb_icon" />
 
                 <Button
                     android:id="@+id/btn_twitter_icon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/ic_twitter_icon" />
 
                 <Button
                     android:id="@+id/btn_gplus_icon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/ic_gplus_icon" />
 
                 <Button
                     android:id="@+id/btn_linked_in_icon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/ic_linkedin_icon" />
 
                 <Button
                     android:id="@+id/btn_pintrest_icon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/ic_pintrest_icon" />
@@ -339,13 +343,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
-                android:layout_gravity="center"
                 android:text="ASK DIAL LIMITED © 2017"
                 android:textColor="@color/color_white"
                 android:textSize="15dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
-    </LinearLayout></ScrollView>
+    </LinearLayout>
+
+
+</ScrollView>

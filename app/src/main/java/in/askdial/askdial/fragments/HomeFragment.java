@@ -28,9 +28,11 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -101,6 +103,8 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
 
     //Social Media Links
     Button facebok, twitter, googleplus, linkedin, pintrest;
+    TextView tv_followus;
+    LinearLayout linearLayout_socialmeadia_links;
 
     //Most Visited Links
     Button button_properties, button_food, button_movie, button_automotive, button_shopping;
@@ -131,6 +135,8 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         googleplus = (Button) view.findViewById(R.id.btn_gplus_icon);
         linkedin = (Button) view.findViewById(R.id.btn_linked_in_icon);
         pintrest = (Button) view.findViewById(R.id.btn_pintrest_icon);
+        tv_followus= (TextView) view.findViewById(R.id.tv_followus_on);
+        linearLayout_socialmeadia_links= (LinearLayout) view.findViewById(R.id.ll_socialmedia_links);
 
         //Most Visited Buttons Intialization
 
@@ -238,6 +244,13 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
 
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.pinterest.com/askdial/"));
                 startActivity(browserIntent);
+            }
+        });
+
+        tv_followus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout_socialmeadia_links.setVisibility(View.VISIBLE);
             }
         });
 
