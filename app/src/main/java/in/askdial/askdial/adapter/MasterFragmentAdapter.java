@@ -52,7 +52,7 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
     Context context;
     Activity activity;
     String SendCategory_listing_id;
-    String LISTINGS_URL = DataApi.LISTINGS_URL;
+    String LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
 
     FunctionCalls functionCalls = new FunctionCalls();
 
@@ -111,7 +111,6 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
 
             //Parsing listingID to get Listing Details
             //new GetListings(lisiting_id, content).execute();
-
             String lisiting_category_name = content.getCompany_category_name();
             tv_comapny_name=content.getCompany_name();
             tv_company_email=content.getCompany_area();
@@ -123,6 +122,8 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
             FragmentTransaction fragmentTransaction = visitedCatgFragment.getActivity().getSupportFragmentManager().beginTransaction();
             bundle.putString("listing_id", lisiting_id);
             bundle.putString("listing_category_name", lisiting_category_name);
+            fragment.setArguments(bundle);
+            fragmentTransaction.replace(R.id.container_main, fragment).addToBackStack(null).commit();
 
             //region intenting all fields (right now not using it)
             //details to intent
@@ -142,8 +143,6 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
             bundle.putString("company_address", tv_company_address);*/
             //endregion
 
-            fragment.setArguments(bundle);
-            fragmentTransaction.replace(R.id.container_main, fragment).addToBackStack(null).commit();
         }
     }
 
@@ -194,7 +193,7 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
     public void ReciveListingDetails(String result, POJOValue details) {
         // HttpHandler sh = new HttpHandler();
         // Making a request to url and getting response
-        //   String jsonStr = sh.makeServiceCall(CATEGORIES_URL);
+        //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
         //  Log.e(TAG, "Response from url: " + jsonStr);
 
         try {

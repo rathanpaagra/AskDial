@@ -12,8 +12,9 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import in.askdial.askdial.adapter.MainFragmentAdapter;
 import in.askdial.askdial.adapter.MasterFragmentAdapter;
+import in.askdial.askdial.adapter.ViewMoreCategoryAdapter;
+import in.askdial.askdial.adapter.ViewdCategoryAdapter;
 import in.askdial.askdial.values.POJOValue;
 
 /**
@@ -50,12 +51,12 @@ public class ConnectingTask {
     public class CategoryFields extends AsyncTask<String, String, String> {
         String result = "", firstLevelCategory_id;
         ArrayList<POJOValue> arrayList;
-        MainFragmentAdapter mainFragmentAdapter;
+        ViewMoreCategoryAdapter mainFragmentAdapter;
         POJOValue details;
         Context context;
         private LayoutInflater mInflater;
 
-        public CategoryFields(ArrayList<POJOValue> arrayList, MainFragmentAdapter mainFragmentAdapter, POJOValue detailsValue,
+        public CategoryFields(ArrayList<POJOValue> arrayList, ViewMoreCategoryAdapter mainFragmentAdapter, POJOValue detailsValue,
                              Context context) {
            this.arrayList=arrayList;
             this.details = detailsValue;
@@ -122,7 +123,7 @@ public class ConnectingTask {
     }
 
     //All listings information
-
+    //Single Listings
     public class SingleListingsFields extends AsyncTask<String, String, String> {
         String result = "", firstLevelCategory_id, category_name;
         ArrayList<POJOValue> arrayList;
@@ -167,6 +168,50 @@ public class ConnectingTask {
         }
     }
 
+    //All Category Listing
+    public class ListingsFields extends AsyncTask<String, String, String> {
+        String result = "", firstLevelCategory_id, category_id;
+        ArrayList<POJOValue> arrayList;
+        ViewdCategoryAdapter masterFragmentAdapter;
+        POJOValue details;
+        Context context;
+        View Progressbar;
+        private LayoutInflater mInflater;
+
+        public ListingsFields(ArrayList<POJOValue> arrayList, String Category_id, ViewdCategoryAdapter mainFragmentAdapter, POJOValue detailsValue,
+                              Context context, View progressbar) {
+            this.arrayList=arrayList;
+            this.details = detailsValue;
+            this.category_id=Category_id;
+            this.masterFragmentAdapter = mainFragmentAdapter;
+            this.details = detailsValue;
+            Progressbar=progressbar;
+            this.context = context;
+        }
+        @Override
+        protected void onPreExecute() {
+            showProgress(true, context, Progressbar);
+           /* super.onPreExecute();*/
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Food="Food";
+                result = sendingTask.sendCategoryName_ById(category_id);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            showProgress(false, context, Progressbar);
+            recievingTask.ByCategoryListingDetails(result, details, arrayList,masterFragmentAdapter);
+        }
+    }
 
     //getListing by id
     public class GetListings extends AsyncTask<String, String, String> {

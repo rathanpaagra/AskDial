@@ -16,7 +16,7 @@
         <activity android:name=".main.MainActivity">
 
         </activity>
-        <service android:name=".services.SearchServices" />
+      <!-- <service android:name=".services.SearchServices" />-->
 
         <activity android:name=".main.CategoryActivity"></activity>
         <activity android:name=".main.SplashActivity">

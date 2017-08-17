@@ -136,67 +136,116 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:text="MOST VISITED CATEGORIES"
                 android:textColor="@color/askdialYellow"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginTop="10dp">
 
-                <Button
-                    android:id="@+id/btn_properties"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="2dp"
-                    android:background="@drawable/home" />
+                <LinearLayout
+                    android:id="@+id/ll_mostvisited"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btn_Food"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="2dp"
-                    android:background="@drawable/food" />
+                    <Button
+                        android:id="@+id/btn_properties"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/home" />
 
-                <Button
-                    android:id="@+id/btn_Movie"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="2dp"
-                    android:background="@drawable/movie" />
+                    <Button
+                        android:id="@+id/btn_Food"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/food" />
 
-                <Button
-                    android:id="@+id/btn_Automotive"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="2dp"
-                    android:background="@drawable/automotive" />
+                    <Button
+                        android:id="@+id/btn_Movie"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/movie" />
 
-                <Button
-                    android:id="@+id/btn_Shoping"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="2dp"
-                    android:background="@drawable/shoping" />
+                    <Button
+                        android:id="@+id/btn_Automotive"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/automotive" />
 
-            </LinearLayout>
+                    <Button
+                        android:id="@+id/btn_Shoping"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/shoping" />
+
+                    //repeat
+                    <Button
+                        android:id="@+id/btn_properties1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/home" />
+
+                    <Button
+                        android:id="@+id/btn_Food1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/food" />
+
+                    <Button
+                        android:id="@+id/btn_Movie1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/movie" />
+
+                    <Button
+                        android:id="@+id/btn_Automotive1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/automotive" />
+1
+                    <Button
+                        android:id="@+id/btn_Shoping1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/shoping" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:orientation="vertical">
@@ -219,7 +268,21 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"></android.support.v7.widget.RecyclerView>
+                android:background="@color/white">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/button_view_more"
+                android:layout_width="150dp"
+                android:layout_height="41dp"
+                android:layout_gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/buttonpressed_rect_card"
+                android:text="View More..."
+                android:textColor="@color/black" />
             <!--  <android.support.v7.widget.CardView
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
@@ -238,6 +301,7 @@
                       android:layout_marginTop="10dp">
                       </android.support.v7.widget.RecyclerView>
               </android.support.v7.widget.CardView>-->
+
             <TextView
                 android:id="@+id/tv_followus_on"
                 android:layout_width="wrap_content"
@@ -246,7 +310,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/buttonpressed"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -285,9 +349,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="#8e0382bc"
-            android:visibility="gone"
             android:orientation="vertical"
-            >
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="wrap_content"

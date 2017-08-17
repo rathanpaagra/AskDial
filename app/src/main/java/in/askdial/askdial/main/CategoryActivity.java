@@ -87,8 +87,8 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         drawer.setDrawerListener(toggle);
         toggle.syncState();*/
 
-        Intent service = new Intent(CategoryActivity.this, SearchServices.class);
-        startService(service);
+        /*Intent service = new Intent(CategoryActivity.this, SearchServices.class);
+        startService(service)*/;
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);

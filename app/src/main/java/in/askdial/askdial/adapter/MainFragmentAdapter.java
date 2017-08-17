@@ -45,7 +45,8 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     @Override
     public void onBindViewHolder(MainFragmentViewHolder holder, int position) {
         POJOValue pojoValue = arrayList.get(position);
-        holder.tvhead.setText(pojoValue.getFirst_Level_Category_Name());
+        holder.categoryimage.setImageResource(pojoValue.getCategoryimages());
+        holder.tvhead.setText(pojoValue.getCategorynames());
         /*holder.tvcontent.setText(content.getDepartmentcontent());*/
       //  holder.categoryimage.setImageResource(pojoValue.getFirst_Level_Category_Id());
     }
@@ -65,7 +66,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
             itemView.setOnClickListener(this);
             tvhead = (TextView) itemView.findViewById(R.id.tv_title);
             /*tvcontent = (TextView) itemView.findViewById(R.id.departmentcontent);*/
-           // categoryimage = (ImageView) itemView.findViewById(R.id.image_row);
+           categoryimage = (ImageView) itemView.findViewById(R.id.cat_image);
         }
 
         @Override

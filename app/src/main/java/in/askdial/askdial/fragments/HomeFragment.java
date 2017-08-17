@@ -16,6 +16,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -56,6 +57,7 @@ import in.askdial.askdial.dataposting.ConnectingTask;
 import in.askdial.askdial.dataposting.DataApi;
 import in.askdial.askdial.dataposting.HttpHandler;
 import in.askdial.askdial.fragments.categories.Visited_CatgFragment;
+import in.askdial.askdial.fragments.viewmoreCategories.ViewMoreCategoryFragment;
 import in.askdial.askdial.services.SearchServices;
 import in.askdial.askdial.values.FunctionCalls;
 import in.askdial.askdial.values.POJOValue;
@@ -76,17 +78,21 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
     private ListView lv;
     private ImageView imaView1, imaView2, imaView3, imaView4;
 
+    //recycler view to dislpay category list(static now)
     RecyclerView recyclerView;
     ConnectingTask task = new ConnectingTask();
     POJOValue pojoValue = new POJOValue();
     String contextview;
     Context context;
-    ArrayList<POJOValue> arrayList = new ArrayList<POJOValue>();
+    ArrayList<POJOValue> arrayList= new ArrayList<>();
+    ArrayList<POJOValue> arrayList1= new ArrayList<>();
     RecyclerView.LayoutManager layoutManager;
     MainFragmentAdapter mainFragmentAdapter;
+    int[] catgimages;
+    String[] catnames;
 
     // URL to get contacts JSON
-    String BASE_URL = DataApi.CATEGORIES_URL;
+    String BASE_URL = DataApi.VIEW_ALL_CATEGORIES_URL;
     ArrayList<HashMap<String, String>> categoryList;
     SliderLayout sliderLayout;
     HashMap<String, String> Hash_file_maps;
@@ -106,8 +112,13 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
     TextView tv_followus;
     LinearLayout linearLayout_socialmeadia_links;
 
+    //Button for Most Visited Categories
+    Button button_viewMore;
+
     //Most Visited Links
     Button button_properties, button_food, button_movie, button_automotive, button_shopping;
+    LinearLayoutManager linearLayoutManager;
+    LinearLayout ll_mostvisited;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -125,6 +136,15 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             Toast.makeText(getActivity(), getArguments().getString("message"), Toast.LENGTH_SHORT).show();
         }
 
+        catgimages = new int[]{ R.drawable.cat_camera_ic, R.drawable.cat_realestate_ic,  R.drawable.cat_packers_movers_ic, R.drawable.cat_hotels_ic,
+                R.drawable.cat_entertainment_ic, R.drawable.cat_electronics_ic, R.drawable.cat_education_ic, R.drawable.cat_furnitures_ic};
+
+        catnames = getResources().getStringArray(R.array.categorylist);
+
+        for (int i = 0; i < catgimages.length; i++) {
+            POJOValue content = new POJOValue(catgimages[i], /*contents[i],*/ catnames[i]);
+            arrayList1.add(content);
+        }
         categoryList = new ArrayList<>();
         //checkInternetConnection();
         //isInternetOn(getActivity());
@@ -138,13 +158,29 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         tv_followus= (TextView) view.findViewById(R.id.tv_followus_on);
         linearLayout_socialmeadia_links= (LinearLayout) view.findViewById(R.id.ll_socialmedia_links);
 
-        //Most Visited Buttons Intialization
+        // View more Categories list Button
+        button_viewMore = (Button) view.findViewById(R.id.button_view_more);
 
+        button_viewMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str_viewmore= "viewmore";
+                ViewMoreCategoryFragment visited_catgFragment = new ViewMoreCategoryFragment();
+                Bundle bundle = new Bundle();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                bundle.putString("category_viewmore", str_viewmore);
+                visited_catgFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
+            }
+        });
+
+        //Most Visited Buttons Intialization
         button_properties = (Button) view.findViewById(R.id.btn_properties);
         button_food = (Button) view.findViewById(R.id.btn_Food);
         button_movie = (Button) view.findViewById(R.id.btn_Movie);
         button_automotive = (Button) view.findViewById(R.id.btn_Automotive);
         button_shopping = (Button) view.findViewById(R.id.btn_Shoping);
+        ll_mostvisited= (LinearLayout) view.findViewById(R.id.ll_mostvisited);
 
         button_properties.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -296,10 +332,11 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
         //layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mainFragmentAdapter = new MainFragmentAdapter(arrayList, contextview, getActivity());
+        mainFragmentAdapter = new MainFragmentAdapter(arrayList1, contextview, getActivity());
 
-        ConnectingTask.CategoryFields checkVisitors = task.new CategoryFields(arrayList, mainFragmentAdapter, pojoValue, context);
-        checkVisitors.execute();
+        //JSON  for calling category List
+       /* ConnectingTask.CategoryFields checkVisitors = task.new CategoryFields(arrayList, mainFragmentAdapter, pojoValue, context);
+        checkVisitors.execute();*/
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 

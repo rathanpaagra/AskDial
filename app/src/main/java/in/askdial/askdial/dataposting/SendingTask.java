@@ -31,9 +31,10 @@ public class SendingTask {
 
     FunctionCalls functionCalls = new FunctionCalls();
 
-    String CATEGORIES_URL = DataApi.CATEGORIES_URL;
-    String LISTINGS_URL = DataApi.LISTINGS_URL;
-    String BASE_URL=DataApi.CATEGORIES_URL;
+    String CATEGORIES_URL = DataApi.VIEW_ALL_CATEGORIES_URL;
+    String DETAIL_LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
+    String BASE_URL=DataApi.VIEW_ALL_CATEGORIES_URL;
+    String CAT_LISTINGS_ALL=DataApi.CAT_LISTINGS_ALL;
     String SendCategory;
 
     public String GetFields() {
@@ -61,7 +62,7 @@ public class SendingTask {
         }
         return response;
     }
-//Most Visited Categories Recived List
+//Most Visited Categories Recived List(Sending By Category Name)
     public String sendbyCategory(String cat) {
 
         String category= cat;
@@ -80,6 +81,20 @@ public class SendingTask {
         String response = "";
         try {
             response = UrlGetConnection(SendCategory);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    //Sending Category id to get Listing Details
+    public String sendCategoryName_ById(String cat_id) {
+        String response = "";
+        HashMap<String, String> datamap = new HashMap<>();
+        datamap.put("first_level_category_id", cat_id);
+
+        try {
+            response = UrlPostConnection2("", datamap);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -169,8 +184,8 @@ public class SendingTask {
 
    /* private String UrlGetConnection(String Get_Url) throws IOException {
         String response = "";
-        functionCalls.LogStatus("Connecting URL: " + CATEGORIES_URL + Get_Url);
-        URL url = new URL(CATEGORIES_URL + Get_Url);
+        functionCalls.LogStatus("Connecting URL: " + VIEW_ALL_CATEGORIES_URL + Get_Url);
+        URL url = new URL(VIEW_ALL_CATEGORIES_URL + Get_Url);
         functionCalls.LogStatus("URL Get Connection 1");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         functionCalls.LogStatus("URL Get Connection 2");
@@ -227,12 +242,11 @@ public class SendingTask {
         return response;
     }
 
-    //only for Listing
-
-    private String UrlPostConnection1(String Post_Url, HashMap<String, String> datamap) throws IOException {
+    //used to get ALL Category Listing Details By sending Category ID through API
+    private String UrlPostConnection2(String Post_Url, HashMap<String, String> datamap) throws IOException {
         String response = "";
-        functionCalls.LogStatus("Connecting URL: " + LISTINGS_URL + Post_Url);
-        URL url = new URL(LISTINGS_URL + Post_Url);
+        functionCalls.LogStatus("Connecting URL: " + CAT_LISTINGS_ALL + Post_Url);
+        URL url = new URL(CAT_LISTINGS_ALL + Post_Url);
         functionCalls.LogStatus("URL Connection 1");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         functionCalls.LogStatus("URL Connection 2");
@@ -277,4 +291,57 @@ public class SendingTask {
         functionCalls.LogStatus("URL Connection Response: " + response);
         return response;
     }
+
+
+    //only for  getting complete details of perticular Listings
+    private String UrlPostConnection1(String Post_Url, HashMap<String, String> datamap) throws IOException {
+        String response = "";
+        functionCalls.LogStatus("Connecting URL: " + DETAIL_LISTINGS_URL + Post_Url);
+        URL url = new URL(DETAIL_LISTINGS_URL + Post_Url);
+        functionCalls.LogStatus("URL Connection 1");
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        functionCalls.LogStatus("URL Connection 2");
+        conn.setReadTimeout(15000);
+        functionCalls.LogStatus("URL Connection 3");
+        conn.setConnectTimeout(15000);
+        functionCalls.LogStatus("URL Connection 4");
+        conn.setRequestMethod("POST");
+        functionCalls.LogStatus("URL Connection 5");
+        conn.setDoInput(true);
+        functionCalls.LogStatus("URL Connection 6");
+        conn.setDoOutput(true);
+        functionCalls.LogStatus("URL Connection 7");
+
+        OutputStream os = conn.getOutputStream();
+        functionCalls.LogStatus("URL Connection 8");
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+        functionCalls.LogStatus("URL Connection 9");
+        writer.write(getPostDataString(datamap));
+        functionCalls.LogStatus("URL Connection 10");
+        writer.flush();
+        functionCalls.LogStatus("URL Connection 11");
+        writer.close();
+        functionCalls.LogStatus("URL Connection 12");
+        os.close();
+        functionCalls.LogStatus("URL Connection 13");
+        int responseCode = conn.getResponseCode();
+        functionCalls.LogStatus("URL Connection 14");
+        if (responseCode == HttpsURLConnection.HTTP_OK) {
+            functionCalls.LogStatus("URL Connection 15");
+            String line;
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            functionCalls.LogStatus("URL Connection 16");
+            while ((line = br.readLine()) != null) {
+                response += line;
+            }
+            functionCalls.LogStatus("URL Connection 17");
+        } else {
+            response = "";
+            functionCalls.LogStatus("URL Connection 18");
+        }
+        functionCalls.LogStatus("URL Connection Response: " + response);
+        return response;
+    }
+
+
 }

@@ -2,15 +2,10 @@ package in.askdial.askdial.fragments;
 
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -19,14 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.MissingFormatArgumentException;
 
 import in.askdial.askdial.R;
 import in.askdial.askdial.adapter.MainFragmentAdapter;
 import in.askdial.askdial.dataposting.ConnectingTask;
-import in.askdial.askdial.dataposting.RecievingTask;
-import in.askdial.askdial.dataposting.SendingTask;
 import in.askdial.askdial.values.POJOValue;
 
 /**
@@ -70,8 +61,8 @@ public class MainFragment extends Fragment {
 
         mainFragmentAdapter = new MainFragmentAdapter(arrayList,contextview, getActivity());
 
-        ConnectingTask.CategoryFields checkVisitors = task.new CategoryFields(arrayList, mainFragmentAdapter, pojoValue, context);
-        checkVisitors.execute();
+        /*ConnectingTask.CategoryFields checkVisitors = task.new CategoryFields(arrayList, mainFragmentAdapter, pojoValue, context);
+        checkVisitors.execute();*/
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 

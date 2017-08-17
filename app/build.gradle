@@ -26,30 +26,23 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.daimajia.slider:library:1.1.5@aar'
-    compile 'com.daimajia.slider:library:1.1.5@aar'
+
     compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.daimajia.slider:library:1.1.5@aar'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.android.support:cardview-v7:24.2.1'
     compile 'com.bignerdranch.android:expandablerecyclerview:2.1.1'
-    compile 'com.felipecsl:gifimageview:2.1.0'
-    compile 'commons-io:commons-io:2.4'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.squareup.picasso:picasso:2.3.2'
-    compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.google.android.gms:play-services-auth:9.8.0'
-
-    //RecyclerView animations
+    compile 'commons-io:commons-io:2.4'
+    compile 'com.felipecsl:gifimageview:2.1.0'
+    compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'com.twotoasters.jazzylistview:library:1.2.1'
     compile 'com.twotoasters.jazzylistview:library-recyclerview:1.2.1'
-
-    //Loading animations
     compile 'com.wang.avi:library:1.0.5'
     compile 'com.nineoldandroids:library:2.4.0'
-
+    compile 'com.android.support:support-v4:24.2.1'
     testCompile 'junit:junit:4.12'
-
 }
 apply plugin: 'com.google.gms.google-services'

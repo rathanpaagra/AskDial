@@ -34,6 +34,7 @@ public class Visited_CatgFragment extends Fragment {
     Context context;
     String Category;
     private AVLoadingIndicatorView progressBar;
+
     public Visited_CatgFragment() {
         // Required empty public constructor
     }

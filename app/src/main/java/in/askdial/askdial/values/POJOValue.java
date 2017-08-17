@@ -22,6 +22,31 @@ public class POJOValue {
     String company_fax;
     String company_toll_free;
 
+    int categoryimages;
+    String categorynames;
+
+    public int getCategoryimages() {
+        return categoryimages;
+    }
+
+    public void setCategoryimages(int categoryimages) {
+        this.categoryimages = categoryimages;
+    }
+
+    public String getCategorynames() {
+        return categorynames;
+    }
+
+    public void setCategorynames(String categorynames) {
+        this.categorynames = categorynames;
+    }
+
+    public POJOValue(int categoryimages, String categorynames) {
+
+        this.categoryimages = categoryimages;
+        this.categorynames = categorynames;
+    }
+
     private boolean ListingbyIdRecivedSuccess;
 
     public boolean isListingbyIdRecivedSuccess() {
@@ -221,11 +246,11 @@ public class POJOValue {
 
     }
 
-    public POJOValue(String first_Level_Category_Name, String first_Level_Category_Id) {
+    /*public POJOValue(String first_Level_Category_Name, String first_Level_Category_Id) {
         First_Level_Category_Name = first_Level_Category_Name;
         First_Level_Category_Id = first_Level_Category_Id;
 
-    }
+    }*/
 
     public String getFirst_Level_Category_Name() {
         return First_Level_Category_Name;

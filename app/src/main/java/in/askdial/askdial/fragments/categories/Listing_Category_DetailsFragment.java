@@ -55,7 +55,7 @@ public class Listing_Category_DetailsFragment extends Fragment {
     View style1,style2,style3,style4,style5,style6,style7,style8,style9;
 
     FunctionCalls functionCalls = new FunctionCalls();
-    String LISTINGS_URL = DataApi.LISTINGS_URL;
+    String LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
     Thread mythread;
     POJOValue pojoValue;
     ConnectingTask task;
@@ -346,7 +346,7 @@ public class Listing_Category_DetailsFragment extends Fragment {
     /*public void ReciveListingDetails(String result*//*, POJOValue details*//*) {
         // HttpHandler sh = new HttpHandler();
         // Making a request to url and getting response
-        //   String jsonStr = sh.makeServiceCall(CATEGORIES_URL);
+        //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
         //  Log.e(TAG, "Response from url: " + jsonStr);
 
         try {

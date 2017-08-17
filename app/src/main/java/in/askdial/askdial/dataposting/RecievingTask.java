@@ -9,8 +9,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import in.askdial.askdial.adapter.MainFragmentAdapter;
 import in.askdial.askdial.adapter.MasterFragmentAdapter;
+import in.askdial.askdial.adapter.ViewMoreCategoryAdapter;
+import in.askdial.askdial.adapter.ViewdCategoryAdapter;
 import in.askdial.askdial.values.POJOValue;
 
 import static android.content.ContentValues.TAG;
@@ -21,16 +22,16 @@ import static android.content.ContentValues.TAG;
 
 public class RecievingTask {
 
-    String CATEGORIES_URL = DataApi.CATEGORIES_URL;
-    String LISTINGS_URL = DataApi.LISTINGS_URL;
+    String CATEGORIES_URL = DataApi.VIEW_ALL_CATEGORIES_URL;
+    String LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
     POJOValue pojoValue;
 
 
     public void CategoryDetails(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
-                                MainFragmentAdapter adapters) {
+                                ViewMoreCategoryAdapter adapters) {
         // HttpHandler sh = new HttpHandler();
         // Making a request to url and getting response
-        //   String jsonStr = sh.makeServiceCall(CATEGORIES_URL);
+        //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
         //  Log.e(TAG, "Response from url: " + jsonStr);
 
         try {
@@ -100,12 +101,12 @@ public class RecievingTask {
         }
     }
 
-    //get Listing details
+    //get Single Listing details
     public void ListingDetails(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
                                 MasterFragmentAdapter adapters) {
         // HttpHandler sh = new HttpHandler();
         // Making a request to url and getting response
-        //   String jsonStr = sh.makeServiceCall(CATEGORIES_URL);
+        //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
         //  Log.e(TAG, "Response from url: " + jsonStr);
 
         try {
@@ -141,6 +142,48 @@ public class RecievingTask {
         }
     }
 
+    //get ALL Listing details by sending Category ID
+    public void ByCategoryListingDetails(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
+                                         ViewdCategoryAdapter adapters) {
+        // HttpHandler sh = new HttpHandler();
+        // Making a request to url and getting response
+        //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
+        //  Log.e(TAG, "Response from url: " + jsonStr);
+
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String Status = jo.getString("message");
+                    //  pojoValue.setMessageSuccess(true);
+                    if (Status.equals("Success")) {
+                        Log.e(TAG, "Connect for fetching from server.");
+                        pojoValue.setCategory_found(true);
+                        pojoValue = new POJOValue();
+                        String Company_listingId = jo.getString("listing_id");
+                        pojoValue.setCompany_lisiting_id(Company_listingId);
+                        String Company_listing_categoryname = jo.getString("first_level_category_name");
+                        pojoValue.setCompany_category_name(Company_listing_categoryname);
+                        String Company_Name = jo.getString("company_name");
+                        pojoValue.setCompany_name(Company_Name);
+                        String Company_Area = jo.getString("company_area");
+                        pojoValue.setCompany_area(Company_Area);
+                        String Company_Mobile = jo.getString("category_mobile1");
+                        pojoValue.setCompany_mobile1(Company_Mobile);
+                        String Company_Email = jo.getString("company_email");
+                        pojoValue.setCompany_email(Company_Email);
+                        arrayList.add(pojoValue);
+                        adapters.notifyDataSetChanged();
+                    }
+                }
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    //Recieve All Listing Details by sending Listing ID
     public void ReciveListingDetails(String result, POJOValue details) {
 
         try {
