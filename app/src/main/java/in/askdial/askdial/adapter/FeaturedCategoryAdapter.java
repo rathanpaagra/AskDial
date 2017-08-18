@@ -2,6 +2,8 @@ package in.askdial.askdial.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 
 import in.askdial.askdial.R;
 import in.askdial.askdial.fragments.HomeFragment;
+import in.askdial.askdial.fragments.categories.Visited_CatgFragment;
 import in.askdial.askdial.values.POJOValue;
 
 /**
@@ -71,6 +74,15 @@ public class FeaturedCategoryAdapter extends RecyclerView.Adapter<FeaturedCatego
 
         @Override
         public void onClick(View v) {
+            int pos = getAdapterPosition();
+            POJOValue pojoValue = arrayList.get(pos);
+            String categoryName= pojoValue.getCategorynames();
+            Visited_CatgFragment visited_catgFragment = new Visited_CatgFragment();
+            Bundle bundle = new Bundle();
+            FragmentTransaction fragmentTransaction = homeFragment.getActivity().getSupportFragmentManager().beginTransaction();
+            bundle.putString("category", categoryName);
+            visited_catgFragment.setArguments(bundle);
+            fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
             /*int pos = getAdapterPosition();
             POJOValue pojoValue = arrayList.get(pos);
             String categoryID= pojoValue.getFirst_Level_Category_Id();

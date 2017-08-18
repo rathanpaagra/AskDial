@@ -21,6 +21,17 @@ public class DataApi {
     public static final String CATEGORIES_URL_Automotive= "http://www.askdial.com/index.php/admin/api/Automotive";
     public static final String CATEGORIES_URL_Shopping = "http://www.askdial.com/index.php/admin/api/Shopping_malls";
 
+    //Searched Categories
+    public static final String CATEGORIES_URL_Camera_dealers = "http://www.askdial.com/index.php/admin/api/Camera_dealers";
+    public static final String CATEGORIES_URL_Real_estate = "http://www.askdial.com/index.php/admin/api/Real_estate";
+    public static final String CATEGORIES_URL_Packers_movers = "http://www.askdial.com/index.php/admin/api/Packers_movers";
+    public static final String CATEGORIES_URL_Hotels= "http://www.askdial.com/index.php/admin/api/Hotels";
+    public static final String CATEGORIES_URL_Entertainment = "http://www.askdial.com/index.php/admin/api/Entertainment";
+    public static final String CATEGORIES_URL_Electronics = "http://www.askdial.com/index.php/admin/api/Electronics";
+    public static final String CATEGORIES_URL_Education = "http://www.askdial.com/index.php/admin/api/Education";
+    public static final String CATEGORIES_URL_Furnitures = "http://www.askdial.com/index.php/admin/api/Furnitures";
+
+
    // public static final String LISTINGS_DETAILS_URL = "http://www.askdial.com/index.php/admin/api/Listings/first_level/Fetch_fields";
     public static final String Image_Url = "";
 

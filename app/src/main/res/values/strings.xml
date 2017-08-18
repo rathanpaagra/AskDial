@@ -12,12 +12,12 @@
 
     <string-array name="categorylist">
         <item>Camera Dealers</item>
+        <item>Electronics</item>
+        <item>Education</item>
         <item>Realestate</item>
         <item>Packers and Movers</item>
         <item>Hotels</item>
         <item>Entertainment</item>
-        <item> Electronics</item>
-        <item> Education</item>
         <item>Furnitures</item>
 
     </string-array>

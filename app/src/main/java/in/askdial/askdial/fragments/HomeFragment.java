@@ -113,7 +113,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
 
     //Button for Most Visited Categories
     Button button_viewMore;
-    TextView viewMore;
+    TextView viewMore,viewMore1;
 
 
     //Most Visited Links
@@ -137,8 +137,8 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             Toast.makeText(getActivity(), getArguments().getString("message"), Toast.LENGTH_SHORT).show();
         }
 
-        catgimages = new int[]{ R.drawable.cat_camera_ic, R.drawable.cat_realestate_ic,  R.drawable.cat_packers_movers_ic, R.drawable.cat_hotels_ic,
-                R.drawable.cat_entertainment_ic, R.drawable.cat_electronics_ic, R.drawable.cat_education_ic, R.drawable.cat_furnitures_ic};
+        catgimages = new int[]{ R.drawable.cat_camera_ic, R.drawable.cat_electronics_ic, R.drawable.cat_education_ic,R.drawable.cat_realestate_ic,  R.drawable.cat_packers_movers_ic, R.drawable.cat_hotels_ic,
+                R.drawable.cat_entertainment_ic,  R.drawable.cat_furnitures_ic};
 
         catnames = getResources().getStringArray(R.array.categorylist);
 
@@ -162,6 +162,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         // View more Categories list Button
        // button_viewMore = (Button) view.findViewById(R.id.button_view_more);
         viewMore= (TextView) view.findViewById(R.id.textView_viewmore);
+        viewMore1= (TextView) view.findViewById(R.id.textView_viewmore1);
 
         viewMore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,7 +176,18 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
             }
         });
-
+        viewMore1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str_viewmore= "viewmore";
+                MainFragment visited_catgFragment = new MainFragment();
+                Bundle bundle = new Bundle();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                bundle.putString("category_viewmore", str_viewmore);
+                visited_catgFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
+            }
+        });
         //Most Visited Buttons Intialization
         button_properties = (Button) view.findViewById(R.id.btn_properties);
         button_food = (Button) view.findViewById(R.id.btn_Food);
@@ -326,7 +338,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         sliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
         sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         sliderLayout.setCustomAnimation(new DescriptionAnimation());
-        sliderLayout.setDuration(1500);
+        sliderLayout.setDuration(3000);
         sliderLayout.addOnPageChangeListener((ViewPagerEx.OnPageChangeListener) this);
 
         //region for REcyclerview Using JSON

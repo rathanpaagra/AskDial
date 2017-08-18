@@ -3,12 +3,15 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/black_trans80"
-    android:orientation="vertical">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:background="@color/white"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -20,6 +23,7 @@
             android:src="@drawable/cat_camera_ic"
              />
 
+
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
@@ -30,7 +34,7 @@
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:paddingLeft="3dp"
-            android:textSize="15dp"
+            android:textSize="12dp"
             android:textStyle="bold" />
     </LinearLayout>
 

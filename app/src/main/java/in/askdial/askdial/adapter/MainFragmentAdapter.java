@@ -41,7 +41,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     @Override
     public MainFragmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_view_more, parent, false);
         MainFragmentViewHolder viewHolder = new MainFragmentViewHolder(view);
         return viewHolder;
     }
@@ -69,7 +69,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
         public MainFragmentViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            tvhead = (TextView) itemView.findViewById(R.id.tv_title);
+            tvhead = (TextView) itemView.findViewById(R.id.textView_cat_name);
             /*tvcontent = (TextView) itemView.findViewById(R.id.departmentcontent);*/
            //categoryimage = (ImageView) itemView.findViewById(R.id.cat_image);
         }

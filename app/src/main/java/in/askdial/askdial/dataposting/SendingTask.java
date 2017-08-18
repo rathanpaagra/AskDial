@@ -18,9 +18,17 @@ import javax.net.ssl.HttpsURLConnection;
 import in.askdial.askdial.values.FunctionCalls;
 
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Automotive;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Camera_dealers;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Education;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Electronics;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Entertainment;
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Food;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Furnitures;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Hotels;
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Movie;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Packers_movers;
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Property;
+import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Real_estate;
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Shopping;
 
 /**
@@ -66,7 +74,7 @@ public class SendingTask {
     public String sendbyCategory(String cat) {
 
         String category= cat;
-
+        //most searched categories
         if(category.equals("Food")){
             SendCategory= CATEGORIES_URL_Food;
         }else if(category.equals("Automotive")){
@@ -77,6 +85,24 @@ public class SendingTask {
             SendCategory= CATEGORIES_URL_Shopping;
         }else if (category.equals("Movie")){
             SendCategory= CATEGORIES_URL_Movie;
+        }
+        //search categories
+        else if(category.equals("Camera Dealers")){
+            SendCategory= CATEGORIES_URL_Camera_dealers;
+        }else if (category.equals("Electronics")){
+            SendCategory= CATEGORIES_URL_Electronics;
+        }else if(category.equals("Education")){
+            SendCategory= CATEGORIES_URL_Education;
+        }else if (category.equals("Realestate")){
+            SendCategory= CATEGORIES_URL_Real_estate;
+        }else if(category.equals("Packers and Movers")){
+            SendCategory= CATEGORIES_URL_Packers_movers;
+        }else if (category.equals("Hotels")){
+            SendCategory= CATEGORIES_URL_Hotels;
+        }else if(category.equals("Entertainment")){
+            SendCategory= CATEGORIES_URL_Entertainment;
+        }else if (category.equals("Furnitures")){
+            SendCategory= CATEGORIES_URL_Furnitures;
         }
         String response = "";
         try {
