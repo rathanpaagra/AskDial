@@ -2,8 +2,6 @@ package in.askdial.askdial.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,28 +12,27 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import in.askdial.askdial.R;
-import in.askdial.askdial.fragments.MainFragment;
-import in.askdial.askdial.fragments.viewmoreCategories.ViewedCategoryFragment;
+import in.askdial.askdial.fragments.HomeFragment;
 import in.askdial.askdial.values.POJOValue;
 
 /**
  * Created by Admin on 29-Dec-16.
  */
 
-public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapter.MainFragmentViewHolder>{
+public class FeaturedCategoryAdapter extends RecyclerView.Adapter<FeaturedCategoryAdapter.MainFragmentViewHolder>{
     ArrayList<POJOValue> arrayList= new ArrayList<>();
-    MainFragment mainFragment;
+    HomeFragment homeFragment;
     String ContextView;
     Context context;
     Activity activity;
 
 
-    public MainFragmentAdapter(ArrayList<POJOValue> arrayList,String contextView, Context context, MainFragment mainFragment) {
+    public FeaturedCategoryAdapter(ArrayList<POJOValue> arrayList, String contextView, Context context, HomeFragment mainFragment) {
         this.arrayList = arrayList;
         this.context=context;
         this.ContextView=contextView;
         activity = (Activity)context;
-        this.mainFragment=mainFragment;
+        this.homeFragment=mainFragment;
     }
 
     @Override
@@ -49,11 +46,8 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     @Override
     public void onBindViewHolder(MainFragmentViewHolder holder, int position) {
         POJOValue pojoValue = arrayList.get(position);
-       // holder.categoryimage.setImageResource(pojoValue.getCategoryimages());
-       // holder.tvhead.setText(pojoValue.getCategorynames());
-        //holder.categoryimage.setImageResource(pojoValue.getFirst_Level_Category_Id());
-        holder.tvhead.setText(pojoValue.getFirst_Level_Category_Name());
-
+        holder.categoryimage.setImageResource(pojoValue.getCategoryimages());
+        holder.tvhead.setText(pojoValue.getCategorynames());
     }
 
     @Override
@@ -70,23 +64,24 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
             super(itemView);
             itemView.setOnClickListener(this);
             tvhead = (TextView) itemView.findViewById(R.id.tv_title);
+            categoryimage = (ImageView) itemView.findViewById(R.id.cat_image);
             /*tvcontent = (TextView) itemView.findViewById(R.id.departmentcontent);*/
-           //categoryimage = (ImageView) itemView.findViewById(R.id.cat_image);
+
         }
 
         @Override
         public void onClick(View v) {
-            int pos = getAdapterPosition();
+            /*int pos = getAdapterPosition();
             POJOValue pojoValue = arrayList.get(pos);
             String categoryID= pojoValue.getFirst_Level_Category_Id();
             String categoryName= pojoValue.getFirst_Level_Category_Name();
             ViewedCategoryFragment fragment=new ViewedCategoryFragment();
             Bundle bundle=new Bundle();
-            FragmentTransaction fragmentTransaction=mainFragment.getActivity().getSupportFragmentManager().beginTransaction();
+            FragmentTransaction fragmentTransaction=homeFragment.getActivity().getSupportFragmentManager().beginTransaction();
             bundle.putString("category_id", categoryID);
             bundle.putString("category_category_name", categoryName);
             fragment.setArguments(bundle);
-            fragmentTransaction.replace(R.id.container_main, fragment).addToBackStack(null).commit();
+            fragmentTransaction.replace(R.id.container_main, fragment).addToBackStack(null).commit();*/
 
         }
     }

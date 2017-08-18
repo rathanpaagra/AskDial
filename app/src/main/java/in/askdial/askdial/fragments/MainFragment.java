@@ -11,7 +11,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 
@@ -36,10 +37,11 @@ public class MainFragment extends Fragment {
     ArrayList<POJOValue> arrayList = new ArrayList<POJOValue>();
     RecyclerView.LayoutManager layoutManager;
     MainFragmentAdapter mainFragmentAdapter;
-
     Context context;
     Thread categoryhead;
     static ProgressDialog dialog = null;
+
+    private AVLoadingIndicatorView progressBar;
 
     public MainFragment() {
         // Required empty public constructor
@@ -50,19 +52,26 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         getActivity().setTitle("Home Page");
 
+
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_main, container, false);
-        if (getArguments() != null) {
+
+        Bundle bundle = new Bundle();
+        bundle = getArguments();
+        String viewmore_Category=bundle.getString("category_viewmore");
+
+      /*  if (getArguments() != null) {
             Toast.makeText(getActivity(), getArguments().getString("message"), Toast.LENGTH_SHORT).show();
-        }
+        }*/
+        progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loading_bar2);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_title);
-        layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
+        layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         //layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
-        mainFragmentAdapter = new MainFragmentAdapter(arrayList,contextview, getActivity());
+        mainFragmentAdapter = new MainFragmentAdapter(arrayList,contextview, getActivity(), MainFragment.this);
 
-        /*ConnectingTask.CategoryFields checkVisitors = task.new CategoryFields(arrayList, mainFragmentAdapter, pojoValue, context);
-        checkVisitors.execute();*/
+        ConnectingTask.CategoryFields checkVisitors = task.new CategoryFields(arrayList, mainFragmentAdapter, pojoValue, getActivity(),progressBar);
+        checkVisitors.execute();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 

@@ -1,17 +1,20 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black_trans80">
 
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/partial_transparent"
+        android:background="@color/black_trans80"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
             android:orientation="vertical">
 
             //Onclick cardview site showing form
@@ -105,12 +108,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
-                android:text="PREMIUM LISTINGS"
-                android:textColor="@color/askdialYellow"
+                android:text="Premium Listings"
+                android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
@@ -129,17 +132,18 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp"
             android:background="@color/white"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="10dp"
+                android:layout_gravity="left"
                 android:layout_marginTop="10dp"
-                android:text="MOST VISITED CATEGORIES"
-                android:textColor="@color/askdialYellow"
+                android:paddingLeft="10dp"
+                android:text="Most Visited Categories"
+                android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
@@ -198,6 +202,7 @@
                         android:background="@drawable/shoping" />
 
                     //repeat
+
                     <Button
                         android:id="@+id/btn_properties1"
                         android:layout_width="60dp"
@@ -229,7 +234,7 @@
                         android:layout_marginLeft="6dp"
                         android:layout_marginRight="2dp"
                         android:background="@drawable/automotive" />
-1
+
                     <Button
                         android:id="@+id/btn_Shoping1"
                         android:layout_width="60dp"
@@ -246,20 +251,42 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:background="@color/white"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="10dp"
-                android:text="SEARCH CATEGORIES"
-                android:textColor="@color/askdialYellow"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Search Categories"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_viewmore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="More..."
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/blue"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_title1"
@@ -272,7 +299,8 @@
 
             </android.support.v7.widget.RecyclerView>
 
-            <Button
+            //button view more
+            <!--<Button
                 android:id="@+id/button_view_more"
                 android:layout_width="150dp"
                 android:layout_height="41dp"
@@ -282,7 +310,9 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/buttonpressed_rect_card"
                 android:text="View More..."
-                android:textColor="@color/black" />
+                android:textColor="@color/black" />-->
+
+
             <!--  <android.support.v7.widget.CardView
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
@@ -314,8 +344,8 @@
                 android:background="@drawable/buttonpressed"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="FOLLOW US ON"
-                android:textColor="@color/white"
+                android:text="Follow Us On"
+                android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -363,40 +393,40 @@
 
                 <Button
                     android:id="@+id/btn_fb_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/ic_fb_icon" />
 
                 <Button
                     android:id="@+id/btn_twitter_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/ic_twitter_icon" />
 
                 <Button
                     android:id="@+id/btn_gplus_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/ic_gplus_icon" />
 
                 <Button
                     android:id="@+id/btn_linked_in_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/ic_linkedin_icon" />
 
                 <Button
                     android:id="@+id/btn_pintrest_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/ic_pintrest_icon" />

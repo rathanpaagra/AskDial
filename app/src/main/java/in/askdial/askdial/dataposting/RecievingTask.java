@@ -9,8 +9,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import in.askdial.askdial.adapter.MainFragmentAdapter;
 import in.askdial.askdial.adapter.MasterFragmentAdapter;
-import in.askdial.askdial.adapter.ViewMoreCategoryAdapter;
 import in.askdial.askdial.adapter.ViewdCategoryAdapter;
 import in.askdial.askdial.values.POJOValue;
 
@@ -28,7 +28,7 @@ public class RecievingTask {
 
 
     public void CategoryDetails(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
-                                ViewMoreCategoryAdapter adapters) {
+                                MainFragmentAdapter adapters) {
         // HttpHandler sh = new HttpHandler();
         // Making a request to url and getting response
         //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);

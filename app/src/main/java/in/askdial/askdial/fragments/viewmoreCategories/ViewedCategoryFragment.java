@@ -1,5 +1,4 @@
-package in.askdial.askdial.fragments.categories;
-
+package in.askdial.askdial.fragments.viewmoreCategories;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,50 +14,51 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.util.ArrayList;
 
 import in.askdial.askdial.R;
-import in.askdial.askdial.adapter.MasterFragmentAdapter;
+import in.askdial.askdial.adapter.ViewdCategoryAdapter;
 import in.askdial.askdial.dataposting.ConnectingTask;
 import in.askdial.askdial.values.POJOValue;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Visited_CatgFragment extends Fragment {
+public class ViewedCategoryFragment extends Fragment {
 
     ArrayList<POJOValue> arrayList = new ArrayList<POJOValue>();
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    MasterFragmentAdapter masterFragmentAdapter;
+    ViewdCategoryAdapter viewdCategoryAdapter;
     ConnectingTask task = new ConnectingTask();
     POJOValue pojoValue = new POJOValue();
     String contextview;
     Context context;
-    String Category;
+    String Category_ID,Category_Name;
     private AVLoadingIndicatorView progressBar;
 
-    public Visited_CatgFragment() {
+    public ViewedCategoryFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view= inflater.inflate(R.layout.fragment_visted__catg, container, false);
-
+        View view= inflater.inflate(R.layout.fragment_viewed_category, container, false);
         Bundle bundle = new Bundle();
         bundle = getArguments();
-        Category=bundle.getString("category");
+        Category_ID=bundle.getString("category_id");
+       Category_Name=bundle.getString("category_category_name");
 
-        progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loading_bar);
-        recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_category);
+        progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loading_bar1);
+        recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_viewed_category);
         layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
-        masterFragmentAdapter = new MasterFragmentAdapter(arrayList, contextview, getActivity(),Visited_CatgFragment.this);
-        ConnectingTask.SingleListingsFields checkVisitors = task.new SingleListingsFields(arrayList, Category,masterFragmentAdapter, pojoValue, getActivity(),progressBar);
+        viewdCategoryAdapter = new ViewdCategoryAdapter(arrayList, contextview, getActivity(),ViewedCategoryFragment.this);
+        ConnectingTask.ListingsFields checkVisitors = task.new ListingsFields(arrayList, Category_ID,viewdCategoryAdapter, pojoValue, getActivity(),progressBar);
         checkVisitors.execute();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(masterFragmentAdapter);
+        recyclerView.setAdapter(viewdCategoryAdapter);
         return view;
     }
 

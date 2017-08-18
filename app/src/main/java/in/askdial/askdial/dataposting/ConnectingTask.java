@@ -12,8 +12,8 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import in.askdial.askdial.adapter.MainFragmentAdapter;
 import in.askdial.askdial.adapter.MasterFragmentAdapter;
-import in.askdial.askdial.adapter.ViewMoreCategoryAdapter;
 import in.askdial.askdial.adapter.ViewdCategoryAdapter;
 import in.askdial.askdial.values.POJOValue;
 
@@ -51,23 +51,26 @@ public class ConnectingTask {
     public class CategoryFields extends AsyncTask<String, String, String> {
         String result = "", firstLevelCategory_id;
         ArrayList<POJOValue> arrayList;
-        ViewMoreCategoryAdapter mainFragmentAdapter;
+        MainFragmentAdapter mainFragmentAdapter;
         POJOValue details;
         Context context;
+        View Progressbar;
         private LayoutInflater mInflater;
 
-        public CategoryFields(ArrayList<POJOValue> arrayList, ViewMoreCategoryAdapter mainFragmentAdapter, POJOValue detailsValue,
-                             Context context) {
+        public CategoryFields(ArrayList<POJOValue> arrayList, MainFragmentAdapter mainFragmentAdapter, POJOValue detailsValue,
+                              Context context,View progressbar) {
            this.arrayList=arrayList;
             this.details = detailsValue;
             this.mainFragmentAdapter = mainFragmentAdapter;
             this.details = detailsValue;
+            Progressbar=progressbar;
             this.context = context;
         }
 
         @Override
         protected void onPreExecute() {
-            super.onPreExecute();
+            showProgress(true, context, Progressbar);
+           // super.onPreExecute();
         }
 
         @Override
@@ -84,6 +87,7 @@ public class ConnectingTask {
 
         @Override
         protected void onPostExecute(String result) {
+            showProgress(false, context, Progressbar);
             recievingTask.CategoryDetails(result, details, arrayList,mainFragmentAdapter);
         }
     }

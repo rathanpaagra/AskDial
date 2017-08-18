@@ -52,12 +52,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import in.askdial.askdial.R;
-import in.askdial.askdial.adapter.MainFragmentAdapter;
+import in.askdial.askdial.adapter.FeaturedCategoryAdapter;
 import in.askdial.askdial.dataposting.ConnectingTask;
 import in.askdial.askdial.dataposting.DataApi;
 import in.askdial.askdial.dataposting.HttpHandler;
 import in.askdial.askdial.fragments.categories.Visited_CatgFragment;
-import in.askdial.askdial.fragments.viewmoreCategories.ViewMoreCategoryFragment;
 import in.askdial.askdial.services.SearchServices;
 import in.askdial.askdial.values.FunctionCalls;
 import in.askdial.askdial.values.POJOValue;
@@ -87,7 +86,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
     ArrayList<POJOValue> arrayList= new ArrayList<>();
     ArrayList<POJOValue> arrayList1= new ArrayList<>();
     RecyclerView.LayoutManager layoutManager;
-    MainFragmentAdapter mainFragmentAdapter;
+    FeaturedCategoryAdapter featuredCategoryAdapter;
     int[] catgimages;
     String[] catnames;
 
@@ -114,6 +113,8 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
 
     //Button for Most Visited Categories
     Button button_viewMore;
+    TextView viewMore;
+
 
     //Most Visited Links
     Button button_properties, button_food, button_movie, button_automotive, button_shopping;
@@ -159,13 +160,14 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         linearLayout_socialmeadia_links= (LinearLayout) view.findViewById(R.id.ll_socialmedia_links);
 
         // View more Categories list Button
-        button_viewMore = (Button) view.findViewById(R.id.button_view_more);
+       // button_viewMore = (Button) view.findViewById(R.id.button_view_more);
+        viewMore= (TextView) view.findViewById(R.id.textView_viewmore);
 
-        button_viewMore.setOnClickListener(new View.OnClickListener() {
+        viewMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str_viewmore= "viewmore";
-                ViewMoreCategoryFragment visited_catgFragment = new ViewMoreCategoryFragment();
+                MainFragment visited_catgFragment = new MainFragment();
                 Bundle bundle = new Bundle();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 bundle.putString("category_viewmore", str_viewmore);
@@ -332,7 +334,8 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
         //layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mainFragmentAdapter = new MainFragmentAdapter(arrayList1, contextview, getActivity());
+
+        featuredCategoryAdapter = new FeaturedCategoryAdapter(arrayList1, contextview, getActivity(),HomeFragment.this);
 
         //JSON  for calling category List
        /* ConnectingTask.CategoryFields checkVisitors = task.new CategoryFields(arrayList, mainFragmentAdapter, pojoValue, context);
@@ -340,7 +343,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.setAdapter(mainFragmentAdapter);
+        recyclerView.setAdapter(featuredCategoryAdapter);
         //endregion
 
         //Category list checking task
