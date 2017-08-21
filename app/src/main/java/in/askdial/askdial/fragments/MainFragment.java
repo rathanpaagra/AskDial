@@ -56,9 +56,9 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        Bundle bundle = new Bundle();
+        /*Bundle bundle = new Bundle();
         bundle = getArguments();
-        String viewmore_Category=bundle.getString("category_viewmore");
+        String viewmore_Category=bundle.getString("category_viewmore");*/
 
       /*  if (getArguments() != null) {
             Toast.makeText(getActivity(), getArguments().getString("message"), Toast.LENGTH_SHORT).show();

@@ -33,6 +33,7 @@ import in.askdial.askdial.fragments.BussinessDirectoryFragment;
 import in.askdial.askdial.fragments.ContactUSFragment;
 import in.askdial.askdial.fragments.EventsFragment;
 import in.askdial.askdial.fragments.HomeFragment;
+import in.askdial.askdial.fragments.MainFragment;
 import in.askdial.askdial.fragments.categories.Visited_CatgFragment;
 import in.askdial.askdial.services.SearchServices;
 import in.askdial.askdial.values.FunctionCalls;
@@ -94,7 +95,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        switchContent(new HomeFragment(), toolbar);
+        switchContent(new MainFragment(), toolbar);
        // onBackPressed();
 
         search_Edt_Txt.setOnEditorActionListener(new TextView.OnEditorActionListener() {

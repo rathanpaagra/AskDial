@@ -2,8 +2,12 @@ package in.askdial.askdial.fragments.categories;
 
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -125,7 +129,6 @@ public class Listing_Category_DetailsFragment extends Fragment {
         linearLayout_company_pincode= (LinearLayout) view.findViewById(R.id.ll_listing_pincode);
 
         //divider Initialization
-
         style1=view.findViewById(R.id.d1);
         style2=view.findViewById(R.id.d2);
         style3=view.findViewById(R.id.d3);
@@ -135,7 +138,34 @@ public class Listing_Category_DetailsFragment extends Fragment {
         style7=view.findViewById(R.id.d7);
         style8=view.findViewById(R.id.d8);
         style9=view.findViewById(R.id.d9);
+        // button Calling
 
+        button_call= (Button) view.findViewById(R.id.btn_calling);
+        button_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String[] mobile = {s_company_mobile1, s_company_mobile2};
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Choose Number")
+                        .setItems(mobile, new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int phNo) {
+                                // TODO Auto-generated method stub
+                                Intent launchIntent = new Intent(Intent.ACTION_DIAL);
+                                launchIntent.setData(Uri.parse("tel:" + mobile[phNo]));
+                                startActivity(launchIntent);
+                            }
+                        });
+                /*// Setting Netural "Cancel" Button
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    }
+                });*/
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
         /*tv_comapny_name.setText(s_comapny_name);
         tv_company_area.setText(s_company_area);
         tv_company_city.setText(s_company_city);
