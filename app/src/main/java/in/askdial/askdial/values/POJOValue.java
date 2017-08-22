@@ -48,6 +48,24 @@ public class POJOValue {
     }
 
     private boolean ListingbyIdRecivedSuccess;
+    private boolean SearchKeywordSuccess;
+    private boolean SearchKeyWordFailure;
+
+    public boolean isSearchKeywordSuccess() {
+        return SearchKeywordSuccess;
+    }
+
+    public void setSearchKeywordSuccess(boolean searchKeywordSuccess) {
+        SearchKeywordSuccess = searchKeywordSuccess;
+    }
+
+    public boolean isSearchKeyWordFailure() {
+        return SearchKeyWordFailure;
+    }
+
+    public void setSearchKeyWordFailure(boolean searchKeyWordFailure) {
+        SearchKeyWordFailure = searchKeyWordFailure;
+    }
 
     public boolean isListingbyIdRecivedSuccess() {
         return ListingbyIdRecivedSuccess;

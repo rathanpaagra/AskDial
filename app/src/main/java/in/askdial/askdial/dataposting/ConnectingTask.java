@@ -14,6 +14,7 @@ import java.util.HashSet;
 
 import in.askdial.askdial.adapter.MainFragmentAdapter;
 import in.askdial.askdial.adapter.MasterFragmentAdapter;
+import in.askdial.askdial.adapter.SearchedCategoryAdapter;
 import in.askdial.askdial.adapter.ViewdCategoryAdapter;
 import in.askdial.askdial.values.POJOValue;
 
@@ -58,19 +59,19 @@ public class ConnectingTask {
         private LayoutInflater mInflater;
 
         public CategoryFields(ArrayList<POJOValue> arrayList, MainFragmentAdapter mainFragmentAdapter, POJOValue detailsValue,
-                              Context context,View progressbar) {
-           this.arrayList=arrayList;
+                              Context context, View progressbar) {
+            this.arrayList = arrayList;
             this.details = detailsValue;
             this.mainFragmentAdapter = mainFragmentAdapter;
             this.details = detailsValue;
-            Progressbar=progressbar;
+            Progressbar = progressbar;
             this.context = context;
         }
 
         @Override
         protected void onPreExecute() {
             showProgress(true, context, Progressbar);
-           // super.onPreExecute();
+            // super.onPreExecute();
         }
 
         @Override
@@ -88,10 +89,11 @@ public class ConnectingTask {
         @Override
         protected void onPostExecute(String result) {
             showProgress(false, context, Progressbar);
-            recievingTask.CategoryDetails(result, details, arrayList,mainFragmentAdapter);
+            recievingTask.CategoryDetails(result, details, arrayList, mainFragmentAdapter);
         }
     }
-//search for all Categories
+
+    //search for all Categories
     public class SearchAll extends AsyncTask<String, String, String> {
         String result = "", SearchingName;
         POJOValue details;
@@ -138,15 +140,16 @@ public class ConnectingTask {
         private LayoutInflater mInflater;
 
         public SingleListingsFields(ArrayList<POJOValue> arrayList, String Category, MasterFragmentAdapter mainFragmentAdapter, POJOValue detailsValue,
-                                    Context context,View progressbar) {
-            this.arrayList=arrayList;
+                                    Context context, View progressbar) {
+            this.arrayList = arrayList;
             this.details = detailsValue;
-            this.category_name=Category;
+            this.category_name = Category;
             this.masterFragmentAdapter = mainFragmentAdapter;
             this.details = detailsValue;
-            Progressbar=progressbar;
+            Progressbar = progressbar;
             this.context = context;
         }
+
         @Override
         protected void onPreExecute() {
             showProgress(true, context, Progressbar);
@@ -156,7 +159,7 @@ public class ConnectingTask {
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Food="Food";
+                String Food = "Food";
                 result = sendingTask.sendbyCategory(category_name);
             } catch (NullPointerException e) {
                 e.printStackTrace();
@@ -165,10 +168,11 @@ public class ConnectingTask {
             }
             return result;
         }
+
         @Override
         protected void onPostExecute(String result) {
             showProgress(false, context, Progressbar);
-            recievingTask.ListingDetails(result, details, arrayList,masterFragmentAdapter);
+            recievingTask.ListingDetails(result, details, arrayList, masterFragmentAdapter);
         }
     }
 
@@ -184,14 +188,15 @@ public class ConnectingTask {
 
         public ListingsFields(ArrayList<POJOValue> arrayList, String Category_id, ViewdCategoryAdapter mainFragmentAdapter, POJOValue detailsValue,
                               Context context, View progressbar) {
-            this.arrayList=arrayList;
+            this.arrayList = arrayList;
             this.details = detailsValue;
-            this.category_id=Category_id;
+            this.category_id = Category_id;
             this.masterFragmentAdapter = mainFragmentAdapter;
             this.details = detailsValue;
-            Progressbar=progressbar;
+            Progressbar = progressbar;
             this.context = context;
         }
+
         @Override
         protected void onPreExecute() {
             showProgress(true, context, Progressbar);
@@ -201,7 +206,7 @@ public class ConnectingTask {
         @Override
         protected String doInBackground(String... params) {
             try {
-                String Food="Food";
+                String Food = "Food";
                 result = sendingTask.sendCategoryName_ById(category_id);
             } catch (NullPointerException e) {
                 e.printStackTrace();
@@ -210,10 +215,11 @@ public class ConnectingTask {
             }
             return result;
         }
+
         @Override
         protected void onPostExecute(String result) {
             showProgress(false, context, Progressbar);
-            recievingTask.ByCategoryListingDetails(result, details, arrayList,masterFragmentAdapter);
+            recievingTask.ByCategoryListingDetails(result, details, arrayList, masterFragmentAdapter);
         }
     }
 
@@ -250,20 +256,34 @@ public class ConnectingTask {
     //Search By keyword
     public class GetSearchedListings extends AsyncTask<String, String, String> {
         String result = "";
-        String city_id,keywords;
+        String city_id, keywords;
         POJOValue details;
+        ArrayList<POJOValue> arrayList;
+        SearchedCategoryAdapter searchCategoryAdapter;
+        View Progressbar;
+        Context context;
 
-
-        public GetSearchedListings(String Keywords,String City_id, POJOValue details) {
+        public GetSearchedListings(ArrayList<POJOValue> arrayList, String Keywords, String City_id, POJOValue details, SearchedCategoryAdapter SearchCategoryAdapter,
+                                   Context context/*, View progressbar*/) {
             keywords = Keywords;
-            city_id=City_id;
+            city_id = City_id;
             this.details = details;
+            searchCategoryAdapter = SearchCategoryAdapter;
+           // Progressbar = progressbar;
+            this.context = context;
+            this.arrayList = arrayList;
+        }
+
+        @Override
+        protected void onPreExecute() {
+//            showProgress(true, context, Progressbar);
+            super.onPreExecute();
         }
 
         @Override
         protected String doInBackground(String... strings) {
             try {
-                result = sendingTask.sendKeywordcity(keywords,city_id);
+                result = sendingTask.sendKeywordcity(keywords, city_id);
             } catch (NullPointerException e) {
                 e.printStackTrace();
             } catch (Exception e) {
@@ -274,7 +294,8 @@ public class ConnectingTask {
 
         @Override
         protected void onPostExecute(String result) {
-            recievingTask.ReciveListingDetails(result, details);
+            //showProgress(false, context, Progressbar);
+            recievingTask.BySearchListingDetails(result, details, arrayList, searchCategoryAdapter);
         }
     }
 }

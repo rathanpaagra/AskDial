@@ -11,6 +11,7 @@ import java.util.HashSet;
 
 import in.askdial.askdial.adapter.MainFragmentAdapter;
 import in.askdial.askdial.adapter.MasterFragmentAdapter;
+import in.askdial.askdial.adapter.SearchedCategoryAdapter;
 import in.askdial.askdial.adapter.ViewdCategoryAdapter;
 import in.askdial.askdial.values.POJOValue;
 
@@ -247,6 +248,49 @@ public class RecievingTask {
 
                     details.setListingbyIdRecivedFailure(true);
                 }
+                }
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    //get ALL Listing details by sending Keyword using Search
+    public void BySearchListingDetails(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
+                                         SearchedCategoryAdapter adapters) {
+        // HttpHandler sh = new HttpHandler();
+        // Making a request to url and getting response
+        //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
+        //  Log.e(TAG, "Response from url: " + jsonStr);
+
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String Status = jo.getString("message");
+                    //  pojoValue.setMessageSuccess(true);
+                    if (Status.equals("Success")) {
+                        Log.e(TAG, "Connect for fetching from server.");
+                        pojoValue.setSearchKeywordSuccess(true);
+                        pojoValue = new POJOValue();
+                        String Company_listingId = jo.getString("listing_id");
+                        pojoValue.setCompany_lisiting_id(Company_listingId);
+                        String Company_listing_categoryname = jo.getString("first_level_category_name");
+                        pojoValue.setCompany_category_name(Company_listing_categoryname);
+                        String Company_Name = jo.getString("company_name");
+                        pojoValue.setCompany_name(Company_Name);
+                        String Company_Area = jo.getString("company_area");
+                        pojoValue.setCompany_area(Company_Area);
+                        String Company_Mobile = jo.getString("category_mobile1");
+                        pojoValue.setCompany_mobile1(Company_Mobile);
+                        String Company_Email = jo.getString("company_email");
+                        pojoValue.setCompany_email(Company_Email);
+                        arrayList.add(pojoValue);
+                        adapters.notifyDataSetChanged();
+                    }else{
+                        pojoValue.setSearchKeyWordFailure(true);
+                    }
                 }
             }
         } catch (JSONException e1) {
