@@ -11,16 +11,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -29,12 +27,12 @@ import java.util.HashSet;
 
 import in.askdial.askdial.R;
 import in.askdial.askdial.fragments.AboutUSFragment;
-import in.askdial.askdial.fragments.BussinessDirectoryFragment;
 import in.askdial.askdial.fragments.ContactUSFragment;
 import in.askdial.askdial.fragments.EventsFragment;
 import in.askdial.askdial.fragments.HomeFragment;
 import in.askdial.askdial.fragments.MainFragment;
 import in.askdial.askdial.fragments.categories.Visited_CatgFragment;
+import in.askdial.askdial.fragments.search.SearchFragment;
 import in.askdial.askdial.services.SearchServices;
 import in.askdial.askdial.values.FunctionCalls;
 
@@ -44,13 +42,14 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
     SharedPreferences settings;
     SharedPreferences.Editor editor;
     DrawerLayout drawer;
-    Toolbar toolbar;
+    Toolbar toolbar,toolbar1;
     boolean doubleBackToExitPressedOnce = false;
 
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
 
     AutoCompleteTextView search_Edt_Txt;
+    EditText search_textview;
     SearchServices searchServices;
     static ArrayList<String> search_list;
     FunctionCalls functionCalls;
@@ -68,13 +67,17 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         editor = settings.edit();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        home_button= (ImageButton) findViewById(R.id.home_button);
+        toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
 
-        search_Edt_Txt= (AutoCompleteTextView) findViewById(R.id.search_EditText);
+        setSupportActionBar(toolbar);
+        toolbar1.setVisibility(View.GONE);
+        //home_button= (ImageButton) findViewById(R.id.home_button);
+
+        //search_Edt_Txt= (AutoCompleteTextView) findViewById(R.id.search_EditText);
+        search_textview= (EditText) findViewById(R.id.search_textview);
         searchServices = new SearchServices();
         functionCalls=new FunctionCalls();
-        searched_Value=search_Edt_Txt.getText().toString();
+//     searched_Value=search_Edt_Txt.getText().toString();
 
        // SearchFields();
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -93,12 +96,19 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
         switchContent(new MainFragment(), toolbar);
        // onBackPressed();
 
-        search_Edt_Txt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        search_textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toolbar.setVisibility(View.GONE);
+                toolbar1.setVisibility(View.VISIBLE);
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.container_main, new SearchFragment()).commit();
+            }
+        });
+       /* search_Edt_Txt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 boolean handled = false;
@@ -108,14 +118,14 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
                 }
                 return handled;
             }
-        });
+        });*/
 
-        home_button.setOnClickListener(new View.OnClickListener() {
+       /* home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switchContent(new HomeFragment(), toolbar);
             }
-        });
+        });*/
     }
 
     /*@Override
@@ -291,8 +301,10 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         if (id == R.id.nav_bussinessDirectory) {
+           /* FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.container_main, new BussinessDirectoryFragment()).commit();*/
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.container_main, new BussinessDirectoryFragment()).commit();
+            fragmentTransaction.replace(R.id.container_main, new SearchFragment()).commit();
 
         } else if (id == R.id.nav_Classifieds) {
             Intent i = new Intent(CategoryActivity.this, MainActivity.class);

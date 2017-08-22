@@ -12,7 +12,13 @@
     <include
         layout="@layout/app_bar_content"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="visible"/>
+    <include
+        layout="@layout/app_bar_content_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"/>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

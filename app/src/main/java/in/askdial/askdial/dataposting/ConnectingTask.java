@@ -247,6 +247,36 @@ public class ConnectingTask {
         }
     }
 
+    //Search By keyword
+    public class GetSearchedListings extends AsyncTask<String, String, String> {
+        String result = "";
+        String city_id,keywords;
+        POJOValue details;
+
+
+        public GetSearchedListings(String Keywords,String City_id, POJOValue details) {
+            keywords = Keywords;
+            city_id=City_id;
+            this.details = details;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                result = sendingTask.sendKeywordcity(keywords,city_id);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            recievingTask.ReciveListingDetails(result, details);
+        }
+    }
 }
 
 

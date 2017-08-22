@@ -205,7 +205,6 @@ public class RecievingTask {
                         details.setCompany_area(tv_company_area);
                         String tv_company_email = jo.getString("company_email");
                         details.setCompany_email(tv_company_email);
-
                         String tv_company_mobile1 = jo.getString("category_mobile1");
                         details.setCompany_mobile1(tv_company_mobile1);
                         String tv_company_website = jo.getString("category_website");

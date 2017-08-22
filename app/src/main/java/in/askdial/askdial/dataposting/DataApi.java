@@ -8,6 +8,7 @@ public class DataApi {
 
     public static final String CATEGORIES_URL1 = "http://www.askdial.com/index.php/admin/api/Categories";
     public static final String VIEW_ALL_CATEGORIES_URL = "http://www.askdial.com/index.php/admin/api/Categories/view_all";
+    public static final String SEARCH_VIEW_ALL = "http://www.askdial.com/index.php/admin/api/Search1";
     public static final String CATEGORIES_URL_Search_listing = "http://www.askdial.com/index.php/admin/api/Search_listings";
     public static final String CATEGORIES_URL_Feature_Categories = "http://www.askdial.com/index.php/admin/api/Featured_categories";
     public static final String LISTINGS_DETAILS_URL = "http://www.askdial.com/index.php/admin/api/Listing_detail/first_level/";

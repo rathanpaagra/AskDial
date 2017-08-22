@@ -42,6 +42,7 @@ public class SendingTask {
     String CATEGORIES_URL = DataApi.VIEW_ALL_CATEGORIES_URL;
     String DETAIL_LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
     String BASE_URL=DataApi.VIEW_ALL_CATEGORIES_URL;
+    String BASE_URL_SEARCH=DataApi.SEARCH_VIEW_ALL;
     String CAT_LISTINGS_ALL=DataApi.CAT_LISTINGS_ALL;
     String SendCategory;
 
@@ -141,10 +142,25 @@ public class SendingTask {
         return response;
     }
 
+    //senging searched keyword and city id,area too
+    public String sendKeywordcity(String keyword, String cityID/*,String area*/) {
+        String response = "";
+        HashMap<String, String> datamap = new HashMap<>();
+        datamap.put("keywords", keyword);
+        datamap.put("city_id", cityID);
+        //datamap.put("comapany_area", area);
+
+        try {
+            response = UrlPostConnection("", datamap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
     private String UrlPostConnection(String Post_Url, HashMap<String, String> datamap) throws IOException {
         String response = "";
-        functionCalls.LogStatus("Connecting URL: " + BASE_URL + Post_Url);
-        URL url = new URL(BASE_URL + Post_Url);
+        functionCalls.LogStatus("Connecting URL: " + BASE_URL_SEARCH + Post_Url);
+        URL url = new URL(BASE_URL_SEARCH + Post_Url);
         functionCalls.LogStatus("URL Connection 1");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         functionCalls.LogStatus("URL Connection 2");
