@@ -15,7 +15,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -128,14 +127,13 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getActivity().setTitle("Home");
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         checkInternetConnection();
-        if (getArguments() != null) {
+        /*if (getArguments() != null) {
 
             Toast.makeText(getActivity(), getArguments().getString("message"), Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
         catgimages = new int[]{ R.drawable.cat_camera_ic, R.drawable.cat_electronics_ic, R.drawable.cat_education_ic,R.drawable.cat_realestate_ic,  R.drawable.cat_packers_movers_ic, R.drawable.cat_hotels_ic,
                 R.drawable.cat_entertainment_ic,  R.drawable.cat_furnitures_ic};
@@ -173,7 +171,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 bundle.putString("category_viewmore", str_viewmore);
                 visited_catgFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
+                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).addToBackStack(null).commit();
             }
         });
         viewMore1.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +183,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 bundle.putString("category_viewmore", str_viewmore);
                 visited_catgFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
+                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).addToBackStack(null).commit();
             }
         });
         //Most Visited Buttons Intialization
@@ -205,7 +203,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 bundle.putString("category", properties);
                 visited_catgFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
+                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).addToBackStack(null).commit();
             }
         });
         button_food.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +215,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 bundle.putString("category", properties);
                 visited_catgFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
+                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).addToBackStack(null).commit();
             }
         });
         button_movie.setOnClickListener(new View.OnClickListener() {
@@ -229,7 +227,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 bundle.putString("category", properties);
                 visited_catgFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
+                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).addToBackStack(null).commit();
             }
         });
         button_automotive.setOnClickListener(new View.OnClickListener() {
@@ -241,7 +239,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 bundle.putString("category", properties);
                 visited_catgFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
+                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).addToBackStack(null).commit();
             }
         });
         button_shopping.setOnClickListener(new View.OnClickListener() {
@@ -253,7 +251,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 bundle.putString("category", properties);
                 visited_catgFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
+                fragmentTransaction.replace(R.id.container_main, visited_catgFragment).addToBackStack(null).commit();
             }
         });
 
@@ -311,8 +309,8 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         functionCalls = new FunctionCalls();
 
         //footer = (Toolbar) view.findViewById(R.id.footer);
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.setSupportActionBar(toolbar);
+       /* AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);*/
 
         //search fileds
         //search_autocomplete = (AutoCompleteTextView) toolbar.findViewById(R.id.search_EditText);

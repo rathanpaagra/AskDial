@@ -1,24 +1,38 @@
 package in.askdial.askdial.main;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,12 +42,8 @@ import java.util.HashSet;
 import in.askdial.askdial.R;
 import in.askdial.askdial.fragments.AboutUSFragment;
 import in.askdial.askdial.fragments.ContactUSFragment;
-import in.askdial.askdial.fragments.EventsFragment;
 import in.askdial.askdial.fragments.HomeFragment;
-import in.askdial.askdial.fragments.MainFragment;
-import in.askdial.askdial.fragments.categories.Visited_CatgFragment;
 import in.askdial.askdial.fragments.search.SearchFragment;
-import in.askdial.askdial.services.SearchServices;
 import in.askdial.askdial.values.FunctionCalls;
 
 public class CategoryActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,65 +59,130 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
     private static long back_pressed;
 
     AutoCompleteTextView search_Edt_Txt;
-    EditText search_textview;
-    SearchServices searchServices;
+    TextView search_textview;
+    EditText search_editext1;
+    //SearchServices searchServices;
     static ArrayList<String> search_list;
     FunctionCalls functionCalls;
     ArrayAdapter<String> Search_adapter;
     String searched_Value;
     ImageButton home_button;
+    View layout;
+    LinearLayout linearlayout_search;
+    ImageView ivClearSearchText;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         editor = settings.edit();
+        //Searvice for Search
+        //searchServices = new SearchServices();
+        //searched_Value=search_Edt_Txt.getText().toString();
+        // SearchFields();
+        /*Intent service = new Intent(CategoryActivity.this, SearchServices.class);
+        startService(service)*/;
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
 
-        setSupportActionBar(toolbar);
         toolbar1.setVisibility(View.GONE);
-        //home_button= (ImageButton) findViewById(R.id.home_button);
+        home_button= (ImageButton) findViewById(R.id.home_button);
+        layout=findViewById(R.id.container_main);
+        layout.setFocusable(true);
+        layout.setFocusableInTouchMode(true);
 
         //search_Edt_Txt= (AutoCompleteTextView) findViewById(R.id.search_EditText);
-        search_textview= (EditText) findViewById(R.id.search_textview);
-        searchServices = new SearchServices();
-        functionCalls=new FunctionCalls();
-//     searched_Value=search_Edt_Txt.getText().toString();
+        linearlayout_search= (LinearLayout) findViewById(R.id.linearlayout_search);
+        search_textview= (TextView) findViewById(R.id.search_textview);
+        search_editext1 =(EditText) findViewById(R.id.search_edittext1);
+        ivClearSearchText=(ImageView) findViewById(R.id.ivClearSearchText);
 
-       // SearchFields();
+        functionCalls=new FunctionCalls();
+
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();*/
-
-        /*Intent service = new Intent(CategoryActivity.this, SearchServices.class);
-        startService(service)*/;
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        switchContent(new MainFragment(), toolbar);
-       // onBackPressed();
+        switchContent(new HomeFragment(), toolbar);
+
+        search_textview.setText("");
+        search_editext1.setText("");
 
         search_textview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toolbar.setVisibility(View.GONE);
-                toolbar1.setVisibility(View.VISIBLE);
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.container_main, new SearchFragment()).commit();
+                search_textview.setVisibility(View.GONE);
+                layout.setVisibility(View.GONE);
+                linearlayout_search.setVisibility(View.VISIBLE);
+                search_editext1.requestFocus();
+                search_editext1.setRawInputType(InputType.TYPE_CLASS_TEXT);
+                search_editext1.setTextIsSelectable(true);
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(search_editext1, InputMethodManager.SHOW_IMPLICIT);
+
+                search_editext1.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                        if(charSequence.length() > 0){
+                            ivClearSearchText.setVisibility(View.VISIBLE);
+                        }else{
+                            ivClearSearchText.setVisibility(View.GONE);
+                        }
+                    }
+                    @Override
+                    public void afterTextChanged(Editable editable) {}
+                });
             }
         });
+
+
+        search_editext1.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_DONE) {
+                    // create class object
+                    if (functionCalls.isInternetOnn(CategoryActivity.this)) {
+                        searched_Value= search_editext1.getText().toString();
+                        SearchFragment events = new SearchFragment();
+                        layout.setVisibility(View.VISIBLE);
+                        search_textview.setText(searched_Value);
+                        linearlayout_search.setVisibility(View.GONE);
+                        search_textview.setVisibility(View.VISIBLE);
+                        hideSoftKeyboard(CategoryActivity.this);
+                        Bundle bundle = new Bundle();
+                        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        bundle.putString("keyword", searched_Value);
+                        events.setArguments(bundle);
+                        fragmentTransaction.replace(R.id.container_main, events).addToBackStack(null).commit();
+                    } else {
+                        Toast.makeText(CategoryActivity.this, "Please Turn On Internet", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                return false;
+            }
+        });
+
+        ivClearSearchText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                search_editext1.setText("");
+            }
+        });
+
        /* search_Edt_Txt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
@@ -120,15 +195,17 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
             }
         });*/
 
-       /* home_button.setOnClickListener(new View.OnClickListener() {
+        home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                search_textview.setText("");
+                search_editext1.setText("");
                 switchContent(new HomeFragment(), toolbar);
             }
-        });*/
+        });
     }
 
-    /*@Override
+    @Override
     public void onBackPressed() {
 
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
@@ -166,82 +243,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
             return;
         }
 
-    }*/
-  /*  @Override
-    public void onBackPressed() {
-        if (this.drawer.isDrawerOpen(GravityCompat.START)) {
-            this.drawer.closeDrawer(GravityCompat.START);
-            switchContent(new HomeFragment(), toolbar);
-        } else {
-            super.onBackPressed();
-        }
-    }*/
-
-  /*  @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        }else if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        }else if (!doubleBackToExitPressedOnce) {
-            this.doubleBackToExitPressedOnce = true;
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Are you sure you want to exit?")
-                    .setCancelable(false)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            System.exit(0);
-
-                        }
-                    })
-                    .setNeutralButton("No", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            // dialog.cancel();
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    doubleBackToExitPressedOnce = false;
-
-                }
-            }, 500);
-        }else{
-            super.onBackPressed();
-            return;
-        }
-
-    }*/
-//importanat 10 aug2017
-  /*  @Override
-    public void onBackPressed() {
-        //Checking for fragment count on backstack
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        }else if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        }else if (getFragmentManager().getBackStackEntryCount()>0 && !drawer.isDrawerOpen(GravityCompat.START)) {
-            getFragmentManager().popBackStack();
-        } else if (!doubleBackToExitPressedOnce) {
-            this.doubleBackToExitPressedOnce = true;
-            Toast.makeText(this,"Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
-
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    doubleBackToExitPressedOnce = false;
-                }
-            }, 2000);
-        } else {
-            super.onBackPressed();
-            return;
-        }
-    }*/
-
+    }
 
     @Override
      public boolean onCreateOptionsMenu(Menu menu) {
@@ -275,25 +277,6 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         return super.onOptionsItemSelected(item);
     }
 
-/*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up btn_login, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_enquiry) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-*/
-
-    @SuppressWarnings("StatementWithEmptyBody")
-
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -304,81 +287,76 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
            /* FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.container_main, new BussinessDirectoryFragment()).commit();*/
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.container_main, new SearchFragment()).commit();
+            fragmentTransaction.replace(R.id.container_main, new HomeFragment()).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_Classifieds) {
-            Intent i = new Intent(CategoryActivity.this, MainActivity.class);
-            startActivity(i);
+            if(FunctionCalls.isInternetOn(CategoryActivity.this)) {
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.container_main, new HomeFragment()).addToBackStack(null).commit();
+            }else {
+                Toast.makeText(this, "Please turn on the Internet", Toast.LENGTH_SHORT).show();
+            }
 
         } else if (id == R.id.nav_Events) {
-            EventsFragment events = new EventsFragment();
-            Bundle bundle = new Bundle();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            bundle.putString("message", "Events");
-            events.setArguments(bundle);
-            fragmentTransaction.replace(R.id.container_main, events).commit();
+            if(FunctionCalls.isInternetOn(CategoryActivity.this)) {
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.container_main, new HomeFragment()).addToBackStack(null).commit();
+            }else {
+                Toast.makeText(this, "Please turn on the Internet", Toast.LENGTH_SHORT).show();
+            }
 
 
         } else if (id == R.id.nav_addBusinessDirectory) {
-
             if(FunctionCalls.isInternetOn(CategoryActivity.this)) {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
-                fragmentTransaction.replace(R.id.container_main, new Visited_CatgFragment()).commit();
-            }else{
-                Toast.makeText(this, "Please Turn On the Internet", Toast.LENGTH_SHORT).show();
+                fragmentTransaction.replace(R.id.container_main, new HomeFragment()).addToBackStack(null).commit();
+            }else {
+                Toast.makeText(this, "Please turn on the Internet", Toast.LENGTH_SHORT).show();
             }
-            /*Car car = new Car();
-            Bundle bundle = new Bundle();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            bundle.putString("message", "Chetan");
-            car.setArguments(bundle);
-            fragmentTransaction.replace(R.id.content_main, car).commit();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.content_main, new Car()).commit();*/
-
         } else if (id == R.id.nav_addClassifieds) {
-
 
         } else if (id == R.id.nav_addEvents) {
 
         } else if (id == R.id.nav_AboutUs) {
 
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.container_main, new AboutUSFragment()).commit();
+            fragmentTransaction.replace(R.id.container_main, new AboutUSFragment()).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_FAQ) {
             if(FunctionCalls.isInternetOn(CategoryActivity.this)) {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.container_main, new HomeFragment()).commit();
+                fragmentTransaction.replace(R.id.container_main, new HomeFragment()).addToBackStack(null).commit();
             }else {
                 Toast.makeText(this, "Please turn on the Internet", Toast.LENGTH_SHORT).show();
             }
 
         } else if (id == R.id.nav_ContactUs) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.container_main, new ContactUSFragment()).commit();
+            fragmentTransaction.replace(R.id.container_main, new ContactUSFragment()).addToBackStack(null).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
+    //to do switch to respective fragment
     public void switchContent(Fragment fragment, Toolbar toolbar) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container_main, fragment);
         ft.commit();
-        toolbar.setTitle("Home");
+    }
 
-
+    //hide keybord when needs
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 
     private void SearchFields(){
 
         functionCalls.LogStatus("Staff field Started");
         HashSet<String> StaffSet = new HashSet<>();
-        StaffSet = searchServices.searchset;
+        //StaffSet = searchServices.searchset;
         search_list = new ArrayList<>();
         search_list.addAll(StaffSet);
         ArrayList<String> list = new ArrayList<>();

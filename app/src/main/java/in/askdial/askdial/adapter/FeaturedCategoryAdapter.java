@@ -82,7 +82,7 @@ public class FeaturedCategoryAdapter extends RecyclerView.Adapter<FeaturedCatego
             FragmentTransaction fragmentTransaction = homeFragment.getActivity().getSupportFragmentManager().beginTransaction();
             bundle.putString("category", categoryName);
             visited_catgFragment.setArguments(bundle);
-            fragmentTransaction.replace(R.id.container_main, visited_catgFragment).commit();
+            fragmentTransaction.replace(R.id.container_main, visited_catgFragment).addToBackStack(null).commit();
             /*int pos = getAdapterPosition();
             POJOValue pojoValue = arrayList.get(pos);
             String categoryID= pojoValue.getFirst_Level_Category_Id();

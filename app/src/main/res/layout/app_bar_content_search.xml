@@ -20,7 +20,6 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/askdialYellow"
             android:titleTextColor="@color/white"
-
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <EditText
@@ -29,8 +28,14 @@
                 android:layout_height="match_parent"
                 android:drawablePadding="10dp"
                 android:drawableRight="@mipmap/ic_seach_icon"
-                android:hint="  AskDial Search Search..."
+                android:textColorHint="@color/white"
+                android:hint="Search here..."
+                android:textColor="@color/white"
                 android:gravity="bottom"
+                android:paddingTop="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:inputType="text"
                 android:paddingBottom="13dp"
                 android:textSize="18dp"
                 android:layout_marginRight="5dp"

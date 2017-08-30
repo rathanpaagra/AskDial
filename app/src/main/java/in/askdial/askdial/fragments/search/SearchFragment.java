@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -26,7 +27,9 @@ import in.askdial.askdial.values.POJOValue;
  * A simple {@link Fragment} subclass.
  */
 public class SearchFragment extends Fragment {
-    String keywords="Garments",city_id="47";
+    //String keywords="Garments",city_id="47";
+    String keywords,city_id="47";
+
     EditText search_keyword;
 
     FunctionCalls functionCalls = new FunctionCalls();
@@ -41,6 +44,7 @@ public class SearchFragment extends Fragment {
     ConnectingTask task = new ConnectingTask();
     POJOValue pojoValue = new POJOValue();
     String contextview;
+    TextView searchresult_textview;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -53,9 +57,13 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_search, container, false);
 
+        Bundle bundle = new Bundle();
+        bundle = getArguments();
+        keywords=bundle.getString("keyword");
         search_keyword= (EditText) view.findViewById(R.id.search_textview1);
        // progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loading_bar2);
         recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_search);
+        searchresult_textview= (TextView) view.findViewById(R.id.searchresult_textview);
         layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
         searchedCategoryAdapter = new SearchedCategoryAdapter(arrayList, contextview, getActivity(),SearchFragment.this);
@@ -109,6 +117,8 @@ public class SearchFragment extends Fragment {
                     }
                     if (pojoValue.isSearchKeyWordFailure()) {
                         pojoValue.setSearchKeyWordFailure(true);
+                        recyclerView.setVisibility(View.GONE);
+                        searchresult_textview.setVisibility(View.VISIBLE);
                         dialog.dismiss();
                         mythread.interrupt();
                     }

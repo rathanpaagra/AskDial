@@ -14,6 +14,7 @@
             android:id="@+id/recyclerview_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="visible"
             android:background="@color/askdialYellow">
         </android.support.v7.widget.RecyclerView>
 
@@ -26,5 +27,15 @@
             android:visibility="gone"
             app:indicator="LineScaleParty"
             app:indicator_color="#F53700" />
+        <TextView
+            android:id="@+id/searchresult_textview"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:background="@color/amber"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:text="No Records Found"
+            android:layout_height="match_parent" />
+
     </RelativeLayout>
 </LinearLayout>
