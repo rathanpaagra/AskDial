@@ -30,6 +30,7 @@ import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Packers_move
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Property;
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Real_estate;
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Shopping;
+import static in.askdial.askdial.dataposting.DataApi.GET_CITY;
 
 /**
  * Created by Admin on 30-Dec-16.
@@ -42,7 +43,7 @@ public class SendingTask {
     String CATEGORIES_URL = DataApi.VIEW_ALL_CATEGORIES_URL;
     String DETAIL_LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
     String BASE_URL=DataApi.VIEW_ALL_CATEGORIES_URL;
-    String BASE_URL_SEARCH=DataApi.SEARCH_VIEW_ALL;
+    String BASE_URL_SEARCH=DataApi.BASE_URL;
     String CAT_LISTINGS_ALL=DataApi.CAT_LISTINGS_ALL;
     String SendCategory;
 
@@ -59,13 +60,39 @@ public class SendingTask {
         return response;
     }
 
-
+    //autocomplete textview search keyword
     public String GetSearch(String search) {
         String response = "";
         HashMap<String, String> datamap = new HashMap<>();
         datamap.put("search", search);
         try {
             response = UrlPostConnection("Staff1", datamap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    //calling city name and id
+    public String GetCityName(String search) {
+        String response = "";
+        try {
+            response = UrlGetConnection(GET_CITY);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    //calling area name and id
+    public String GetAreaName(String city_id) {
+        String response = "";
+        HashMap<String, String> datamap = new HashMap<>();
+        datamap.put("city_id", city_id);
+        //datamap.put("comapany_area", area);
+
+        try {
+            response = UrlPostConnection("Get_area", datamap);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -151,7 +178,7 @@ public class SendingTask {
         //datamap.put("comapany_area", area);
 
         try {
-            response = UrlPostConnection("", datamap);
+            response = UrlPostConnection("Search1", datamap);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_ico10"
@@ -16,6 +18,8 @@
 
         </activity>
       <!-- <service android:name=".services.SearchServices" />-->
+         <service android:name=".services.CityServices" />
+         <!--<service android:name=".services.AreaServices" />-->
 
         <activity android:name=".main.CategoryActivity"
             android:largeHeap="true"

@@ -25,6 +25,39 @@ public class POJOValue {
     int categoryimages;
     String categorynames;
 
+    String City_Id, City_Name, Area_Id, Area_Name;
+    public String getCity_Id() {
+        return City_Id;
+    }
+
+    public void setCity_Id(String city_Id) {
+        City_Id = city_Id;
+    }
+
+    public String getCity_Name() {
+        return City_Name;
+    }
+
+    public void setCity_Name(String city_Name) {
+        City_Name = city_Name;
+    }
+
+    public String getArea_Id() {
+        return Area_Id;
+    }
+
+    public void setArea_Id(String area_Id) {
+        Area_Id = area_Id;
+    }
+
+    public String getArea_Name() {
+        return Area_Name;
+    }
+
+    public void setArea_Name(String area_Name) {
+        Area_Name = area_Name;
+    }
+
     public int getCategoryimages() {
         return categoryimages;
     }
@@ -50,6 +83,44 @@ public class POJOValue {
     private boolean ListingbyIdRecivedSuccess;
     private boolean SearchKeywordSuccess;
     private boolean SearchKeyWordFailure;
+    private boolean SEARCHCITY_Success;
+    private boolean SEARCHArea_Success;
+
+    public boolean isSEARCHArea_Success() {
+        return SEARCHArea_Success;
+    }
+
+    public void setSEARCHArea_Success(boolean SEARCHArea_Success) {
+        this.SEARCHArea_Success = SEARCHArea_Success;
+    }
+
+    public boolean isSEARCHArea_Failure() {
+        return SEARCHArea_Failure;
+    }
+
+    public void setSEARCHArea_Failure(boolean SEARCHArea_Failure) {
+        this.SEARCHArea_Failure = SEARCHArea_Failure;
+    }
+
+    private boolean SEARCHArea_Failure;
+
+    public boolean isSEARCHCITY_Success() {
+        return SEARCHCITY_Success;
+    }
+
+    public void setSEARCHCITY_Success(boolean SEARCHCITY_Success) {
+        this.SEARCHCITY_Success = SEARCHCITY_Success;
+    }
+
+    public boolean isSEARCHCITY_Failure() {
+        return SEARCHCITY_Failure;
+    }
+
+    public void setSEARCHCITY_Failure(boolean SEARCHCITY_Failure) {
+        this.SEARCHCITY_Failure = SEARCHCITY_Failure;
+    }
+
+    private boolean SEARCHCITY_Failure;
 
     public boolean isSearchKeywordSuccess() {
         return SearchKeywordSuccess;

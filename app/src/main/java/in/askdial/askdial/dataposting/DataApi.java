@@ -6,14 +6,18 @@ package in.askdial.askdial.dataposting;
 
 public class DataApi {
 
+    //BASE URL
+    public static final String BASE_URL = "http://www.askdial.com/index.php/admin/api/";
+     public static final String GET_CITY = "http://askdial.com/index.php/admin/api/Get_city";
+    public static final String GET_AREA = "http://askdial.com/index.php/admin/api/Get_area";
+    //public static final String SEARCH_VIEW_ALL = "http://www.askdial.com/index.php/admin/api/Search1";
+
     public static final String CATEGORIES_URL1 = "http://www.askdial.com/index.php/admin/api/Categories";
     public static final String VIEW_ALL_CATEGORIES_URL = "http://www.askdial.com/index.php/admin/api/Categories/view_all";
-    public static final String SEARCH_VIEW_ALL = "http://www.askdial.com/index.php/admin/api/Search1";
     public static final String CATEGORIES_URL_Search_listing = "http://www.askdial.com/index.php/admin/api/Search_listings";
     public static final String CATEGORIES_URL_Feature_Categories = "http://www.askdial.com/index.php/admin/api/Featured_categories";
     public static final String LISTINGS_DETAILS_URL = "http://www.askdial.com/index.php/admin/api/Listing_detail/first_level/";
     public static final String CAT_LISTINGS_ALL = "http://www.askdial.com/index.php/admin/api/Listings/first_level/";
-
 
     //Static Url For Properties,Food,Movie,Automotive,Shopping Malls
     public static final String CATEGORIES_URL_Property = "http://www.askdial.com/index.php/admin/api/Properties";

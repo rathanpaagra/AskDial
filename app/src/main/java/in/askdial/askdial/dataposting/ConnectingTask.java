@@ -128,6 +128,80 @@ public class ConnectingTask {
         }
     }
 
+    //getcity list
+    public class GetCitySearchServices extends AsyncTask<String, String, String> {
+        String result = "", SearchingName;
+        POJOValue details;
+        java.util.HashSet<String> HashSet;
+
+        public GetCitySearchServices(String search, POJOValue detailsValue, HashSet<String> hashSet) {
+            this.SearchingName = search;
+            this.details = detailsValue;
+            this.HashSet = hashSet;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                SearchingName="Search";
+                result = sendingTask.GetCityName(SearchingName);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            recievingTask.GetCitySearchDetails(result, details, HashSet);
+        }
+    }
+
+    //after sending city id getting area names and ID
+    public class GetAreaSearchServices extends AsyncTask<String, String, String> {
+        String result = "", SearchingName;
+        POJOValue details;
+        ArrayList<POJOValue> arrayList;
+        java.util.HashSet<String> HashSet;
+
+
+        public GetAreaSearchServices(String search, POJOValue detailsValue, HashSet<String> hashSet/*ArrayList<POJOValue> arrayList*/) {
+            this.SearchingName = search;
+            this.details = detailsValue;
+            this.HashSet = hashSet;
+            //this.arrayList=arrayList;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+
+                result = sendingTask.GetAreaName(SearchingName);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            recievingTask.GetAreaSearchDetails(result, details, HashSet/*arrayList*/);
+        }
+    }
     //All listings information
     //Single Listings
     public class SingleListingsFields extends AsyncTask<String, String, String> {

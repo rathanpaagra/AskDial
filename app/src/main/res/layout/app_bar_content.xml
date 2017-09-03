@@ -164,6 +164,28 @@
 
 
         </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="3dp"
+            android:layout_height="wrap_content">
+            <Spinner
+                android:id="@+id/spinner_city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </Spinner>
+
+            <Spinner
+                android:id="@+id/spinner_area"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </Spinner>
+            <EditText
+                android:id="@+id/editText_spinner_keyword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>
 

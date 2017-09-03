@@ -32,19 +32,25 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 
 import in.askdial.askdial.R;
+import in.askdial.askdial.dataposting.ConnectingTask;
 import in.askdial.askdial.fragments.AboutUSFragment;
 import in.askdial.askdial.fragments.ContactUSFragment;
 import in.askdial.askdial.fragments.HomeFragment;
 import in.askdial.askdial.fragments.search.SearchFragment;
+import in.askdial.askdial.services.AreaServices;
+import in.askdial.askdial.services.CityServices;
 import in.askdial.askdial.values.FunctionCalls;
+import in.askdial.askdial.values.POJOValue;
 
 public class CategoryActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     // private RecipeAdapter mAdapter;
@@ -61,6 +67,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
     AutoCompleteTextView search_Edt_Txt;
     TextView search_textview;
     EditText search_editext1;
+
     //SearchServices searchServices;
     static ArrayList<String> search_list;
     FunctionCalls functionCalls;
@@ -71,6 +78,19 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
     LinearLayout linearlayout_search;
     ImageView ivClearSearchText;
 
+    //get downlist of city and area in search
+    CityServices cityServices;
+    AreaServices areaServices;
+    private Spinner city,area;
+    HashSet<String> CityHashSet;
+    ArrayList<String> cityArraylist;
+    HashSet<String> areaHashset;
+    ArrayList<String> areaArrayList;
+    HashMap<String, String> cityidHashmap;
+
+    POJOValue detailsValue=new POJOValue();
+    ConnectingTask task=new ConnectingTask();
+    Thread searchthread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +109,79 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         // SearchFields();
         /*Intent service = new Intent(CategoryActivity.this, SearchServices.class);
         startService(service)*/;
+
+        city= (Spinner) findViewById(R.id.spinner_city);
+        area= (Spinner) findViewById(R.id.spinner_area);
+        cityServices= new CityServices();
+        areaServices=new AreaServices();
+
+        CityHashSet = new HashSet<>();
+        cityArraylist= new ArrayList<>();
+        CityHashSet=cityServices.citysearchset;
+        ArrayList<String> citylist1 = new ArrayList<>();
+        cityidHashmap = new HashMap<>();
+        citylist1.addAll(CityHashSet);
+
+
+        for (int i = 0; i < citylist1.size(); i++) {
+            String liststaff = citylist1.get(i);
+            String staff = liststaff.substring(0, liststaff.lastIndexOf(','));
+            String staffid = liststaff.substring(liststaff.lastIndexOf(',')+1, liststaff.length());
+            cityArraylist.add(staff);
+            cityidHashmap.put(staff.toLowerCase(), staffid);
+        }
+
+        if (cityArraylist.size() > 0) {
+//            functionCalls.LogStatus("Staff list Available");
+            ArrayAdapter<String> citydataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cityArraylist);
+            citydataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            city.setAdapter(citydataAdapter);
+            Collections.sort(cityArraylist);
+            citydataAdapter.notifyDataSetChanged();
+
+            city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    String str = city.getSelectedItem().toString();
+                    String City_id = cityidHashmap.get(parent.getItemAtPosition(position).toString().toLowerCase());
+                    ConnectingTask.GetAreaSearchServices searchFeching = task.new GetAreaSearchServices(City_id,detailsValue, areaHashset);
+                    searchFeching.execute();
+                    searchthread = null;
+                    Runnable runnable = new StaffData();
+                    searchthread = new Thread(runnable);
+                    searchthread.start();
+                }
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                }
+            });
+           /* city.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String Contractor = parent.getItemAtPosition(position).toString();
+                    String City_id = cityidHashmap.get(parent.getItemAtPosition(position).toString().toLowerCase());
+                    Toast.makeText(CategoryActivity.this, "City Id is: "+City_id, Toast.LENGTH_SHORT).show();
+                }
+            });*/
+
+        } else {
+          //  functionCalls.LogStatus("Staff list not Available");
+        }
+        areaHashset = new HashSet<>();
+        areaArrayList= new ArrayList<>();
+
+        //areaHashset=areaServices.areasearchset;
+        /*areaArrayList.addAll(areaHashset);
+        ArrayAdapter<String> areadataAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,areaArrayList);
+        areadataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        areadataAdapter.notifyDataSetChanged();
+        area.setAdapter(areadataAdapter);*/
+
+        /*ArrayAdapter<String> citydataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, citylist1);
+        citydataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        citydataAdapter.notifyDataSetChanged();
+        city.setAdapter(citydataAdapter);*/
 
 
         toolbar1.setVisibility(View.GONE);
@@ -203,6 +296,41 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
                 switchContent(new HomeFragment(), toolbar);
             }
         });
+    }
+
+    class StaffData implements Runnable {
+
+        @Override
+        public void run() {
+            while (!Thread.currentThread().isInterrupted()) {
+                try {
+                    Fetchsearch();
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                } catch (Exception e) {
+                }
+            }
+        }
+    }
+
+    private void Fetchsearch() {
+        if (detailsValue.isSEARCHArea_Success()) {
+            detailsValue.setSEARCHArea_Success(false);
+            searchthread.interrupt();
+            areaArrayList.addAll(areaHashset);
+            ArrayAdapter<String> areadataAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,areaArrayList);
+            areadataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            Collections.sort(areaArrayList);
+            areadataAdapter.notifyDataSetChanged();
+            area.setAdapter(areadataAdapter);
+
+        }
+        if (detailsValue.isSEARCHArea_Failure()) {
+            detailsValue.setSEARCHArea_Failure(false);
+            searchthread.interrupt();
+
+        }
     }
 
     @Override

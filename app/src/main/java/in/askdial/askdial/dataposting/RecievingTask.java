@@ -55,7 +55,7 @@ public class RecievingTask {
                         pojoValue.setFirst_Level_Category_Id(Category_id);
                         arrayList.add(pojoValue);
 
-                       adapters.notifyDataSetChanged();
+                        adapters.notifyDataSetChanged();
                         // String name = jo.getString("first_level_category_name");
 
                       /*  // String id= jo.getString("first_level_category_id");
@@ -87,7 +87,7 @@ public class RecievingTask {
                         String StaffId = jo.getString("staff_id");
                         // list.add(Staff);
                         list.add(Staff/*+","+StaffId*/);
-                        if (i == (ja.length()-1)) {
+                        if (i == (ja.length() - 1)) {
                             details.setSearchExists(true);
                             // hashSet.addAll(list);
                             hashSet.addAll(list);
@@ -102,9 +102,98 @@ public class RecievingTask {
         }
     }
 
+    //getCity Results
+    public void GetCitySearchDetails(String result, POJOValue details, HashSet<String> hashSet) {
+        ArrayList<String> list = new ArrayList<>();
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String message = jo.getString("message");
+                    if (message.equals("Success")) {
+                        String StaffId = jo.getString("city_id");
+                        String Staffname = jo.getString("city_name");
+                        // list.add(Staff);
+                        list.add(Staffname + "," + StaffId);
+                        if (i == (ja.length() - 1)) {
+                            details.setSEARCHCITY_Success(true);
+                            // hashSet.addAll(list);
+                            hashSet.addAll(list);
+                        }
+                    } else {
+                        details.setSEARCHCITY_Failure(true);
+                    }
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //getArea Results
+    public void GetAreaSearchDetails(String result, POJOValue details, HashSet<String> hashSet) {
+        ArrayList<String> list = new ArrayList<>();
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String message = jo.getString("message");
+                    if (message.equals("Success")) {
+                        //String Staff = jo.getString("area_id");
+                        String Staffname = jo.getString("area_name");
+                        // list.add(Staff);
+                        list.add(Staffname/*+","+StaffId*/);
+                        if (i == (ja.length()-1)) {
+                            details.setSEARCHArea_Success(true);
+                            // hashSet.addAll(list);
+                            hashSet.addAll(list);
+                        }
+                    } else {
+                        details.setSEARCHArea_Failure(true);
+                    }
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*//getArea Results
+    public void GetAreaSearchDetails(String result, POJOValue details,ArrayList<POJOValue> arrayList) {
+
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String Status = jo.getString("message");
+
+                    if (Status.equals("Success")) {
+                        Log.e(TAG, "Connect for fetching from server.");
+
+                        details.setSEARCHArea_Success(true);
+                        details = new POJOValue();
+
+                        *//*String Area_id = jo.getString("area_id");
+                        details.setFirst_Level_Category_Name(Area_id);*//*
+
+                        String Area_Name = jo.getString("area_name");
+                        details.setArea_Name(Area_Name);
+                        arrayList.add(pojoValue);
+
+                    }
+                }
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+    }*/
+
     //get Single Listing details
     public void ListingDetails(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
-                                MasterFragmentAdapter adapters) {
+                               MasterFragmentAdapter adapters) {
         // HttpHandler sh = new HttpHandler();
         // Making a request to url and getting response
         //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
@@ -210,7 +299,7 @@ public class RecievingTask {
                         details.setCompany_mobile1(tv_company_mobile1);
                         String tv_company_website = jo.getString("category_website");
                         details.setCompany_website(tv_company_website);
-                        String  tv_company_mobile2 = jo.getString("category_mobile2");
+                        String tv_company_mobile2 = jo.getString("category_mobile2");
                         details.setCompany_mobile2(tv_company_mobile2);
                         String tv_company_contact_person = jo.getString("category_contact_person");
                         details.setCompany_contact_person(tv_company_contact_person);
@@ -218,7 +307,7 @@ public class RecievingTask {
                         details.setCompany_landline(tv_company_landline);
                         String tv_company_fax = jo.getString("category_fax");
                         details.setCompany_fax(tv_company_fax);
-                        String  tv_company_toll_free = jo.getString("category_tollfree");
+                        String tv_company_toll_free = jo.getString("category_tollfree");
                         details.setCompany_toll_free(tv_company_toll_free);
                         String tv_company_city = jo.getString("city_name");
                         details.setCompany_city(tv_company_city);
@@ -244,10 +333,10 @@ public class RecievingTask {
                         s_company_landmark=bundle.getString("company_landmark");
                         s_company_pincode=bundle.getString("category_pincode");
                         s_company_address=bundle.getString("company_address");*/
-                    }else {
+                    } else {
 
-                    details.setListingbyIdRecivedFailure(true);
-                }
+                        details.setListingbyIdRecivedFailure(true);
+                    }
                 }
             }
         } catch (JSONException e1) {
@@ -257,7 +346,7 @@ public class RecievingTask {
 
     //get ALL Listing details by sending Keyword using Search
     public void BySearchListingDetails(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
-                                         SearchedCategoryAdapter adapters) {
+                                       SearchedCategoryAdapter adapters) {
         // HttpHandler sh = new HttpHandler();
         // Making a request to url and getting response
         //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
@@ -288,7 +377,7 @@ public class RecievingTask {
                         pojoValue.setCompany_email(Company_Email);
                         arrayList.add(pojoValue);
                         adapters.notifyDataSetChanged();
-                    }else{
+                    } else {
                         pojoValue.setSearchKeyWordFailure(true);
                     }
                 }
