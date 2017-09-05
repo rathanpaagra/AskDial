@@ -141,10 +141,10 @@ public class RecievingTask {
                 if (jo != null) {
                     String message = jo.getString("message");
                     if (message.equals("Success")) {
-                        //String Staff = jo.getString("area_id");
-                        String Staffname = jo.getString("area_name");
+                        String Areaid = jo.getString("area_id");
+                        String Areaname = jo.getString("area_name");
                         // list.add(Staff);
-                        list.add(Staffname/*+","+StaffId*/);
+                        list.add(Areaname+","+Areaid);
                         if (i == (ja.length()-1)) {
                             details.setSEARCHArea_Success(true);
                             // hashSet.addAll(list);

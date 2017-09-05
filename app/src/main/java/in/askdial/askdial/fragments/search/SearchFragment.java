@@ -28,7 +28,7 @@ import in.askdial.askdial.values.POJOValue;
  */
 public class SearchFragment extends Fragment {
     //String keywords="Garments",city_id="47";
-    String keywords,city_id="47";
+    String keywords,city_id,areaname;
 
     EditText search_keyword;
 
@@ -59,6 +59,8 @@ public class SearchFragment extends Fragment {
 
         Bundle bundle = new Bundle();
         bundle = getArguments();
+        city_id=bundle.getString("city_id");
+        areaname=bundle.getString("area_name");
         keywords=bundle.getString("keyword");
         search_keyword= (EditText) view.findViewById(R.id.search_textview1);
        // progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loading_bar2);
@@ -67,7 +69,7 @@ public class SearchFragment extends Fragment {
         layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
         searchedCategoryAdapter = new SearchedCategoryAdapter(arrayList, contextview, getActivity(),SearchFragment.this);
-        ConnectingTask.GetSearchedListings login = task.new GetSearchedListings(arrayList,keywords,city_id, pojoValue,searchedCategoryAdapter, getActivity()/*,progressBar*/);
+        ConnectingTask.GetSearchedListings login = task.new GetSearchedListings(arrayList,keywords,city_id,areaname, pojoValue,searchedCategoryAdapter, getActivity()/*,progressBar*/);
         login.execute();
 
         recyclerView.setHasFixedSize(true);

@@ -148,7 +148,7 @@ public class ConnectingTask {
         @Override
         protected String doInBackground(String... params) {
             try {
-                SearchingName="Search";
+                //SearchingName="Search";
                 result = sendingTask.GetCityName(SearchingName);
             } catch (NullPointerException e) {
                 e.printStackTrace();
@@ -187,7 +187,6 @@ public class ConnectingTask {
         @Override
         protected String doInBackground(String... params) {
             try {
-
                 result = sendingTask.GetAreaName(SearchingName);
             } catch (NullPointerException e) {
                 e.printStackTrace();
@@ -330,17 +329,18 @@ public class ConnectingTask {
     //Search By keyword
     public class GetSearchedListings extends AsyncTask<String, String, String> {
         String result = "";
-        String city_id, keywords;
+        String city_id, keywords, area_name;
         POJOValue details;
         ArrayList<POJOValue> arrayList;
         SearchedCategoryAdapter searchCategoryAdapter;
         View Progressbar;
         Context context;
 
-        public GetSearchedListings(ArrayList<POJOValue> arrayList, String Keywords, String City_id, POJOValue details, SearchedCategoryAdapter SearchCategoryAdapter,
+        public GetSearchedListings(ArrayList<POJOValue> arrayList, String Keywords, String City_id,String Area_name, POJOValue details, SearchedCategoryAdapter SearchCategoryAdapter,
                                    Context context/*, View progressbar*/) {
             keywords = Keywords;
             city_id = City_id;
+            area_name = Area_name;
             this.details = details;
             searchCategoryAdapter = SearchCategoryAdapter;
            // Progressbar = progressbar;
@@ -357,7 +357,7 @@ public class ConnectingTask {
         @Override
         protected String doInBackground(String... strings) {
             try {
-                result = sendingTask.sendKeywordcity(keywords, city_id);
+                result = sendingTask.sendKeywordcity(keywords, city_id,area_name);
             } catch (NullPointerException e) {
                 e.printStackTrace();
             } catch (Exception e) {

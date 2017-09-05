@@ -170,12 +170,12 @@ public class SendingTask {
     }
 
     //senging searched keyword and city id,area too
-    public String sendKeywordcity(String keyword, String cityID/*,String area*/) {
+    public String sendKeywordcity(String keyword, String cityID,String area) {
         String response = "";
         HashMap<String, String> datamap = new HashMap<>();
         datamap.put("keywords", keyword);
         datamap.put("city_id", cityID);
-        //datamap.put("comapany_area", area);
+        datamap.put("area_name", area);
 
         try {
             response = UrlPostConnection("Search1", datamap);

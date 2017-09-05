@@ -5,31 +5,31 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_ico10"
         android:label="@string/app_name"
+        android:screenOrientation="landscape"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:screenOrientation="landscape">
-        <activity android:name=".main.MainActivity">
+        android:theme="@style/AppTheme">
+        <activity android:name=".main.MainActivity"></activity>
+        <!-- <service android:name=".services.SearchServices" /> -->
+        <service android:name=".services.CityServices" />
+        <service android:name=".services.AreaServices" />
 
-        </activity>
-      <!-- <service android:name=".services.SearchServices" />-->
-         <service android:name=".services.CityServices" />
-         <!--<service android:name=".services.AreaServices" />-->
-
-        <activity android:name=".main.CategoryActivity"
+        <activity
+            android:name=".main.CategoryActivity"
             android:largeHeap="true"
-            android:screenOrientation="portrait"
             android:launchMode="singleInstance"
-            android:theme="@style/AppTheme" ></activity>
-        <activity android:name=".main.SplashActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.SplashActivity"
             android:largeHeap="true"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

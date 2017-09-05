@@ -40,8 +40,8 @@ public class AreaServices extends Service{
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("debug", "Staff Service Started");
-        /*ConnectingTask.GetAreaSearchServices searchFeching = task.new GetAreaSearchServices(search,detailsValue, areasearchset);
-        searchFeching.execute();*/
+        ConnectingTask.GetAreaSearchServices searchFeching = task.new GetAreaSearchServices(search,detailsValue, areasearchset);
+        searchFeching.execute();
         searchthread = null;
         Runnable runnable = new StaffData();
         searchthread = new Thread(runnable);

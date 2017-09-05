@@ -40,6 +40,8 @@ public class CityServices extends Service{
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("debug", "Staff Service Started");
+        /*ConnectingTask.GetCitySearchServices searchFeching = task.new GetCitySearchServices(search,detailsValue, citysearchset);
+        searchFeching.execute();*/
         ConnectingTask.GetCitySearchServices searchFeching = task.new GetCitySearchServices(search,detailsValue, citysearchset);
         searchFeching.execute();
         searchthread = null;
