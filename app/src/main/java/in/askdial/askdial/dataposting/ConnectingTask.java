@@ -337,20 +337,20 @@ public class ConnectingTask {
         Context context;
 
         public GetSearchedListings(ArrayList<POJOValue> arrayList, String Keywords, String City_id,String Area_name, POJOValue details, SearchedCategoryAdapter SearchCategoryAdapter,
-                                   Context context/*, View progressbar*/) {
+                                   Context context, View progressbar) {
             keywords = Keywords;
             city_id = City_id;
             area_name = Area_name;
             this.details = details;
             searchCategoryAdapter = SearchCategoryAdapter;
-           // Progressbar = progressbar;
+            Progressbar = progressbar;
             this.context = context;
             this.arrayList = arrayList;
         }
 
         @Override
         protected void onPreExecute() {
-//            showProgress(true, context, Progressbar);
+            showProgress(true, context, Progressbar);
             super.onPreExecute();
         }
 
@@ -368,7 +368,7 @@ public class ConnectingTask {
 
         @Override
         protected void onPostExecute(String result) {
-            //showProgress(false, context, Progressbar);
+            showProgress(false, context, Progressbar);
             recievingTask.BySearchListingDetails(result, details, arrayList, searchCategoryAdapter);
         }
     }

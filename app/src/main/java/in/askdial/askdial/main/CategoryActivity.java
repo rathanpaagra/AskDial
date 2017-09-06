@@ -104,7 +104,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
     String City_id,City_Area, Area_Name, Area_ID;
     HashSet<String> CityHashSet;
     ArrayList<String> cityArraylist;
-    HashSet<String> areaHashset;
+
     HashSet<String> areaHashset1;
     ArrayList<String> areaArrayList;
     ArrayList<String> areaArrayList1;
@@ -144,7 +144,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
 
         CityHashSet = new HashSet<>();
         cityArraylist = new ArrayList<>();
-        areaHashset = new HashSet<>();
+        final HashSet<String> areaHashset = new HashSet<>();
         areaHashset1 = new HashSet<>();
         areaArrayList = new ArrayList<>();
         areaArrayList1 = new ArrayList<>();
@@ -174,7 +174,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     String str = city.getSelectedItem().toString();
                     City_id = cityidHashmap.get(parent.getItemAtPosition(position).toString().toLowerCase());
-                    areaArrayList1.clear();
+                    areaArrayList.clear();
                     area.setAdapter(new ArrayAdapter<String>(CategoryActivity.this,android.R.layout.simple_dropdown_item_1line,areaArrayList1));
                     new GetAreaSearchServices(City_id, detailsValue, areaHashset).execute();
                     /*area.performClick();
@@ -258,12 +258,14 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
                 layout.setVisibility(View.GONE);
                 linearlayout_spinner.setVisibility(View.VISIBLE);
                 linearlayout_search.setVisibility(View.VISIBLE);
-                city.performClick();
+                /*city.performClick();
                 city.requestFocus();
-                city.requestFocusFromTouch();
-                search_editext1.requestFocus();
+                city.requestFocusFromTouch();*/
+
+                /*search_editext1.requestFocus();
                 search_editext1.setRawInputType(InputType.TYPE_CLASS_TEXT);
-                search_editext1.setTextIsSelectable(true);
+                search_editext1.setTextIsSelectable(true);*/
+
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(search_editext1, InputMethodManager.SHOW_IMPLICIT);
 
@@ -356,7 +358,22 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
     }
 
     public void Spinneritem() {
-        areaArrayList.addAll(areaHashset);
+
+        areadataAdapter = new ArrayAdapter<String>(CategoryActivity.this, android.R.layout.simple_spinner_item, areaArrayList);
+        areadataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Collections.sort(areaArrayList);
+        area.setAdapter(areadataAdapter);
+        area.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Area_Name = area.getSelectedItem().toString();
+                //Area_ID = areaidHashmap.get(parent.getItemAtPosition(position).toString().toLowerCase());
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        /*areaArrayList.addAll(areaHashset);
         for (int i = 0; i < areaArrayList.size(); i++) {
             String liststaff = areaArrayList.get(i);
             String staff = liststaff.substring(0, liststaff.lastIndexOf(','));
@@ -386,12 +403,9 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
 
         } else {
             //  functionCalls.LogStatus("Staff list not Available");
-        }
+        }*/
 
-        /*areadataAdapter = new ArrayAdapter<String>(CategoryActivity.this, android.R.layout.simple_spinner_item, areaArrayList);
-        areadataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Collections.sort(areaArrayList);
-        area.setAdapter(areadataAdapter);*/
+
 
     }
 
@@ -696,17 +710,21 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
                 if (jo != null) {
                     String message = jo.getString("message");
                     if (message.equals("Success")) {
-                        String StaffId = jo.getString("area_id");
+                        //String StaffId = jo.getString("area_id");
                         String Staffname = jo.getString("area_name");
                         // list.add(Staff);
                         //list.add(Staffname);
-                        list.add(Staffname+","+StaffId);
+                        list.add(Staffname/*+","+StaffId*/);
+                        areaArrayList.clear();
+                        area.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,areaArrayList));
+                        areaArrayList.addAll(list);
+                        Spinneritem();
                         if (i == (ja.length() - 1)) {
                             details.setSEARCHArea_Success(true);
                             // hashSet.addAll(list);
-                            hashSet.addAll(list);
-                            areaHashset.addAll(list);
-                            Spinneritem();
+                            //hashSet.addAll(list);
+                            //Spinneritem();
+
                         }
                     } else {
                         details.setSEARCHArea_Failure(true);

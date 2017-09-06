@@ -63,13 +63,13 @@ public class SearchFragment extends Fragment {
         areaname=bundle.getString("area_name");
         keywords=bundle.getString("keyword");
         search_keyword= (EditText) view.findViewById(R.id.search_textview1);
-       // progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loading_bar2);
+        progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loading_bar3);
         recyclerView= (RecyclerView) view.findViewById(R.id.recyclerview_search);
         searchresult_textview= (TextView) view.findViewById(R.id.searchresult_textview);
         layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
         searchedCategoryAdapter = new SearchedCategoryAdapter(arrayList, contextview, getActivity(),SearchFragment.this);
-        ConnectingTask.GetSearchedListings login = task.new GetSearchedListings(arrayList,keywords,city_id,areaname, pojoValue,searchedCategoryAdapter, getActivity()/*,progressBar*/);
+        ConnectingTask.GetSearchedListings login = task.new GetSearchedListings(arrayList,keywords,city_id,areaname, pojoValue,searchedCategoryAdapter, getActivity(),progressBar);
         login.execute();
 
         recyclerView.setHasFixedSize(true);
@@ -113,8 +113,8 @@ public class SearchFragment extends Fragment {
                 try {
                     if (pojoValue.isSearchKeywordSuccess()) {
                         pojoValue.setSearchKeywordSuccess(false);
-                        //progressBar.setVisibility(View.GONE);
-                        dialog.dismiss();
+                        progressBar.setVisibility(View.GONE);
+                        //dialog.dismiss();
                         mythread.interrupt();
                     }
                     if (pojoValue.isSearchKeyWordFailure()) {

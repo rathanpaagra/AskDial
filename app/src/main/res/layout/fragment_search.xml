@@ -19,7 +19,7 @@
         </android.support.v7.widget.RecyclerView>
 
         <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/loading_bar2"
+            android:id="@+id/loading_bar3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerInParent="true"
