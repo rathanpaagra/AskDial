@@ -56,6 +56,7 @@ import in.askdial.askdial.dataposting.ConnectingTask;
 import in.askdial.askdial.dataposting.DataApi;
 import in.askdial.askdial.dataposting.HttpHandler;
 import in.askdial.askdial.fragments.categories.Visited_CatgFragment;
+import in.askdial.askdial.fragments.viewmoreCategories.MainFragment;
 import in.askdial.askdial.services.SearchServices;
 import in.askdial.askdial.values.FunctionCalls;
 import in.askdial.askdial.values.POJOValue;

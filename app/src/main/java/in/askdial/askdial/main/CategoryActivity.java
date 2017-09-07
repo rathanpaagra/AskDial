@@ -119,6 +119,9 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
 
     static ProgressDialog dialog = null;
     ArrayAdapter<String> areadataAdapter;
+
+
+    AutoCompleteTextView search_autocompletetextview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,6 +142,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         ;
         city = (Spinner) findViewById(R.id.spinner_city);
         area = (Spinner) findViewById(R.id.spinner_area);
+        search_autocompletetextview= (AutoCompleteTextView) findViewById(R.id.search_autocompletetextview);
         cityServices = new CityServices();
         areaServices = new AreaServices();
 
@@ -358,6 +362,11 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
     }
 
     public void Spinneritem() {
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, areaArrayList);
+        search_autocompletetextview.setAdapter(adapter);
+        search_autocompletetextview.setThreshold(1);
 
         areadataAdapter = new ArrayAdapter<String>(CategoryActivity.this, android.R.layout.simple_spinner_item, areaArrayList);
         areadataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

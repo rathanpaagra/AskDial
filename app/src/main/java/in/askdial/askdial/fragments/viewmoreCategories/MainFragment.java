@@ -1,4 +1,4 @@
-package in.askdial.askdial.fragments;
+package in.askdial.askdial.fragments.viewmoreCategories;
 
 
 import android.app.Activity;

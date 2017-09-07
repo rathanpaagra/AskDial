@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import in.askdial.askdial.R;
-import in.askdial.askdial.fragments.MainFragment;
+import in.askdial.askdial.fragments.viewmoreCategories.MainFragment;
 import in.askdial.askdial.fragments.viewmoreCategories.ViewedCategoryFragment;
 import in.askdial.askdial.values.POJOValue;
 
