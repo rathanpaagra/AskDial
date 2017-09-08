@@ -30,6 +30,7 @@ import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Packers_move
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Property;
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Real_estate;
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Shopping;
+import static in.askdial.askdial.dataposting.DataApi.GET_CATEGORY_AUTOSUGGEST;
 import static in.askdial.askdial.dataposting.DataApi.GET_CITY;
 
 /**
@@ -98,6 +99,18 @@ public class SendingTask {
         }
         return response;
     }
+
+    //calling city name and id
+    public String GetAutoSuggestionCategories(String search) {
+        String response = "";
+        try {
+            response = UrlGetConnection(GET_CATEGORY_AUTOSUGGEST);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
 //Most Visited Categories Recived List(Sending By Category Name)
     public String sendbyCategory(String cat) {
 
@@ -175,7 +188,7 @@ public class SendingTask {
         HashMap<String, String> datamap = new HashMap<>();
         datamap.put("keywords", keyword);
         datamap.put("city_id", cityID);
-        datamap.put("area_name", area);
+        datamap.put("company_area", area);
 
         try {
             response = UrlPostConnection("Search1", datamap);

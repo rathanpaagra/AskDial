@@ -86,6 +86,25 @@ public class POJOValue {
     private boolean SEARCHCITY_Success;
     private boolean SEARCHArea_Success;
 
+    private boolean CategoryAutosuggestList_Success;
+
+    public boolean isCategoryAutosuggestList_Success() {
+        return CategoryAutosuggestList_Success;
+    }
+
+    public void setCategoryAutosuggestList_Success(boolean categoryAutosuggestList_Success) {
+        CategoryAutosuggestList_Success = categoryAutosuggestList_Success;
+    }
+
+    public boolean isCategoryAutosuggestList_Failure() {
+        return CategoryAutosuggestList_Failure;
+    }
+
+    public void setCategoryAutosuggestList_Failure(boolean categoryAutosuggestList_Failure) {
+        CategoryAutosuggestList_Failure = categoryAutosuggestList_Failure;
+    }
+
+    private boolean CategoryAutosuggestList_Failure;
     public boolean isSEARCHArea_Success() {
         return SEARCHArea_Success;
     }

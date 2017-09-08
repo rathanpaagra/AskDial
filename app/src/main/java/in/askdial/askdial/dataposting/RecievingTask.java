@@ -160,6 +160,35 @@ public class RecievingTask {
         }
     }
 
+    //getCity Results
+    public void GetCategoryAutosuggestDetails(String result, POJOValue details, HashSet<String> hashSet) {
+        ArrayList<String> list = new ArrayList<>();
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String message = jo.getString("message");
+                    if (message.equals("Success")) {
+                        //String StaffId = jo.getString("fisrt_level_category_id");
+                        String Staffname = jo.getString("first_level_category_name");
+                        // list.add(Staff);
+                        list.add(Staffname /*+ "," + StaffId*/);
+                        if (i == (ja.length() - 1)) {
+                            details.setCategoryAutosuggestList_Success(true);
+                            // hashSet.addAll(list);
+                            hashSet.addAll(list);
+                        }
+                    } else {
+                        details.setCategoryAutosuggestList_Failure(true);
+                    }
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     /*//getArea Results
     public void GetAreaSearchDetails(String result, POJOValue details,ArrayList<POJOValue> arrayList) {
 

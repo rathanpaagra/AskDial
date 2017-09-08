@@ -8,6 +8,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:background="@color/amber"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
@@ -31,10 +32,10 @@
             android:id="@+id/searchresult_textview"
             android:layout_width="match_parent"
             android:visibility="gone"
-            android:background="@color/amber"
+            android:background="@drawable/ic_no_data_found"
             android:textSize="30dp"
             android:gravity="center"
-            android:text="No Records Found"
+            android:textStyle="bold"
             android:layout_height="match_parent" />
 
     </RelativeLayout>

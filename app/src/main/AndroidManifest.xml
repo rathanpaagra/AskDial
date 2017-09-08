@@ -17,7 +17,7 @@
         <activity android:name=".main.MainActivity"></activity>
         <!-- <service android:name=".services.SearchServices" /> -->
         <service android:name=".services.CityServices" />
-        <service android:name=".services.AreaServices" />
+        <service android:name=".services.CategoriesServices" />
 
         <activity
             android:name=".main.CategoryActivity"

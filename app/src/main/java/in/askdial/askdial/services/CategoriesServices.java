@@ -16,14 +16,14 @@ import in.askdial.askdial.values.POJOValue;
  * Created by Admin on 12-Jun-17.
  */
 
-public class AreaServices extends Service{
+public class CategoriesServices extends Service{
     //public static final String PREFS_NAME = "MyPrefsFile";
     POJOValue detailsValue;
     ConnectingTask task;
     Thread searchthread;
     SharedPreferences settings;
     String search="search";
-    public static HashSet<String> areasearchset;
+    public static HashSet<String> categoriesSearchset;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -34,13 +34,13 @@ public class AreaServices extends Service{
     public void onCreate() {
         detailsValue = new POJOValue();
         task = new ConnectingTask();
-        areasearchset = new HashSet<String>();
+        categoriesSearchset = new HashSet<String>();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("debug", "Staff Service Started");
-        ConnectingTask.GetAreaSearchServices searchFeching = task.new GetAreaSearchServices(search,detailsValue, areasearchset);
+        ConnectingTask.GetCategoriesSearchServices searchFeching = task.new GetCategoriesSearchServices(search,detailsValue, categoriesSearchset);
         searchFeching.execute();
         searchthread = null;
         Runnable runnable = new StaffData();
@@ -67,13 +67,13 @@ public class AreaServices extends Service{
     }
 
     private void Fetchsearch() {
-        if (detailsValue.isSEARCHArea_Success()) {
-            detailsValue.setSEARCHArea_Success(false);
+        if (detailsValue.isCategoryAutosuggestList_Success()) {
+            detailsValue.setCategoryAutosuggestList_Success(false);
             searchthread.interrupt();
             this.stopSelf();
         }
-        if (detailsValue.isSEARCHArea_Failure()) {
-            detailsValue.setSEARCHArea_Failure(false);
+        if (detailsValue.isCategoryAutosuggestList_Failure()) {
+            detailsValue.setCategoryAutosuggestList_Failure(false);
             searchthread.interrupt();
             this.stopSelf();
         }

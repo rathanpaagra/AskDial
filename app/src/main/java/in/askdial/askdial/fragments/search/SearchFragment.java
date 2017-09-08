@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -71,7 +72,6 @@ public class SearchFragment extends Fragment {
         searchedCategoryAdapter = new SearchedCategoryAdapter(arrayList, contextview, getActivity(),SearchFragment.this);
         ConnectingTask.GetSearchedListings login = task.new GetSearchedListings(arrayList,keywords,city_id,areaname, pojoValue,searchedCategoryAdapter, getActivity(),progressBar);
         login.execute();
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(searchedCategoryAdapter);
@@ -119,10 +119,11 @@ public class SearchFragment extends Fragment {
                     }
                     if (pojoValue.isSearchKeyWordFailure()) {
                         pojoValue.setSearchKeyWordFailure(true);
+                        mythread.interrupt();
                         recyclerView.setVisibility(View.GONE);
                         searchresult_textview.setVisibility(View.VISIBLE);
-                        dialog.dismiss();
-                        mythread.interrupt();
+                        //dialog.dismiss();
+
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

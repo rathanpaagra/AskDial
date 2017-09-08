@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +20,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -30,11 +30,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,7 +58,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -69,7 +68,7 @@ import in.askdial.askdial.fragments.AboutUSFragment;
 import in.askdial.askdial.fragments.ContactUSFragment;
 import in.askdial.askdial.fragments.HomeFragment;
 import in.askdial.askdial.fragments.search.SearchFragment;
-import in.askdial.askdial.services.AreaServices;
+import in.askdial.askdial.services.CategoriesServices;
 import in.askdial.askdial.services.CityServices;
 import in.askdial.askdial.values.FunctionCalls;
 import in.askdial.askdial.values.POJOValue;
@@ -85,7 +84,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
 
     AutoCompleteTextView search_Edt_Txt;
     TextView search_textview;
-    EditText search_editext1;
+    AutoCompleteTextView search_editext1;
 
     //SearchServices searchServices;
     static ArrayList<String> search_list;
@@ -94,22 +93,27 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
     String searched_Value;
     ImageButton home_button;
     View layout;
-    LinearLayout linearlayout_search,linearlayout_spinner;
+    LinearLayout linearlayout_search,linearlayout_spinner,linear_layout_autocomplete_txt,linear_layout_spinner_area,
+                 linear_layoutbutton_for_spinner_area;
     ImageView ivClearSearchText;
 
     //get downlist of city and area in search
     CityServices cityServices;
-    AreaServices areaServices;
+    CategoriesServices categoriesServices;
     Spinner city, area;
     String City_id,City_Area, Area_Name, Area_ID;
+
     HashSet<String> CityHashSet;
     ArrayList<String> cityArraylist;
+    HashMap<String, String> cityidHashmap;
 
     HashSet<String> areaHashset1;
     ArrayList<String> areaArrayList;
     ArrayList<String> areaArrayList1;
-    HashMap<String, String> cityidHashmap;
     HashMap<String, String> areaidHashmap;
+
+    HashSet<String> CategorySearchHashSet;
+    ArrayList<String> CategorySearchArraylist;
 
     POJOValue detailsValue = new POJOValue();
     ConnectingTask task = new ConnectingTask();
@@ -120,8 +124,8 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
     static ProgressDialog dialog = null;
     ArrayAdapter<String> areadataAdapter;
 
-
     AutoCompleteTextView search_autocompletetextview;
+    Button button_for_spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,9 +147,29 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         city = (Spinner) findViewById(R.id.spinner_city);
         area = (Spinner) findViewById(R.id.spinner_area);
         search_autocompletetextview= (AutoCompleteTextView) findViewById(R.id.search_autocompletetextview);
-        cityServices = new CityServices();
-        areaServices = new AreaServices();
 
+        //search_Edt_Txt= (AutoCompleteTextView) findViewById(R.id.search_EditText);
+        linearlayout_search = (LinearLayout) findViewById(R.id.linearlayout_search);
+        linearlayout_spinner = (LinearLayout) findViewById(R.id.linearlayout_spinner);
+        linear_layout_autocomplete_txt = (LinearLayout) findViewById(R.id.linear_layout_autocomplete_txt);
+        linear_layout_spinner_area = (LinearLayout) findViewById(R.id.linear_layout_spinner_area);
+        linear_layoutbutton_for_spinner_area = (LinearLayout) findViewById(R.id.linear_layoutbutton_for_spinner_area);
+        button_for_spinner= (Button) findViewById(R.id.button_for_spinner_area);
+        search_textview = (TextView) findViewById(R.id.search_textview);
+        search_editext1 = (AutoCompleteTextView) findViewById(R.id.search_edittext1);
+
+        ivClearSearchText = (ImageView) findViewById(R.id.ivClearSearchText);
+        functionCalls = new FunctionCalls();
+        cityServices = new CityServices();
+        categoriesServices = new CategoriesServices();
+
+        //Autosuggestion for search Category
+        CategorySearchHashSet = new HashSet<>();
+        CategorySearchArraylist = new ArrayList<>();
+        CategorySearchHashSet=categoriesServices.categoriesSearchset;
+        CategorySearchArraylist.addAll(CategorySearchHashSet);
+
+        //Autosuggestion for search City and Area
         CityHashSet = new HashSet<>();
         cityArraylist = new ArrayList<>();
         final HashSet<String> areaHashset = new HashSet<>();
@@ -153,6 +177,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         areaArrayList = new ArrayList<>();
         areaArrayList1 = new ArrayList<>();
         CityHashSet = cityServices.citysearchset;
+
         ArrayList<String> citylist1 = new ArrayList<>();
         cityidHashmap = new HashMap<>();
         areaidHashmap = new HashMap<>();
@@ -199,33 +224,27 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
                 public void onNothingSelected(AdapterView<?> parent) {
                 }
             });
-           /* city.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String Contractor = parent.getItemAtPosition(position).toString();
-                    String City_id = cityidHashmap.get(parent.getItemAtPosition(position).toString().toLowerCase());
-                    Toast.makeText(CategoryActivity.this, "City Id is: "+City_id, Toast.LENGTH_SHORT).show();
-                }
-            });*/
 
         } else {
             //  functionCalls.LogStatus("Staff list not Available");
         }
 
-       // Spinneritem();
+        //Auto Suggestion for Search Category
 
-        //areaHashset=areaServices.areasearchset;
-        /*areaArrayList.addAll(areaHashset);
-        ArrayAdapter<String> areadataAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,areaArrayList);
-        areadataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        areadataAdapter.notifyDataSetChanged();
-        area.setAdapter(areadataAdapter);*/
-
-        /*ArrayAdapter<String> citydataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, citylist1);
-        citydataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        citydataAdapter.notifyDataSetChanged();
-        city.setAdapter(citydataAdapter);*/
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, CategorySearchArraylist);
+        search_editext1.setDropDownBackgroundResource(R.color.white);
+        search_editext1.setTextColor(Color.WHITE);
+        //search_autocompletetextview.setBackgroundColor(Color.WHITE);
+        search_editext1.setAdapter(adapter);
+        search_editext1.setThreshold(1);
+        search_editext1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                searched_Value = parent.getItemAtPosition(position).toString();
+                // StaffTomeetId = listid.get(parent.getItemAtPosition(position).toString().toLowerCase());
+            }
+        });
 
 
         toolbar1.setVisibility(View.GONE);
@@ -234,13 +253,6 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         layout.setFocusable(true);
         layout.setFocusableInTouchMode(true);
 
-        //search_Edt_Txt= (AutoCompleteTextView) findViewById(R.id.search_EditText);
-        linearlayout_search = (LinearLayout) findViewById(R.id.linearlayout_search);
-        linearlayout_spinner = (LinearLayout) findViewById(R.id.linearlayout_spinner);
-        search_textview = (TextView) findViewById(R.id.search_textview);
-        search_editext1 = (EditText) findViewById(R.id.search_edittext1);
-        ivClearSearchText = (ImageView) findViewById(R.id.ivClearSearchText);
-        functionCalls = new FunctionCalls();
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -255,6 +267,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         search_textview.setText("");
         search_editext1.setText("");
 
+
         search_textview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,6 +275,17 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
                 layout.setVisibility(View.GONE);
                 linearlayout_spinner.setVisibility(View.VISIBLE);
                 linearlayout_search.setVisibility(View.VISIBLE);
+
+                button_for_spinner.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        linear_layout_autocomplete_txt.setVisibility(View.GONE);
+                        linear_layoutbutton_for_spinner_area.setVisibility(View.GONE);
+                        linear_layout_spinner_area.setVisibility(View.VISIBLE);
+                        area.performClick();
+                        area.requestFocus();
+                    }
+                });
                 /*city.performClick();
                 city.requestFocus();
                 city.requestFocusFromTouch();*/
@@ -363,23 +387,44 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
 
     public void Spinneritem() {
 
+        areaArrayList.add(0,"All");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, areaArrayList);
+        search_autocompletetextview.setDropDownBackgroundResource(R.color.white);
+        search_autocompletetextview.setTextColor(Color.WHITE);
+        //search_autocompletetextview.setBackgroundColor(Color.WHITE);
         search_autocompletetextview.setAdapter(adapter);
         search_autocompletetextview.setThreshold(1);
+        search_autocompletetextview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Area_Name = parent.getItemAtPosition(position).toString();
+                // StaffTomeetId = listid.get(parent.getItemAtPosition(position).toString().toLowerCase());
+            }
+        });
+
 
         areadataAdapter = new ArrayAdapter<String>(CategoryActivity.this, android.R.layout.simple_spinner_item, areaArrayList);
         areadataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Collections.sort(areaArrayList);
+        //Collections.sort(areaArrayList);
         area.setAdapter(areadataAdapter);
         area.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Area_Name = area.getSelectedItem().toString();
                 //Area_ID = areaidHashmap.get(parent.getItemAtPosition(position).toString().toLowerCase());
+                search_autocompletetextview.setText(Area_Name);
+                linear_layout_autocomplete_txt.setVisibility(View.VISIBLE);
+                linear_layoutbutton_for_spinner_area.setVisibility(View.VISIBLE);
+                linear_layout_spinner_area.setVisibility(View.GONE);
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+                linear_layout_autocomplete_txt.setVisibility(View.VISIBLE);
+                linear_layoutbutton_for_spinner_area.setVisibility(View.VISIBLE);
+                linear_layout_spinner_area.setVisibility(View.GONE);
+
             }
         });
         /*areaArrayList.addAll(areaHashset);

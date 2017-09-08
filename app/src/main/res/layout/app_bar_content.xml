@@ -89,16 +89,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            >
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginRight="3dp"
                 android:layout_marginTop="3dp"
-                android:layout_weight="3"
+                android:layout_weight="4"
                 android:background="@color/amber">
 
                 <Spinner
@@ -109,13 +109,61 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linear_layout_autocomplete_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="2"
+                android:background="@color/amber"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <AutoCompleteTextView
+                    android:id="@+id/search_autocompletetextview"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:cursorVisible="true"
+                    android:hint=" Search by Area"
+                    android:inputType="textAutoComplete|text"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layoutbutton_for_spinner_area"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="5"
+                android:background="@color/amber"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/button_for_spinner_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="5"
+                    android:background="@mipmap/ic_dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_spinner_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
                 android:layout_marginRight="3dp"
                 android:layout_marginTop="3dp"
                 android:layout_weight="2"
-                android:background="@color/amber">
+                android:background="@color/amber"
+                android:visibility="visible">
 
                 <Spinner
                     android:id="@+id/spinner_area"
@@ -135,10 +183,11 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
             <!--android:background="@color/white"-->
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/search_edittext1"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
@@ -184,7 +233,7 @@
         </LinearLayout>
 
         <AutoCompleteTextView
-            android:id="@+id/search_autocompletetextview"
+            android:id="@+id/search_autocompletetextview1"
             android:layout_width="match_parent"
             android:layout_height="53dp"
             android:layout_marginRight="5dp"
@@ -194,7 +243,8 @@
             android:hint=" search here for askdial"
             android:inputType="textAutoComplete|text"
             android:textSize="18dp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/search_relative"

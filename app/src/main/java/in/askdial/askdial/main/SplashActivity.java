@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import in.askdial.askdial.R;
-import in.askdial.askdial.services.AreaServices;
+import in.askdial.askdial.services.CategoriesServices;
 import in.askdial.askdial.services.CityServices;
 
 public class SplashActivity extends AppCompatActivity {
@@ -33,8 +33,9 @@ public class SplashActivity extends AppCompatActivity {
 
         Intent service = new Intent(SplashActivity.this, CityServices.class);
         startService(service);
-        Intent service1 = new Intent(SplashActivity.this, AreaServices.class);
+        Intent service1 = new Intent(SplashActivity.this, CategoriesServices.class);
         startService(service1);
+
         gifImageView= (GifImageView) findViewById(R.id.gifView);
 
 

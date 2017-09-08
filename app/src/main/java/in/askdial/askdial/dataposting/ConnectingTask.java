@@ -201,6 +201,43 @@ public class ConnectingTask {
             recievingTask.GetAreaSearchDetails(result, details, HashSet/*arrayList*/);
         }
     }
+
+    //getall searching Categories list
+    public class GetCategoriesSearchServices extends AsyncTask<String, String, String> {
+        String result = "", SearchingName;
+        POJOValue details;
+        java.util.HashSet<String> HashSet;
+
+        public GetCategoriesSearchServices(String search, POJOValue detailsValue, HashSet<String> hashSet) {
+            this.SearchingName = search;
+            this.details = detailsValue;
+            this.HashSet = hashSet;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                //SearchingName="Search";
+                result = sendingTask.GetAutoSuggestionCategories(SearchingName);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            recievingTask.GetCategoryAutosuggestDetails(result, details, HashSet);
+        }
+    }
+
     //All listings information
     //Single Listings
     public class SingleListingsFields extends AsyncTask<String, String, String> {
