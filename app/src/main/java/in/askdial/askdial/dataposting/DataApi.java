@@ -11,6 +11,9 @@ public class DataApi {
      public static final String GET_CITY = "http://askdial.com/index.php/admin/api/Get_city";
     public static final String GET_CATEGORY_AUTOSUGGEST = "http://askdial.com/index.php/admin/api/Category_autosuggest";
 
+    //View All Classifieds Here
+    public static final String VIEW_ALL_CLASSIFIEDS_CATEGORIES = "http://www.askdial.com/index.php/admin/api/Classifieds_category";
+
     public static final String GET_AREA = "http://askdial.com/index.php/admin/api/Get_area";
     //public static final String SEARCH_VIEW_ALL = "http://www.askdial.com/index.php/admin/api/Search1";
 

@@ -70,11 +70,16 @@ public class SearchFragment extends Fragment {
         layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
         searchedCategoryAdapter = new SearchedCategoryAdapter(arrayList, contextview, getActivity(),SearchFragment.this);
-        ConnectingTask.GetSearchedListings login = task.new GetSearchedListings(arrayList,keywords,city_id,areaname, pojoValue,searchedCategoryAdapter, getActivity(),progressBar);
-        login.execute();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(searchedCategoryAdapter);
+
+        ConnectingTask.GetSearchedListings login = task.new GetSearchedListings(arrayList,keywords,city_id,areaname, pojoValue,searchedCategoryAdapter, getActivity(),progressBar);
+        login.execute();
+        mythread = null;
+        Runnable runnable = new LoginTimer();
+        mythread = new Thread(runnable);
+        mythread.start();
         //progressBar.setVisibility(View.VISIBLE);
         //dialog = ProgressDialog.show(getActivity(), "", "Please Wait...", true);
        // dialog.setCancelable(true);
@@ -107,29 +112,29 @@ public class SearchFragment extends Fragment {
     }
 
     public void doWork() {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (pojoValue.isSearchKeywordSuccess()) {
-                        pojoValue.setSearchKeywordSuccess(false);
-                        progressBar.setVisibility(View.GONE);
-                        //dialog.dismiss();
-                        mythread.interrupt();
-                    }
-                    if (pojoValue.isSearchKeyWordFailure()) {
-                        pojoValue.setSearchKeyWordFailure(true);
-                        mythread.interrupt();
-                        recyclerView.setVisibility(View.GONE);
-                        searchresult_textview.setVisibility(View.VISIBLE);
-                        //dialog.dismiss();
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if (pojoValue.isSearchKeywordSuccess()) {
+                            pojoValue.setSearchKeywordSuccess(false);
+                            //progressBar.setVisibility(View.GONE);
+                            //dialog.dismiss();
+                            mythread.interrupt();
+                        }
+                        if (pojoValue.isSearchKeyWordFailure()) {
+                            pojoValue.setSearchKeyWordFailure(false);
+                            mythread.interrupt();
+                            recyclerView.setVisibility(View.GONE);
+                            searchresult_textview.setVisibility(View.VISIBLE);
+                            //dialog.dismiss();
 
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
-            }
-        });
+            });
     }
 
     private void Successview() {

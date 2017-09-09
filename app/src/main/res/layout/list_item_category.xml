@@ -105,6 +105,7 @@
                     android:layout_below="@id/textview_company_name"
                     android:layout_toRightOf="@id/imageView"
                     android:hint="Jayanagar"
+                    android:visibility="visible"
                     android:paddingLeft="10dp"
                     android:textColor="@color/green"
                     android:textColorHint="@color/green"
@@ -120,6 +121,7 @@
                     android:hint="9164540000"
                     android:textStyle="bold"
                     android:paddingLeft="10dp"
+                    android:visibility="visible"
                     android:textColor="@color/black"
                     android:textSize="18dp" />
 
@@ -127,6 +129,7 @@
                     android:id="@+id/textview_company_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="visible"
                     android:layout_alignParentRight="@id/imageView"
                     android:layout_below="@id/textview_company_mobile"
                     android:layout_toRightOf="@id/imageView"

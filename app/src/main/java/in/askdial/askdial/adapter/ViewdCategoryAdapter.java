@@ -108,16 +108,14 @@ public class ViewdCategoryAdapter extends RecyclerView.Adapter<ViewdCategoryAdap
             int pos = getAdapterPosition();
             POJOValue content = arrayList.get(pos);
             lisiting_id = content.getCompany_lisiting_id();
-
             //Parsing listingID to get Listing Details
             //new GetListings(lisiting_id, content).execute();
-
             String lisiting_category_name = content.getCompany_category_name();
             tv_comapny_name=content.getCompany_name();
             tv_company_email=content.getCompany_area();
             tv_company_mobile1=content.getCompany_mobile1();
             tv_company_email=content.getCompany_email();
-
+            arrayList.clear();
             Listing_Category_DetailsFragment fragment = new Listing_Category_DetailsFragment();
             Bundle bundle = new Bundle();
             FragmentTransaction fragmentTransaction = viewedtgFragment.getActivity().getSupportFragmentManager().beginTransaction();

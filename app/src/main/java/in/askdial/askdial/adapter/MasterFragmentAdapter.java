@@ -116,7 +116,7 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
             tv_company_email=content.getCompany_area();
             tv_company_mobile1=content.getCompany_mobile1();
             tv_company_email=content.getCompany_email();
-
+            arrayList.clear();
             Listing_Category_DetailsFragment fragment = new Listing_Category_DetailsFragment();
             Bundle bundle = new Bundle();
             FragmentTransaction fragmentTransaction = visitedCatgFragment.getActivity().getSupportFragmentManager().beginTransaction();

@@ -32,6 +32,8 @@ import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Real_estate;
 import static in.askdial.askdial.dataposting.DataApi.CATEGORIES_URL_Shopping;
 import static in.askdial.askdial.dataposting.DataApi.GET_CATEGORY_AUTOSUGGEST;
 import static in.askdial.askdial.dataposting.DataApi.GET_CITY;
+import static in.askdial.askdial.dataposting.DataApi.VIEW_ALL_CATEGORIES_URL;
+import static in.askdial.askdial.dataposting.DataApi.VIEW_ALL_CLASSIFIEDS_CATEGORIES;
 
 /**
  * Created by Admin on 30-Dec-16.
@@ -41,26 +43,40 @@ public class SendingTask {
 
     FunctionCalls functionCalls = new FunctionCalls();
 
-    String CATEGORIES_URL = DataApi.VIEW_ALL_CATEGORIES_URL;
+   // String CATEGORIES_URL = VIEW_ALL_CATEGORIES_URL;
     String DETAIL_LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
-    String BASE_URL=DataApi.VIEW_ALL_CATEGORIES_URL;
     String BASE_URL_SEARCH=DataApi.BASE_URL;
     String CAT_LISTINGS_ALL=DataApi.CAT_LISTINGS_ALL;
     String SendCategory;
 
+    //Requesting for all Categories
     public String GetFields() {
         String response = "";
          //HashMap<String, String> categoryName = new HashMap<>();
         // adding each child node to HashMap key => value
        // categoryName.put("first_level_category_id", first_level_category_id);
         try {
-            response = UrlGetConnection(CATEGORIES_URL);
+            response = UrlGetConnection(VIEW_ALL_CATEGORIES_URL);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return response;
     }
 
+    //
+    //Requesting for all ClassifiedsCategories
+    public String GetClassifieds() {
+        String response = "";
+        //HashMap<String, String> categoryName = new HashMap<>();
+        // adding each child node to HashMap key => value
+        // categoryName.put("first_level_category_id", first_level_category_id);
+        try {
+            response = UrlGetConnection(VIEW_ALL_CLASSIFIEDS_CATEGORIES);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
     //autocomplete textview search keyword
     public String GetSearch(String search) {
         String response = "";
@@ -168,6 +184,19 @@ public class SendingTask {
         return response;
     }
 
+    //Sending Classfied Category ID  to get Classified Listing Details
+    public String sendClassifiedCategoryName_ById(String cat_id) {
+        String response = "";
+        HashMap<String, String> datamap = new HashMap<>();
+        datamap.put("classifieds_category_id", cat_id);
+
+        try {
+            response = UrlPostConnection("Classifieds", datamap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
     //senging listing by id
     public String sendListing_id(String listing_id) {
         String response = "";

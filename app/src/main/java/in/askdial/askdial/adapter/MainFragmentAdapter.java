@@ -80,6 +80,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
             POJOValue pojoValue = arrayList.get(pos);
             String categoryID= pojoValue.getFirst_Level_Category_Id();
             String categoryName= pojoValue.getFirst_Level_Category_Name();
+            arrayList.clear();
             ViewedCategoryFragment fragment=new ViewedCategoryFragment();
             Bundle bundle=new Bundle();
             FragmentTransaction fragmentTransaction=mainFragment.getActivity().getSupportFragmentManager().beginTransaction();

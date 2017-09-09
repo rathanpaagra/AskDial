@@ -16,6 +16,9 @@ import in.askdial.askdial.adapter.MainFragmentAdapter;
 import in.askdial.askdial.adapter.MasterFragmentAdapter;
 import in.askdial.askdial.adapter.SearchedCategoryAdapter;
 import in.askdial.askdial.adapter.ViewdCategoryAdapter;
+import in.askdial.askdial.adapter.classifiedsAdapter.ClassifiedCategory_ListAdapter;
+import in.askdial.askdial.adapter.classifiedsAdapter.ClassifiedsCategoryAdapter;
+import in.askdial.askdial.fragments.classifieds.ClassifiedsCat_Listings;
 import in.askdial.askdial.values.POJOValue;
 
 /**
@@ -49,6 +52,7 @@ public class ConnectingTask {
         }
     }
 
+    //View All Categories list in Database
     public class CategoryFields extends AsyncTask<String, String, String> {
         String result = "", firstLevelCategory_id;
         ArrayList<POJOValue> arrayList;
@@ -93,7 +97,100 @@ public class ConnectingTask {
         }
     }
 
-    //search for all Categories
+    //All Classifieds List Here
+    public class ClassifiedsCategoryFields extends AsyncTask<String, String, String> {
+        String result = "", firstLevelCategory_id;
+        ArrayList<POJOValue> arrayList;
+        ClassifiedsCategoryAdapter mainFragmentAdapter;
+        POJOValue details;
+        Context context;
+        View Progressbar;
+        private LayoutInflater mInflater;
+
+        public ClassifiedsCategoryFields(ArrayList<POJOValue> arrayList, ClassifiedsCategoryAdapter mainFragmentAdapter, POJOValue detailsValue,
+                              Context context, View progressbar) {
+            this.arrayList = arrayList;
+            this.details = detailsValue;
+            this.mainFragmentAdapter = mainFragmentAdapter;
+            this.details = detailsValue;
+            Progressbar = progressbar;
+            this.context = context;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            showProgress(true, context, Progressbar);
+            // super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                result = sendingTask.GetClassifieds();
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            showProgress(false, context, Progressbar);
+            recievingTask.ClassifiedsCategoryDetails(result, details, arrayList, mainFragmentAdapter);
+        }
+    }
+
+    //request for Clssified Categoty Listings
+    //All Category Listing
+    public class ClassifiedCat_Listings extends AsyncTask<String, String, String> {
+        String result = "", firstLevelCategory_id, category_id;
+        ArrayList<POJOValue> arrayList;
+        ClassifiedCategory_ListAdapter classifiedCategory_listAdapter;
+        POJOValue details;
+        Context context;
+        View Progressbar;
+        private LayoutInflater mInflater;
+
+        public ClassifiedCat_Listings(ArrayList<POJOValue> arrayList, String Category_id, ClassifiedCategory_ListAdapter mainFragmentAdapter, POJOValue detailsValue,
+                              Context context, View progressbar) {
+            this.arrayList = arrayList;
+            this.details = detailsValue;
+            this.category_id = Category_id;
+            this.classifiedCategory_listAdapter = mainFragmentAdapter;
+            this.details = detailsValue;
+            Progressbar = progressbar;
+            this.context = context;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            showProgress(true, context, Progressbar);
+           /* super.onPreExecute();*/
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String Food = "Food";
+                result = sendingTask.sendClassifiedCategoryName_ById(category_id);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            showProgress(false, context, Progressbar);
+            recievingTask.ByClassifiedCategoryListingDetails(result, details, arrayList, classifiedCategory_listAdapter);
+        }
+    }
+
+    //Search for all Categories
     public class SearchAll extends AsyncTask<String, String, String> {
         String result = "", SearchingName;
         POJOValue details;

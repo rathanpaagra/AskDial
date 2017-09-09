@@ -12,6 +12,20 @@ public class POJOValue {
     String Company_name;
     String Company_category_name;
 
+    //For Classifieds
+    String Classifieds_Category_Name;
+    String Classifieds_Category_ID;
+
+    String Classifieds_id;
+    String Classifieds_name;
+    String Classifieds_area;
+    String Classifieds_description;
+    String Classifieds_contact_person_mobile;
+    String Classifieds_image;
+    String Contact_person_email;
+    String Classifieds_amount;
+
+    //Category Details POJO
     String company_city;
     String company_contact_person;
     String company_mobile2;
@@ -255,6 +269,22 @@ public class POJOValue {
         this.company_landmark = company_landmark;
     }
 
+    public String getClassifieds_Category_Name() {
+        return Classifieds_Category_Name;
+    }
+
+    public void setClassifieds_Category_Name(String classifieds_Category_Name) {
+        Classifieds_Category_Name = classifieds_Category_Name;
+    }
+
+    public String getClassifieds_Category_ID() {
+        return Classifieds_Category_ID;
+    }
+
+    public void setClassifieds_Category_ID(String classifieds_Category_ID) {
+        Classifieds_Category_ID = classifieds_Category_ID;
+    }
+
     String company_landmark;
 
     public String getCompany_category_name() {
@@ -465,8 +495,74 @@ public class POJOValue {
         MessageNoSuccess = messageNoSuccess;
     }
 
+    public String getClassifieds_id() {
+        return Classifieds_id;
+    }
+
+    public void setClassifieds_id(String classifieds_id) {
+        Classifieds_id = classifieds_id;
+    }
+
+
+    public String getClassifieds_name() {
+        return Classifieds_name;
+    }
+
+    public void setClassifieds_name(String classifieds_name) {
+        Classifieds_name = classifieds_name;
+    }
+
+    public String getClassifieds_area() {
+        return Classifieds_area;
+    }
+
+    public void setClassifieds_area(String classifieds_area) {
+        Classifieds_area = classifieds_area;
+    }
+
+    public String getClassifieds_description() {
+        return Classifieds_description;
+    }
+
+    public void setClassifieds_description(String classifieds_description) {
+        Classifieds_description = classifieds_description;
+    }
+
+    public String getClassifieds_contact_person_mobile() {
+        return Classifieds_contact_person_mobile;
+    }
+
+    public void setClassifieds_contact_person_mobile(String classifieds_contact_person_mobile) {
+        Classifieds_contact_person_mobile = classifieds_contact_person_mobile;
+    }
+
+    public String getClassifieds_image() {
+        return Classifieds_image;
+    }
+
+    public void setClassifieds_image(String classifieds_image) {
+        Classifieds_image = classifieds_image;
+    }
+
+    public String getContact_person_email() {
+        return Contact_person_email;
+    }
+
+    public void setContact_person_email(String contact_person_email) {
+        Contact_person_email = contact_person_email;
+    }
+
+    public String getClassifieds_amount() {
+        return Classifieds_amount;
+    }
+
+    public void setClassifieds_amount(String classifieds_amount) {
+        Classifieds_amount = classifieds_amount;
+    }
+
     public boolean isMessageNoSuccess() {
         return MessageNoSuccess;
     }
+
 
 }

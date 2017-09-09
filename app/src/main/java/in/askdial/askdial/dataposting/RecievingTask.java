@@ -13,6 +13,8 @@ import in.askdial.askdial.adapter.MainFragmentAdapter;
 import in.askdial.askdial.adapter.MasterFragmentAdapter;
 import in.askdial.askdial.adapter.SearchedCategoryAdapter;
 import in.askdial.askdial.adapter.ViewdCategoryAdapter;
+import in.askdial.askdial.adapter.classifiedsAdapter.ClassifiedCategory_ListAdapter;
+import in.askdial.askdial.adapter.classifiedsAdapter.ClassifiedsCategoryAdapter;
 import in.askdial.askdial.values.POJOValue;
 
 import static android.content.ContentValues.TAG;
@@ -23,11 +25,11 @@ import static android.content.ContentValues.TAG;
 
 public class RecievingTask {
 
-    String CATEGORIES_URL = DataApi.VIEW_ALL_CATEGORIES_URL;
-    String LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
-    POJOValue pojoValue;
+    //String CATEGORIES_URL = DataApi.VIEW_ALL_CATEGORIES_URL;
+   // String LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
+    //POJOValue pojoValue;
 
-
+    //Receving all Category Listings
     public void CategoryDetails(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
                                 MainFragmentAdapter adapters) {
         // HttpHandler sh = new HttpHandler();
@@ -65,6 +67,94 @@ public class RecievingTask {
                         // categoryName.put("id", id);
                         // categoryName.put("id", jsonArray.getString(Integer.parseInt("first_level_category_id")));
                         // adding contact to contact list*/
+                    }
+                }
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    //
+    //Receving all Classifieds Categories
+    public void ClassifiedsCategoryDetails(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
+                                ClassifiedsCategoryAdapter adapters) {
+        // HttpHandler sh = new HttpHandler();
+        // Making a request to url and getting response
+        //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
+        //  Log.e(TAG, "Response from url: " + jsonStr);
+
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String Status = jo.getString("message");
+                    //  pojoValue.setMessageSuccess(true);
+                    if (Status.equals("Success")) {
+                        Log.e(TAG, "Connect for fetching from server.");
+
+                        pojoValue.setCategory_found(true);
+                        pojoValue = new POJOValue();
+
+                        String Category_Name = jo.getString("classifieds_category_name");
+                        pojoValue.setClassifieds_Category_Name(Category_Name);
+
+                        String Category_id = jo.getString("classifieds_category_id");
+                        pojoValue.setClassifieds_Category_ID(Category_id);
+                        arrayList.add(pojoValue);
+
+                        adapters.notifyDataSetChanged();
+                        // String name = jo.getString("first_level_category_name");
+
+                      /*  // String id= jo.getString("first_level_category_id");
+                        HashMap<String, String> categoryName = new HashMap<>();
+                        // adding each child node to HashMap key => value
+                        categoryName.put("name", name);
+                        // categoryName.put("id", id);
+                        // categoryName.put("id", jsonArray.getString(Integer.parseInt("first_level_category_id")));
+                        // adding contact to contact list*/
+                    }
+                }
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    //get ALL Classified Category Listing details by sending Category ID
+    public void ByClassifiedCategoryListingDetails(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
+                                         ClassifiedCategory_ListAdapter adapters) {
+        // HttpHandler sh = new HttpHandler();
+        // Making a request to url and getting response
+        //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
+        //  Log.e(TAG, "Response from url: " + jsonStr);
+
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String Status = jo.getString("message");
+                    //  pojoValue.setMessageSuccess(true);
+                    if (Status.equals("Success")) {
+                        Log.e(TAG, "Connect for fetching from server.");
+                        pojoValue.setCategory_found(true);
+                        pojoValue = new POJOValue();
+                        String classifieds_id = jo.getString("classifieds_id");
+                        pojoValue.setClassifieds_id(classifieds_id);
+                        String classifieds_category_name = jo.getString("classifieds_category_name");
+                        pojoValue.setClassifieds_Category_Name(classifieds_category_name);
+                        String classifieds_name = jo.getString("classifieds_name");
+                        pojoValue.setClassifieds_name(classifieds_name);
+                        String classifieds_area = jo.getString("classifieds_area");
+                        pojoValue.setClassifieds_area(classifieds_area);
+                        String contact_person_mobile = jo.getString("contact_person_mobile");
+                        pojoValue.setClassifieds_contact_person_mobile(contact_person_mobile);
+                        String classifieds_description = jo.getString("classifieds_description");
+                        pojoValue.setClassifieds_description(classifieds_description);
+                        arrayList.add(pojoValue);
+                        adapters.notifyDataSetChanged();
                     }
                 }
             }

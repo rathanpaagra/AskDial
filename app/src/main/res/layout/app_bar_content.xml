@@ -128,7 +128,7 @@
                     android:textColor="@color/white"
                     android:cursorVisible="true"
                     android:hint=" Search by Area"
-                    android:inputType="textAutoComplete|text"
+                    android:inputType="text"
                     android:textSize="18dp"
                     android:textStyle="normal" />
 

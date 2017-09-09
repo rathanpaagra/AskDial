@@ -67,7 +67,9 @@ import in.askdial.askdial.dataposting.DataApi;
 import in.askdial.askdial.fragments.AboutUSFragment;
 import in.askdial.askdial.fragments.ContactUSFragment;
 import in.askdial.askdial.fragments.HomeFragment;
+import in.askdial.askdial.fragments.classifieds.ClassifiedsCategory;
 import in.askdial.askdial.fragments.search.SearchFragment;
+import in.askdial.askdial.fragments.viewmoreCategories.MainFragment;
 import in.askdial.askdial.services.CategoriesServices;
 import in.askdial.askdial.services.CityServices;
 import in.askdial.askdial.values.FunctionCalls;
@@ -349,6 +351,17 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
             }
         });
 
+        search_autocompletetextview.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                boolean handled = false;
+                if (i == EditorInfo.IME_ACTION_NEXT) {
+                    search_editext1.requestFocus();
+                    handled = true;
+                }
+                return handled;
+            }
+        });
         ivClearSearchText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -387,7 +400,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
 
     public void Spinneritem() {
 
-        areaArrayList.add(0,"All");
+        //areaArrayList.add(0,"All");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, areaArrayList);
         search_autocompletetextview.setDropDownBackgroundResource(R.color.white);
@@ -593,15 +606,13 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         if (id == R.id.nav_bussinessDirectory) {
-           /* FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.container_main, new BussinessDirectoryFragment()).commit();*/
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.container_main, new HomeFragment()).addToBackStack(null).commit();
+            fragmentTransaction.replace(R.id.container_main, new MainFragment()).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_Classifieds) {
             if (FunctionCalls.isInternetOn(CategoryActivity.this)) {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.container_main, new HomeFragment()).addToBackStack(null).commit();
+                fragmentTransaction.replace(R.id.container_main, new ClassifiedsCategory()).addToBackStack(null).commit();
             } else {
                 Toast.makeText(this, "Please turn on the Internet", Toast.LENGTH_SHORT).show();
             }
