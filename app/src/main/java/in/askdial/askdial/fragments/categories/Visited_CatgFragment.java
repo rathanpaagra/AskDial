@@ -59,6 +59,7 @@ public class Visited_CatgFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(masterFragmentAdapter);
+        //masterFragmentAdapter.notifyItemRangeChanged(0, masterFragmentAdapter.getItemCount());
         return view;
     }
 

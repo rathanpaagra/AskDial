@@ -55,6 +55,7 @@ public class Listing_Category_DetailsFragment extends Fragment {
     LinearLayout linearLayout_company_area,linearLayout_company_city,linearLayout__company_contact_details,linearLayout_company_contact_person,
             linearLayout_company_mobile, linearLayout_company_mobile1, linearLayout_company_mobile2,linearLayout_company_adress,linearLayout_company_email,linearLayout_company_website,linearLayout_company_landline,
             linearLayout_company_fax,linearLayout_company_tollfree,linearLayout_company_landmark,linearLayout_company_pincode;
+    LinearLayout linearlayout_loading_bar,linear_layout_logo,linear_layout_company_name_call,linear_layout_comapny_details;
 
     View style1,style2,style3,style4,style5,style6,style7,style8,style9;
 
@@ -84,16 +85,11 @@ public class Listing_Category_DetailsFragment extends Fragment {
         task = new ConnectingTask();
         pojoValue=new POJOValue();
         progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loading_bar);
-        //comapany details
-        //details to intent
 
-       // new GetListings(list_id).execute();
-        ConnectingTask.GetListings login = task.new GetListings(list_id, pojoValue);
-        login.execute();
-        progressBar.setVisibility(View.VISIBLE);
-        //dialog = ProgressDialog.show(getActivity(), "", "Please Wait...", true);
-        //dialog.setCancelable(true);
-        ListThread();
+        linearlayout_loading_bar= (LinearLayout) view.findViewById(R.id.linearlayout_loading_bar);
+        linear_layout_logo= (LinearLayout) view.findViewById(R.id.linear_layout_logo);
+        linear_layout_company_name_call= (LinearLayout) view.findViewById(R.id.linear_layout_company_name_call);
+        linear_layout_comapny_details= (LinearLayout) view.findViewById(R.id.linear_layout_comapny_details);
 
         //Initialization
         tv_comapny_name= (TextView) view.findViewById(R.id.tv_listing_company_name);
@@ -138,8 +134,21 @@ public class Listing_Category_DetailsFragment extends Fragment {
         style7=view.findViewById(R.id.d7);
         style8=view.findViewById(R.id.d8);
         style9=view.findViewById(R.id.d9);
-        // button Calling
 
+       // new GetListings(list_id).execute();
+        ConnectingTask.GetListings login = task.new GetListings(list_id, pojoValue);
+        login.execute();
+        linearlayout_loading_bar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+        linear_layout_logo.setVisibility(View.GONE);
+        linear_layout_company_name_call.setVisibility(View.GONE);
+        linear_layout_comapny_details.setVisibility(View.GONE);
+
+        //dialog = ProgressDialog.show(getActivity(), "", "Please Wait...", true);
+        //dialog.setCancelable(true);
+        ListThread();
+
+        // button Calling
         button_call= (Button) view.findViewById(R.id.btn_calling);
         button_call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -215,7 +224,11 @@ public class Listing_Category_DetailsFragment extends Fragment {
                 try {
                     if (pojoValue.isListingbyIdRecivedSuccess()) {
                         pojoValue.setListingbyIdRecivedSuccess(false);
+                        linearlayout_loading_bar.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
+                        linear_layout_logo.setVisibility(View.VISIBLE);
+                        linear_layout_company_name_call.setVisibility(View.VISIBLE);
+                        linear_layout_comapny_details.setVisibility(View.VISIBLE);
                         //dialog.dismiss();
                         Successview();
                         mythread.interrupt();

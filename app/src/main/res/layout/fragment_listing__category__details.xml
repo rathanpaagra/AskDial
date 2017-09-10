@@ -5,11 +5,17 @@
     android:layout_height="match_parent"
     tools:context="in.askdial.askdial.fragments.categories.Listing_Category_DetailsFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/linearlayout_loading_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/loading_bar"
             android:layout_width="50dp"
@@ -18,8 +24,9 @@
             android:layout_gravity="center"
             app:indicator="LineScaleParty"
             app:indicator_color="#F53700" />
-
-        <RelativeLayout
+    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_layout_logo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp">
@@ -37,9 +44,10 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:drawableLeft="@drawable/ic_go_back_icon" />-->
-        </RelativeLayout>
+        </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear_layout_company_name_call"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -184,6 +192,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear_layout_comapny_details"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
