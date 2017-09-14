@@ -3,7 +3,10 @@ package in.askdial.askdial.fragments.categories;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -35,6 +38,9 @@ public class Visited_CatgFragment extends Fragment {
     String Category;
     private AVLoadingIndicatorView progressBar;
 
+
+    private static final String LIST_STATE = "listState";
+    private Parcelable mListState = null;
     public Visited_CatgFragment() {
         // Required empty public constructor
     }

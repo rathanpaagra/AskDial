@@ -67,11 +67,7 @@ public class ClassifiedsCategory extends Fragment {
         checkVisitors.execute();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-
         recyclerView.setAdapter(mainFragmentAdapter);
-
-
-
         return view;
     }
 

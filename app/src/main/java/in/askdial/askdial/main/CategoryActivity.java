@@ -254,7 +254,6 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         layout.setFocusable(true);
         layout.setFocusableInTouchMode(true);
 
-
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -565,6 +564,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         }
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

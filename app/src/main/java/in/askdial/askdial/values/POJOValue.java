@@ -20,12 +20,42 @@ public class POJOValue {
     String Classifieds_name;
     String Classifieds_area;
     String Classifieds_description;
+
+    public String getClassifieds_contact_person_Name() {
+        return Classifieds_contact_person_Name;
+    }
+
+    public void setClassifieds_contact_person_Name(String classifieds_contact_person_Name) {
+        Classifieds_contact_person_Name = classifieds_contact_person_Name;
+    }
+
     String Classifieds_contact_person_mobile;
+    String Classifieds_contact_person_Name;
     String Classifieds_image;
-    String Contact_person_email;
+    String Classified_Contact_person_email;
     String Classifieds_amount;
 
+    private boolean Classified_ListingbyIdRecivedSuccess;
+    private boolean Classified_ListingbyIdRecivedFailure;
+
     //Category Details POJO
+
+    public boolean isClassified_ListingbyIdRecivedSuccess() {
+        return Classified_ListingbyIdRecivedSuccess;
+    }
+
+    public void setClassified_ListingbyIdRecivedSuccess(boolean classified_ListingbyIdRecivedSuccess) {
+        Classified_ListingbyIdRecivedSuccess = classified_ListingbyIdRecivedSuccess;
+    }
+
+    public boolean isClassified_ListingbyIdRecivedFailure() {
+        return Classified_ListingbyIdRecivedFailure;
+    }
+
+    public void setClassified_ListingbyIdRecivedFailure(boolean classified_ListingbyIdRecivedFailure) {
+        Classified_ListingbyIdRecivedFailure = classified_ListingbyIdRecivedFailure;
+    }
+
     String company_city;
     String company_contact_person;
     String company_mobile2;
@@ -544,12 +574,12 @@ public class POJOValue {
         Classifieds_image = classifieds_image;
     }
 
-    public String getContact_person_email() {
-        return Contact_person_email;
+    public String getClassified_Contact_person_email() {
+        return Classified_Contact_person_email;
     }
 
-    public void setContact_person_email(String contact_person_email) {
-        Contact_person_email = contact_person_email;
+    public void setClassified_Contact_person_email(String classified_Contact_person_email) {
+        Classified_Contact_person_email = classified_Contact_person_email;
     }
 
     public String getClassifieds_amount() {

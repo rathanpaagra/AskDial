@@ -72,16 +72,50 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
     public MasterFragmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_category, parent, false);
         MasterFragmentViewHolder viewHolder = new MasterFragmentViewHolder(view);
+
+        viewHolder.setIsRecyclable(false);;
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(MasterFragmentViewHolder holder, int position) {
         POJOValue pojoValue = arrayList.get(position);
+
+      /*  tv_comapny_name=pojoValue.getClassifieds_name();
+        if(tv_comapny_name != ""){
+            holder.textView_company_name.setVisibility(View.VISIBLE);
+            holder.textView_company_name.setText(tv_comapny_name);
+        }*/
+
+        tv_company_area=pojoValue.getCompany_area();
+        if(!tv_company_area.equals("")){
+            holder.textView_company_area.setVisibility(View.VISIBLE);
+            holder.textView_company_area.setText(tv_company_area);
+        }else{
+            holder.textView_company_area.setVisibility(View.GONE);
+
+        }
+
+        tv_company_mobile1=pojoValue.getCompany_mobile1();
+        if(!tv_company_mobile1.equals("")){
+            holder.textView_company_mobile.setVisibility(View.VISIBLE);
+            holder.textView_company_mobile.setText(tv_company_mobile1);
+        }else{
+            holder.textView_company_mobile.setVisibility(View.GONE);
+        }
+
+        tv_company_email=pojoValue.getCompany_email();
+        if(!tv_company_email.equals("")){
+            holder.textView_company_email.setVisibility(View.VISIBLE);
+            holder.textView_company_email.setText(tv_company_email);
+        }else{
+            holder.textView_company_email.setVisibility(View.GONE);
+        }
+
         holder.textView_company_name.setText(pojoValue.getCompany_name());
-        holder.textView_company_area.setText(pojoValue.getCompany_area());
-        holder.textView_company_mobile.setText(pojoValue.getCompany_mobile1());
-        holder.textView_company_email.setText(pojoValue.getCompany_email());
+        //holder.textView_company_area.setText(pojoValue.getCompany_area());
+        //holder.textView_company_mobile.setText(pojoValue.getCompany_mobile1());
+        //holder.textView_company_email.setText(pojoValue.getCompany_email());
 
     }
 
@@ -113,7 +147,7 @@ public class MasterFragmentAdapter extends RecyclerView.Adapter<MasterFragmentAd
             //new GetListings(lisiting_id, content).execute();
             String lisiting_category_name = content.getCompany_category_name();
             tv_comapny_name=content.getCompany_name();
-            tv_company_email=content.getCompany_area();
+            tv_company_area=content.getCompany_area();
             tv_company_mobile1=content.getCompany_mobile1();
             tv_company_email=content.getCompany_email();
             arrayList.clear();

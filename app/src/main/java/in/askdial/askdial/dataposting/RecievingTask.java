@@ -163,6 +163,87 @@ public class RecievingTask {
         }
     }
 
+    //Recieve All Classified Listing Details by sending Listing ID
+    public void ReciveClassifiedListingDetails(String result, POJOValue details) {
+
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String Status = jo.getString("message");
+                    //  pojoValue.setMessageSuccess(true);
+                    if (Status.equals("Success")) {
+                        Log.e(TAG, "Connect for fetching from server.");
+
+                        //details = new POJOValue();
+                        details.setClassified_ListingbyIdRecivedSuccess(true);
+
+                        String tv_cls_name = jo.getString("classifieds_name");
+                        details.setClassifieds_name(tv_cls_name);
+                        String tv_cls_area = jo.getString("classifieds_area");
+                        details.setClassifieds_area(tv_cls_area);
+                        String tv_cls_mail = jo.getString("contact_person_email");
+                        details.setClassified_Contact_person_email(tv_cls_mail);
+                        String tv_cls_contact_person_mob = jo.getString("contact_person_mobile");
+                        details.setClassifieds_contact_person_mobile(tv_cls_contact_person_mob);
+
+                        String tv_cls_description = jo.getString("classifieds_description");
+                        details.setClassifieds_description(tv_cls_description);
+                        String tv_cls_person_name = jo.getString("contact_person_name");
+                        details.setClassifieds_contact_person_Name(tv_cls_person_name);
+                        String tv_cls_amount = jo.getString("classifieds_amount");
+                        details.setClassifieds_amount(tv_cls_amount);
+                        String tv_cls_category_name = jo.getString("classifieds_category_name");
+                        details.setClassifieds_Category_Name(tv_cls_category_name);
+
+                    } else {
+
+                        details.setClassified_ListingbyIdRecivedFailure(true);
+                    }
+                        /*String tv_company_mobile1 = jo.getString("category_mobile1");
+                        details.setCompany_mobile1(tv_company_mobile1);
+                        String tv_company_website = jo.getString("category_website");
+                        details.setCompany_website(tv_company_website);
+                        String tv_company_mobile2 = jo.getString("category_mobile2");
+                        details.setCompany_mobile2(tv_company_mobile2);
+
+                        String tv_company_landline = jo.getString("category_landline");
+                        details.setCompany_landline(tv_company_landline);
+                        String tv_company_fax = jo.getString("category_fax");
+                        details.setCompany_fax(tv_company_fax);
+                        String tv_company_toll_free = jo.getString("category_tollfree");
+                        details.setCompany_toll_free(tv_company_toll_free);
+                        String tv_company_city = jo.getString("city_name");
+                        details.setCompany_city(tv_company_city);
+                        String tv_company_landmark = jo.getString("company_landmark");
+                        details.setCompany_landmark(tv_company_landmark);
+                        String tv_company_pincode = jo.getString("category_pincode");
+                        details.setCompany_pincode(tv_company_pincode);
+                        String tv_company_address = jo.getString("company_address");
+                        details.setCompany_address(tv_company_address);*/
+
+                      /*  s_comapny_name=bundle.getString("company_name");
+                        s_company_email=bundle.getString("company_email");
+                        s_company_website=bundle.getString("category_website");
+                        s_company_mobile1=bundle.getString("category_mobile1");
+                        s_company_mobile2=bundle.getString("category_mobile2");
+                        s_company_contact_person=bundle.getString("category_contact_person");
+                        s_company_landline=bundle.getString("category_landline");
+                        s_company_fax=bundle.getString("category_fax");
+                        s_company_toll_free=bundle.getString("category_tollfree");
+                        s_company_area=bundle.getString("company_area");
+                        s_company_city=bundle.getString("city_name");
+                        s_company_landmark=bundle.getString("company_landmark");
+                        s_company_pincode=bundle.getString("category_pincode");
+                        s_company_address=bundle.getString("company_address");*/
+
+                }
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+    }
     //getSearch
     public void GetSearchDetails(String result, POJOValue details, HashSet<String> hashSet) {
         ArrayList<String> list = new ArrayList<>();

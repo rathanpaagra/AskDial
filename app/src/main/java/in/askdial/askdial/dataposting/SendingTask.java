@@ -197,6 +197,22 @@ public class SendingTask {
         }
         return response;
     }
+
+    //
+
+    // Sending Classfied  Listing Id to get Details
+    public String sendClassifiedListing_id(String listing_id) {
+        String response = "";
+        HashMap<String, String> datamap = new HashMap<>();
+        datamap.put("classifieds_id", listing_id);
+
+        try {
+            response = UrlPostConnection("Classifieds/view_all", datamap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
     //senging listing by id
     public String sendListing_id(String listing_id) {
         String response = "";

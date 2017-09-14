@@ -67,7 +67,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
+            android:layout_marginLeft="1dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -92,21 +92,22 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textview_company_name"
+                    android:id="@+id/cls_textview_company_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="@id/imageView"
                     android:layout_toRightOf="@id/imageView"
                     android:hint="askdial"
-                    android:textColorHint="@color/colorAccent"
-                    android:textColor="@color/colorAccent"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent"
                     android:textSize="21dp"
                     android:textStyle="bold" />
 
+
                 <TextView
-                    android:id="@+id/textview_company_area"
+                    android:id="@+id/cls_textview_company_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="@id/imageView"
@@ -119,27 +120,33 @@
                     android:textSize="19dp" />
 
                 <TextView
-                    android:id="@+id/textview_company_mobile"
+                    android:id="@+id/cls_textview_company_mobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="@id/imageView"
                     android:layout_below="@id/textview_company_area"
                     android:layout_toRightOf="@id/imageView"
-                    android:hint="9164540000"
-                    android:textStyle="bold"
+                    android:hint="9123456789"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textview_company_email"
+                    android:id="@+id/cls_textview_company_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="@id/imageView"
                     android:layout_below="@id/textview_company_mobile"
                     android:layout_toRightOf="@id/imageView"
-                    android:hint="askdial.com "
+                    android:ellipsize="end"
+                    android:hint="xyz.com"
+
+                    android:maxEms="8"
+                    android:maxLines="2"
                     android:paddingLeft="10dp"
+                    android:textAlignment="viewStart"
+
                     android:textSize="18dp" />
 
 

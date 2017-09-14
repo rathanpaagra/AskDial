@@ -35,6 +35,7 @@ import javax.net.ssl.HttpsURLConnection;
 import in.askdial.askdial.R;
 import in.askdial.askdial.dataposting.DataApi;
 import in.askdial.askdial.fragments.categories.Listing_Category_DetailsFragment;
+import in.askdial.askdial.fragments.classifieds.ClassifiedsCat_List_Details;
 import in.askdial.askdial.fragments.classifieds.ClassifiedsCat_Listings;
 import in.askdial.askdial.values.FunctionCalls;
 import in.askdial.askdial.values.POJOValue;
@@ -70,7 +71,7 @@ public class ClassifiedCategory_ListAdapter extends RecyclerView.Adapter<Classif
 
     @Override
     public MasterFragmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_category, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_classfieds, parent, false);
         MasterFragmentViewHolder viewHolder = new MasterFragmentViewHolder(view);
         return viewHolder;
     }
@@ -78,22 +79,23 @@ public class ClassifiedCategory_ListAdapter extends RecyclerView.Adapter<Classif
     @Override
     public void onBindViewHolder(MasterFragmentViewHolder holder, int position) {
         POJOValue pojoValue = arrayList.get(position);
+
         /*cls_comapny_name=pojoValue.getClassifieds_name();
         if(cls_comapny_name != ""){
             holder.textView_classified_name.setVisibility(View.VISIBLE);
             holder.textView_classified_name.setText(cls_comapny_name);
         }*/
-        cls_company_area=pojoValue.getCompany_area();
-        if(cls_company_area != null){
+        cls_company_area=pojoValue.getClassifieds_area();
+
+        if(!cls_company_area.equals("") ){
             holder.textView_classifieds_area.setVisibility(View.VISIBLE);
             holder.textView_classifieds_area.setText(cls_company_area);
         }else{
             holder.textView_classifieds_area.setVisibility(View.GONE);
-
         }
 
         cls_company_contact_person=pojoValue.getClassifieds_contact_person_mobile();
-        if(cls_company_contact_person != null){
+        if(!cls_company_contact_person.equals("")){
             holder.textView_cls_person_mobile.setVisibility(View.VISIBLE);
             holder.textView_cls_person_mobile.setText(cls_company_contact_person);
         }else{
@@ -101,18 +103,18 @@ public class ClassifiedCategory_ListAdapter extends RecyclerView.Adapter<Classif
         }
 
         cls_classifieds_description=pojoValue.getClassifieds_description();
-        if(cls_classifieds_description != null){
-       // if(!cls_classifieds_description.equals("")){
+       // if(cls_classifieds_description != null){
+        if(!cls_classifieds_description.equals("")){
             holder.textView_classified_description.setVisibility(View.VISIBLE);
             holder.textView_classified_description.setText(cls_classifieds_description);
         }else{
             holder.textView_classified_description.setVisibility(View.GONE);
         }
 
-       holder.textView_classified_name.setText(pojoValue.getClassifieds_name());
-        // holder.textView_classifieds_area.setText(pojoValue.getClassifieds_area());
+        holder.textView_classified_name.setText(pojoValue.getClassifieds_name());
+        //holder.textView_classifieds_area.setText(pojoValue.getClassifieds_area());
         //holder.textView_cls_person_mobile.setText(pojoValue.getClassifieds_contact_person_mobile());
-        //holder.textView_classified_description.setText(pojoValue.getClassifieds_description());
+        //older.textView_classified_description.setText(pojoValue.getClassifieds_description());
 
     }
 
@@ -127,10 +129,10 @@ public class ClassifiedCategory_ListAdapter extends RecyclerView.Adapter<Classif
         public MasterFragmentViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            textView_classified_name = (TextView) itemView.findViewById(R.id.textview_company_name);
-            textView_classifieds_area = (TextView) itemView.findViewById(R.id.textview_company_area);
-            textView_cls_person_mobile = (TextView) itemView.findViewById(R.id.textview_company_mobile);
-            textView_classified_description = (TextView) itemView.findViewById(R.id.textview_company_email);
+            textView_classified_name = (TextView) itemView.findViewById(R.id.cls_textview_company_name);
+            textView_classifieds_area = (TextView) itemView.findViewById(R.id.cls_textview_company_area);
+            textView_cls_person_mobile = (TextView) itemView.findViewById(R.id.cls_textview_company_mobile);
+            textView_classified_description = (TextView) itemView.findViewById(R.id.cls_textview_company_email);
 
         }
 
@@ -148,13 +150,14 @@ public class ClassifiedCategory_ListAdapter extends RecyclerView.Adapter<Classif
             cls_classifieds_description=content.getClassifieds_description();
             cls_company_contact_person=content.getClassifieds_contact_person_mobile();
             cls_company_area=content.getClassifieds_area();
-            arrayList.clear();
-            Listing_Category_DetailsFragment fragment = new Listing_Category_DetailsFragment();
+
+            ClassifiedsCat_List_Details fragment = new ClassifiedsCat_List_Details();
             Bundle bundle = new Bundle();
             FragmentTransaction fragmentTransaction = viewedtgFragment.getActivity().getSupportFragmentManager().beginTransaction();
             bundle.putString("listing_id", Classified_id);
             bundle.putString("listing_category_name", lisiting_category_name);
             fragment.setArguments(bundle);
+            arrayList.clear();
             fragmentTransaction.replace(R.id.container_main, fragment).addToBackStack(null).commit();
 
             //region intenting all fields (right now not using it)

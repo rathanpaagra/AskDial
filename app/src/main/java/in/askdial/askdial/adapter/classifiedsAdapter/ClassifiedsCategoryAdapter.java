@@ -43,7 +43,7 @@ public class ClassifiedsCategoryAdapter extends RecyclerView.Adapter<Classifieds
     @Override
     public MainFragmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_view_more, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_classifieds, parent, false);
         MainFragmentViewHolder viewHolder = new MainFragmentViewHolder(view);
         return viewHolder;
     }
@@ -71,7 +71,7 @@ public class ClassifiedsCategoryAdapter extends RecyclerView.Adapter<Classifieds
         public MainFragmentViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            tvhead = (TextView) itemView.findViewById(R.id.textView_cat_name);
+            tvhead = (TextView) itemView.findViewById(R.id.textView_cls_cat_name);
             /*tvcontent = (TextView) itemView.findViewById(R.id.departmentcontent);*/
            //categoryimage = (ImageView) itemView.findViewById(R.id.cat_image);
         }
