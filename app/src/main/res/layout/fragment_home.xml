@@ -1,417 +1,718 @@
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@color/black_trans80">
 
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/black_trans80"
+        android:background="@color/amber"
         android:orientation="vertical">
+        <!--style_color_accent-->
+        <!--android:background="@color/black_trans80"-->
 
-        <LinearLayout
-            android:layout_width="fill_parent"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            //Onclick cardview site showing form
-            <!-- <android.support.v7.widget.CardView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_gravity="center"
-                 android:layout_marginLeft="5dp"
-                 android:layout_marginRight="5dp"
-                 android:layout_marginTop="5dp"
-                 app:cardCornerRadius="5dp">
-
-                 <LinearLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="120dp"
-                     android:orientation="horizontal"
-                     android:visibility="gone"
-                     android:weightSum="3">
-
-                     <ImageView
-                         android:id="@+id/imgView1"
-                         android:layout_width="109dp"
-                         android:layout_height="match_parent"
-                         android:layout_marginLeft="5dp"
-                         android:layout_marginRight="5dp"
-                         android:layout_weight="1"
-                         android:src="@drawable/prajwal_marketing"
-                         android:text="Prajwal Marketing"
-
-                         android:textColor="@color/blue700"
-                         tools:background="@android:color/holo_orange_light"></ImageView>
-
-                     &lt;!&ndash;<ImageView
-                         android:id="@+id/imgView1"
-                         android:layout_width="125dp"
-                         android:src="@drawable/prajwal_marketing"
-
-                         android:layout_height="match_parent"
-                         android:text="Prajwal Marketing"
-                         android:textColor="@color/blue700"
-                         tools:background="@android:color/holo_orange_light"></ImageView>&ndash;&gt;
-
-                     <ImageView
-                         android:id="@+id/imgView2"
-                         android:layout_width="109dp"
-                         android:layout_height="match_parent"
-
-                         android:layout_marginLeft="5dp"
-                         android:layout_marginRight="5dp"
-                         android:layout_weight="1"
-                         android:src="@drawable/celebrate_parlours"
-                         android:text="Celebratelife"
-
-                         android:textColor="@color/blue700"
-                         tools:background="@android:color/holo_orange_light">
-
-                     </ImageView>
-
-                     <ImageView
-                         android:id="@+id/imgView3"
-                         android:layout_width="110dp"
-                         android:layout_height="match_parent"
-                         android:layout_marginLeft="5dp"
-                         android:layout_marginRight="5dp"
-                         android:layout_weight="0.90"
-                         android:src="@drawable/ascent_elevators"
-                         android:text="Ascent"
-
-                         android:textColor="@color/blue700"
-                         tools:background="@android:color/holo_orange_light">
-
-                     </ImageView>
-
-                     <ImageView
-                         android:id="@+id/imgView4"
-                         android:layout_width="109dp"
-                         android:layout_height="match_parent"
-                         android:layout_marginLeft="5dp"
-                         android:layout_marginRight="5dp"
-                         android:layout_weight="1"
-                         android:src="@drawable/rajalakshmi_logo"
-                         android:text="RajaLaxmi"
-                         android:textColor="@color/blue700"
-                         tools:background="@android:color/holo_orange_light">
-
-                     </ImageView>
-
-                 </LinearLayout>
-
-             </android.support.v7.widget.CardView>-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:text="Premium Listings"
-                android:textSize="15dp" />
-
-            <com.daimajia.slider.library.SliderLayout
-                android:id="@+id/slider"
-                android:layout_width="fill_parent"
-                android:layout_height="190dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="3dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:text="Most Visited Categories"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/textView_viewmore1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="8dp"
-                    android:text="More..."
-                    android:textColor="@color/blue"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <HorizontalScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp">
-
-                <LinearLayout
-                    android:id="@+id/ll_mostvisited"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/btn_properties"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="2dp"
-                            android:background="@drawable/home" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:text="Property"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="15dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/btn_Food"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="2dp"
-                            android:background="@drawable/food" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:text="Food"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:textSize="15dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/btn_Movie"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="2dp"
-                            android:background="@drawable/movie" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:text="Movie"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:textSize="15dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/btn_Automotive"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="2dp"
-                            android:background="@drawable/automotive"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:text="Automotive"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:textSize="15dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/btn_Shoping"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="2dp"
-                            android:background="@drawable/shoping" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:text="Shopping"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:textSize="15dp" />
-                    </LinearLayout>
-
-
-                </LinearLayout>
-            </HorizontalScrollView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/white"
-            android:orientation="vertical">
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="10dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="3dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="8dp"
-                    android:paddingLeft="10dp"
-                    android:text="Search Categories"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/textView_viewmore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="8dp"
-                    android:text="More..."
-                    android:textColor="@color/blue"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview_title1"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="@color/white">
-
-            </android.support.v7.widget.RecyclerView>
-
-            //button view more
-            <!--<Button
-                android:id="@+id/button_view_more"
-                android:layout_width="150dp"
-                android:layout_height="41dp"
-                android:layout_gravity="end"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/buttonpressed_rect_card"
-                android:text="View More..."
-                android:textColor="@color/black" />-->
-
-
-            <!--  <android.support.v7.widget.CardView
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:layout_gravity="center"
-                  android:layout_marginLeft="5dp"
-                  android:layout_marginRight="5dp"
-                  android:layout_marginTop="5dp"
-                  app:cardCornerRadius="5dp">
-
-                  <android.support.v7.widget.RecyclerView
-                      android:id="@+id/recyclerview_title1"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_marginLeft="5dp"
-                      android:layout_marginRight="5dp"
-                      android:layout_marginTop="10dp">
-                      </android.support.v7.widget.RecyclerView>
-              </android.support.v7.widget.CardView>-->
-
-            <TextView
-                android:id="@+id/tv_followus_on"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/buttonpressed"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="Follow Us On"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:background="@color/white"
+                android:orientation="vertical">
 
+                //Onclick cardview site showing form
+                <!-- <android.support.v7.widget.CardView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:layout_marginLeft="5dp"
+                     android:layout_marginRight="5dp"
+                     android:layout_marginTop="5dp"
+                     app:cardCornerRadius="5dp">
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="120dp"
+                         android:orientation="horizontal"
+                         android:visibility="gone"
+                         android:weightSum="3">
+
+                         <ImageView
+                             android:id="@+id/imgView1"
+                             android:layout_width="109dp"
+                             android:layout_height="match_parent"
+                             android:layout_marginLeft="5dp"
+                             android:layout_marginRight="5dp"
+                             android:layout_weight="1"
+                             android:src="@drawable/prajwal_marketing"
+                             android:text="Prajwal Marketing"
+
+                             android:textColor="@color/blue700"
+                             tools:background="@android:color/holo_orange_light"></ImageView>
+
+                         &lt;!&ndash;<ImageView
+                             android:id="@+id/imgView1"
+                             android:layout_width="125dp"
+                             android:src="@drawable/prajwal_marketing"
+
+                             android:layout_height="match_parent"
+                             android:text="Prajwal Marketing"
+                             android:textColor="@color/blue700"
+                             tools:background="@android:color/holo_orange_light"></ImageView>&ndash;&gt;
+
+                         <ImageView
+                             android:id="@+id/imgView2"
+                             android:layout_width="109dp"
+                             android:layout_height="match_parent"
+
+                             android:layout_marginLeft="5dp"
+                             android:layout_marginRight="5dp"
+                             android:layout_weight="1"
+                             android:src="@drawable/celebrate_parlours"
+                             android:text="Celebratelife"
+
+                             android:textColor="@color/blue700"
+                             tools:background="@android:color/holo_orange_light">
+
+                         </ImageView>
+
+                         <ImageView
+                             android:id="@+id/imgView3"
+                             android:layout_width="110dp"
+                             android:layout_height="match_parent"
+                             android:layout_marginLeft="5dp"
+                             android:layout_marginRight="5dp"
+                             android:layout_weight="0.90"
+                             android:src="@drawable/ascent_elevators"
+                             android:text="Ascent"
+
+                             android:textColor="@color/blue700"
+                             tools:background="@android:color/holo_orange_light">
+
+                         </ImageView>
+
+                         <ImageView
+                             android:id="@+id/imgView4"
+                             android:layout_width="109dp"
+                             android:layout_height="match_parent"
+                             android:layout_marginLeft="5dp"
+                             android:layout_marginRight="5dp"
+                             android:layout_weight="1"
+                             android:src="@drawable/rajalakshmi_logo"
+                             android:text="RajaLaxmi"
+                             android:textColor="@color/blue700"
+                             tools:background="@android:color/holo_orange_light">
+
+                         </ImageView>
+
+                     </LinearLayout>
+
+                 </android.support.v7.widget.CardView>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:text="Premium Listings"
+                    android:textSize="15dp" />
+
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/slider"
+                    android:layout_width="fill_parent"
+                    android:layout_height="190dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="10dp"
+                        android:text="Most Visited Categories"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/textView_viewmore1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="8dp"
+                        android:text="More..."
+                        android:textColor="@color/blue"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_mostvisited"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            app:cardCornerRadius="7dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp"
+                                android:layout_marginTop="3dp"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/btn_properties"
+                                    android:layout_width="140dp"
+                                    android:layout_height="86dp"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="2dp"
+                                    android:background="@drawable/properties156_230" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:text="Property"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            app:cardCornerRadius="7dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp"
+                                android:layout_marginTop="3dp"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/btn_Food"
+                                    android:layout_width="140dp"
+                                    android:layout_height="86dp"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="2dp"
+                                    android:background="@drawable/food156_230" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:text="Food"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            app:cardCornerRadius="7dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp"
+                                android:layout_marginTop="3dp"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/btn_Movie"
+                                    android:layout_width="140dp"
+                                    android:layout_height="86dp"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="2dp"
+                                    android:background="@drawable/movies156_230" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:text="Movie"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            app:cardCornerRadius="7dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp"
+                                android:layout_marginTop="3dp"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/btn_Automotive"
+                                    android:layout_width="140dp"
+                                    android:layout_height="86dp"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="2dp"
+                                    android:background="@drawable/auto_parts_4" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:text="Automotive"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            app:cardCornerRadius="7dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp"
+                                android:layout_marginTop="3dp"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/btn_Shoping"
+                                    android:layout_width="140dp"
+                                    android:layout_height="86dp"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="2dp"
+                                    android:background="@drawable/shopping_156_230" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:text="Shopping"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            //Copy 1
+            <!-- <LinearLayout
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="5dp"
+                 android:layout_marginRight="5dp"
+                 android:layout_marginTop="8dp"
+                 android:background="@color/white"
+                 android:orientation="vertical">
+
+                 <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:layout_marginBottom="3dp">
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="left"
+                         android:layout_marginTop="10dp"
+                         android:paddingLeft="10dp"
+                         android:text="Most Visited Categories"
+                         android:textSize="15dp" />
+
+                     <TextView
+                         android:id="@+id/textView_viewmore1"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_alignParentRight="true"
+                         android:layout_marginRight="10dp"
+                         android:layout_marginTop="8dp"
+                         android:text="More..."
+                         android:textColor="@color/blue"
+                         android:textSize="15dp"
+                         android:textStyle="bold" />
+                 </RelativeLayout>
+
+                 <HorizontalScrollView
+                     android:layout_width="wrap_content"
+                     android:layout_height="match_parent"
+                     android:layout_marginTop="10dp">
+
+                     <LinearLayout
+                         android:id="@+id/ll_mostvisited"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginBottom="10dp"
+                         android:layout_marginTop="5dp"
+                         android:gravity="center"
+                         android:orientation="horizontal">
+
+                         <LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginBottom="3dp"
+                             android:layout_marginLeft="3dp"
+                             android:layout_marginRight="3dp"
+                             android:layout_marginTop="3dp"
+                             android:orientation="vertical">
+
+                             <Button
+                                 android:id="@+id/btn_properties"
+                                 android:layout_width="90dp"
+                                 android:layout_height="90dp"
+                                 android:layout_marginLeft="6dp"
+                                 android:layout_marginRight="2dp"
+                                 android:background="@drawable/home" />
+
+                             <TextView
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="match_parent"
+                                 android:layout_gravity="center"
+                                 android:text="Property"
+                                 android:textColor="@color/black"
+                                 android:textSize="15dp"
+                                 android:textStyle="bold" />
+                         </LinearLayout>
+
+                         <LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginBottom="3dp"
+                             android:layout_marginLeft="3dp"
+                             android:layout_marginRight="3dp"
+                             android:layout_marginTop="3dp"
+                             android:orientation="vertical">
+
+                             <Button
+                                 android:id="@+id/btn_Food"
+                                 android:layout_width="90dp"
+                                 android:layout_height="90dp"
+                                 android:layout_marginLeft="6dp"
+                                 android:layout_marginRight="2dp"
+                                 android:background="@drawable/food" />
+
+                             <TextView
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="match_parent"
+                                 android:layout_gravity="center"
+                                 android:text="Food"
+                                 android:textColor="@color/black"
+                                 android:textSize="15dp"
+                                 android:textStyle="bold" />
+                         </LinearLayout>
+
+                         <LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginBottom="3dp"
+                             android:layout_marginLeft="3dp"
+                             android:layout_marginRight="3dp"
+                             android:layout_marginTop="3dp"
+                             android:orientation="vertical">
+
+                             <Button
+                                 android:id="@+id/btn_Movie"
+                                 android:layout_width="90dp"
+                                 android:layout_height="90dp"
+                                 android:layout_marginLeft="6dp"
+                                 android:layout_marginRight="2dp"
+                                 android:background="@drawable/movie" />
+
+                             <TextView
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="match_parent"
+                                 android:layout_gravity="center"
+                                 android:text="Movie"
+                                 android:textColor="@color/black"
+                                 android:textSize="15dp"
+                                 android:textStyle="bold" />
+                         </LinearLayout>
+
+                         <LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginBottom="3dp"
+                             android:layout_marginLeft="3dp"
+                             android:layout_marginRight="3dp"
+                             android:layout_marginTop="3dp"
+                             android:orientation="vertical">
+
+                             <Button
+                                 android:id="@+id/btn_Automotive"
+                                 android:layout_width="90dp"
+                                 android:layout_height="90dp"
+                                 android:layout_marginLeft="6dp"
+                                 android:layout_marginRight="2dp"
+                                 android:background="@drawable/automotive" />
+
+                             <TextView
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="match_parent"
+                                 android:layout_gravity="center"
+                                 android:text="Automotive"
+                                 android:textColor="@color/black"
+                                 android:textSize="15dp"
+                                 android:textStyle="bold" />
+                         </LinearLayout>
+
+                         <LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginBottom="3dp"
+                             android:layout_marginLeft="3dp"
+                             android:layout_marginRight="3dp"
+                             android:layout_marginTop="3dp"
+                             android:orientation="vertical">
+
+                             <Button
+                                 android:id="@+id/btn_Shoping"
+                                 android:layout_width="90dp"
+                                 android:layout_height="90dp"
+                                 android:layout_marginLeft="6dp"
+                                 android:layout_marginRight="2dp"
+                                 android:background="@drawable/shoping" />
+
+                             <TextView
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="match_parent"
+                                 android:layout_gravity="center"
+                                 android:text="shopping_156_230"
+                                 android:textColor="@color/black"
+                                 android:textSize="15dp"
+                                 android:textStyle="bold" />
+                         </LinearLayout>
+
+
+                     </LinearLayout>
+                 </HorizontalScrollView>
+             </LinearLayout>-->
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:text="Search Categories"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/textView_viewmore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="8dp"
+                        android:text="More..."
+                        android:textColor="@color/blue"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_title1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/white">
+
+                </android.support.v7.widget.RecyclerView>
+
+                //button view more
+                <!--<Button
+                    android:id="@+id/button_view_more"
+                    android:layout_width="150dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/buttonpressed_rect_card"
+                    android:text="View More..."
+                    android:textColor="@color/black" />-->
+
+
+                <!--  <android.support.v7.widget.CardView
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_gravity="center"
+                      android:layout_marginLeft="5dp"
+                      android:layout_marginRight="5dp"
+                      android:layout_marginTop="5dp"
+                      app:cardCornerRadius="5dp">
+
+                      <android.support.v7.widget.RecyclerView
+                          android:id="@+id/recyclerview_title1"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginRight="5dp"
+                          android:layout_marginTop="10dp">
+                          </android.support.v7.widget.RecyclerView>
+                  </android.support.v7.widget.CardView>-->
+
+                <TextView
+                    android:id="@+id/tv_followus_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/buttonpressed"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Follow us on"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
 
         <!--
                 <android.support.v7.widget.CardView

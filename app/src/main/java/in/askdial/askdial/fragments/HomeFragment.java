@@ -132,6 +132,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         checkInternetConnection();
+        arrayList1.clear();
         /*if (getArguments() != null) {
 
             Toast.makeText(getActivity(), getArguments().getString("message"), Toast.LENGTH_SHORT).show();
@@ -200,6 +201,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View v) {
                 String properties = "Property";
+                arrayList1.clear();
                 Visited_CatgFragment visited_catgFragment = new Visited_CatgFragment();
                 Bundle bundle = new Bundle();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -212,6 +214,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View v) {
                 String properties = "Food";
+                arrayList1.clear();
                 Visited_CatgFragment visited_catgFragment = new Visited_CatgFragment();
                 Bundle bundle = new Bundle();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -224,6 +227,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View v) {
                 String properties = "Movie";
+                arrayList1.clear();
                 Visited_CatgFragment visited_catgFragment = new Visited_CatgFragment();
                 Bundle bundle = new Bundle();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -236,6 +240,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View v) {
                 String properties = "Automotive";
+                arrayList1.clear();
                 Visited_CatgFragment visited_catgFragment = new Visited_CatgFragment();
                 Bundle bundle = new Bundle();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -247,7 +252,8 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         button_shopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String properties = "Shopping";
+                String properties = "shopping_156_230";
+                arrayList1.clear();
                 Visited_CatgFragment visited_catgFragment = new Visited_CatgFragment();
                 Bundle bundle = new Bundle();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -301,6 +307,9 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View v) {
                 linearLayout_socialmeadia_links.setVisibility(View.VISIBLE);
+                linearLayout_socialmeadia_links.requestFocusFromTouch();
+                facebok.requestFocus();
+
             }
         });
 
@@ -354,7 +363,6 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         checkVisitors.execute();*/
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-
         recyclerView.setAdapter(featuredCategoryAdapter);
         //endregion
 

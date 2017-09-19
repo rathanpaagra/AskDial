@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+
 import java.util.ArrayList;
 
 import in.askdial.askdial.R;
@@ -18,6 +21,7 @@ import in.askdial.askdial.fragments.classifieds.ClassifiedsCat_Listings;
 import in.askdial.askdial.fragments.classifieds.ClassifiedsCategory;
 import in.askdial.askdial.fragments.viewmoreCategories.MainFragment;
 import in.askdial.askdial.fragments.viewmoreCategories.ViewedCategoryFragment;
+import in.askdial.askdial.services.CustomVolleyRequest;
 import in.askdial.askdial.values.POJOValue;
 
 /**
@@ -51,7 +55,11 @@ public class ClassifiedsCategoryAdapter extends RecyclerView.Adapter<Classifieds
     @Override
     public void onBindViewHolder(MainFragmentViewHolder holder, int position) {
         POJOValue pojoValue = arrayList.get(position);
-       // holder.categoryimage.setImageResource(pojoValue.getCategoryimages());
+        holder.imageLoader.get(pojoValue.getClassified_image(), ImageLoader.getImageListener(holder.Classified_Image,
+                R.drawable.no_preview_300_150, R.drawable.no_preview_300_150));
+        holder.Classified_Image.setImageUrl(pojoValue.getClassified_image(), holder.imageLoader);
+
+        // holder.categoryimage.setImageResource(pojoValue.getCategoryimages());
        // holder.tvhead.setText(pojoValue.getCategorynames());
         //holder.categoryimage.setImageResource(pojoValue.getFirst_Level_Category_Id());
         holder.tvhead.setText(pojoValue.getClassifieds_Category_Name());
@@ -66,11 +74,16 @@ public class ClassifiedsCategoryAdapter extends RecyclerView.Adapter<Classifieds
 
     public class MainFragmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvhead/*, tvcontent*/;
+        NetworkImageView Classified_Image;
+        ImageLoader imageLoader;
+
         ImageView categoryimage;
 
         public MainFragmentViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+            Classified_Image = (NetworkImageView) itemView.findViewById(R.id.clasiified_Category_image);
+            imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
             tvhead = (TextView) itemView.findViewById(R.id.textView_cls_cat_name);
             /*tvcontent = (TextView) itemView.findViewById(R.id.departmentcontent);*/
            //categoryimage = (ImageView) itemView.findViewById(R.id.cat_image);

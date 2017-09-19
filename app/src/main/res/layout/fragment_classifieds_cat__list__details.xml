@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -33,11 +34,17 @@
             android:visibility="visible"
             android:layout_marginTop="2dp">
 
-            <ImageView
+          <!--  <ImageView
                 android:id="@+id/imageview_listing_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/askdial_logo" />
+                android:src="@drawable/askdial_logo" />-->
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/imageview_cls_listing_image"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                />
+
 
             <TextView
                 android:id="@+id/tv_cls_category_name"

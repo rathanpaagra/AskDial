@@ -34,6 +34,7 @@ import static in.askdial.askdial.dataposting.DataApi.GET_CATEGORY_AUTOSUGGEST;
 import static in.askdial.askdial.dataposting.DataApi.GET_CITY;
 import static in.askdial.askdial.dataposting.DataApi.VIEW_ALL_CATEGORIES_URL;
 import static in.askdial.askdial.dataposting.DataApi.VIEW_ALL_CLASSIFIEDS_CATEGORIES;
+import static in.askdial.askdial.dataposting.DataApi.VIEW_ALL_EVENTS;
 
 /**
  * Created by Admin on 30-Dec-16.
@@ -72,6 +73,20 @@ public class SendingTask {
         // categoryName.put("first_level_category_id", first_level_category_id);
         try {
             response = UrlGetConnection(VIEW_ALL_CLASSIFIEDS_CATEGORIES);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    //Requesting for all ClassifiedsCategories
+    public String GetEvents() {
+        String response = "";
+        //HashMap<String, String> categoryName = new HashMap<>();
+        // adding each child node to HashMap key => value
+        // categoryName.put("first_level_category_id", first_level_category_id);
+        try {
+            response = UrlGetConnection(VIEW_ALL_EVENTS);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -138,7 +153,7 @@ public class SendingTask {
             SendCategory= CATEGORIES_URL_Automotive;
         }else if (category.equals("Property")){
             SendCategory= CATEGORIES_URL_Property;
-        }else if(category.equals("Shopping")){
+        }else if(category.equals("shopping_156_230")){
             SendCategory= CATEGORIES_URL_Shopping;
         }else if (category.equals("Movie")){
             SendCategory= CATEGORIES_URL_Movie;

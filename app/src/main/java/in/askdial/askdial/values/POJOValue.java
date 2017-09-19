@@ -15,25 +15,29 @@ public class POJOValue {
     //For Classifieds
     String Classifieds_Category_Name;
     String Classifieds_Category_ID;
-
     String Classifieds_id;
     String Classifieds_name;
     String Classifieds_area;
     String Classifieds_description;
-
-    public String getClassifieds_contact_person_Name() {
-        return Classifieds_contact_person_Name;
-    }
-
-    public void setClassifieds_contact_person_Name(String classifieds_contact_person_Name) {
-        Classifieds_contact_person_Name = classifieds_contact_person_Name;
-    }
-
+    String Classified_image;
     String Classifieds_contact_person_mobile;
     String Classifieds_contact_person_Name;
     String Classifieds_image;
     String Classified_Contact_person_email;
     String Classifieds_amount;
+
+
+    //For Events
+    String events_message;
+    String events_image;
+    String events_id;
+    String events_name;
+    String events_start_date;
+    String events_description;
+    String events_end_date;
+    String events_location;
+    String added_on;
+
 
     private boolean Classified_ListingbyIdRecivedSuccess;
     private boolean Classified_ListingbyIdRecivedFailure;
@@ -525,6 +529,8 @@ public class POJOValue {
         MessageNoSuccess = messageNoSuccess;
     }
 
+    ///////////////////////////////Classified Details//////////////////////////
+
     public String getClassifieds_id() {
         return Classifieds_id;
     }
@@ -590,6 +596,96 @@ public class POJOValue {
         Classifieds_amount = classifieds_amount;
     }
 
+    public String getClassifieds_contact_person_Name() {
+        return Classifieds_contact_person_Name;
+    }
+
+    public void setClassifieds_contact_person_Name(String classifieds_contact_person_Name) {
+        Classifieds_contact_person_Name = classifieds_contact_person_Name;
+    }
+
+    public String getClassified_image() {
+        return Classified_image;
+    }
+
+    public void setClassified_image(String classified_image) {
+        Classified_image = classified_image;
+
+    }
+
+
+   ///////////////////////////////Events Details//////////////////////////
+    public String getEvents_message() {
+        return events_message;
+    }
+
+    public void setEvents_message(String events_message) {
+        this.events_message = events_message;
+    }
+
+    public String getEvents_image() {
+        return events_image;
+    }
+
+    public void setEvents_image(String events_image) {
+        this.events_image = events_image;
+    }
+
+    public String getEvents_id() {
+        return events_id;
+    }
+
+    public void setEvents_id(String events_id) {
+        this.events_id = events_id;
+    }
+
+    public String getEvents_name() {
+        return events_name;
+    }
+
+    public void setEvents_name(String events_name) {
+        this.events_name = events_name;
+    }
+
+    public String getEvents_start_date() {
+        return events_start_date;
+    }
+
+    public void setEvents_start_date(String events_start_date) {
+        this.events_start_date = events_start_date;
+    }
+
+    public String getEvents_description() {
+        return events_description;
+    }
+
+    public void setEvents_description(String events_description) {
+        this.events_description = events_description;
+    }
+
+    public String getEvents_end_date() {
+        return events_end_date;
+    }
+
+    public void setEvents_end_date(String events_end_date) {
+        this.events_end_date = events_end_date;
+    }
+
+    public String getEvents_location() {
+        return events_location;
+    }
+
+    public void setEvents_location(String events_location) {
+        this.events_location = events_location;
+    }
+
+    public String getAdded_on() {
+        return added_on;
+    }
+
+    public void setAdded_on(String added_on) {
+        this.added_on = added_on;
+    }
     public boolean isMessageNoSuccess() {
         return MessageNoSuccess;
     }

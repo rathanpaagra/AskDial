@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_logout"
-        android:title="@string/action_enquiry"
+        android:icon="@drawable/ic_address_icon_48"
+        android:title="Home"
    />
     <item
         android:id="@+id/action_setting"
+        android:icon="@drawable/ic_stat_name"
         android:title="@string/action_settings"
         />
 
     <item
         android:id="@+id/action_quit"
+        android:icon="@drawable/clear_editext_bg"
         android:title="@string/action_quit"
         />
 </menu>

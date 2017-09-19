@@ -25,6 +25,7 @@
             app:indicator="LineScaleParty"
             app:indicator_color="#F53700" />
     </LinearLayout>
+
         <LinearLayout
             android:id="@+id/linear_layout_logo"
             android:layout_width="match_parent"
@@ -35,9 +36,10 @@
                 android:id="@+id/imageview_listing_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/askdial_logo" />
+                android:fitsSystemWindows="true"
+                android:src="@drawable/no_preview_300_150" />
 
-          <!--  <TextView
+            <!--  <TextView
                 android:id="@+id/btn_back_intent"
                 android:layout_width="55dp"
                 android:layout_height="45dp"
@@ -323,8 +325,13 @@
                     android:textAlignment="viewStart"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:hint="Shop Number- 1813 , 2nd Floor ,41st Cross, Near Jayanagar 9th Block Bus Stnad, 22nd Main Rd, Jayanagara 9th Block, Jayanagar, Bengaluru, Karnataka 560069"
                     android:textSize="20dp" />
+
+                <!--android:hint="Shop Number- 1813 ,
+                2nd Floor ,41st Cross, Near Jayanagar 9th Block Bus Stnad,
+                22nd Main Rd, Jayanagara 9th Block, Jayanagar,
+                Bengaluru, Karnataka 560069"-->
+
 
             </LinearLayout>
 

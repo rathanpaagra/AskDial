@@ -15,6 +15,7 @@ import in.askdial.askdial.adapter.SearchedCategoryAdapter;
 import in.askdial.askdial.adapter.ViewdCategoryAdapter;
 import in.askdial.askdial.adapter.classifiedsAdapter.ClassifiedCategory_ListAdapter;
 import in.askdial.askdial.adapter.classifiedsAdapter.ClassifiedsCategoryAdapter;
+import in.askdial.askdial.adapter.eventsAdapter.All_EventsAdapter;
 import in.askdial.askdial.values.POJOValue;
 
 import static android.content.ContentValues.TAG;
@@ -25,6 +26,8 @@ import static android.content.ContentValues.TAG;
 
 public class RecievingTask {
 
+    String Image_Url_Classified=DataApi.Image_Url_Classifieds;
+    String Image_Url_Events=DataApi.Image_Url_Events;
     //String CATEGORIES_URL = DataApi.VIEW_ALL_CATEGORIES_URL;
    // String LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
     //POJOValue pojoValue;
@@ -83,7 +86,7 @@ public class RecievingTask {
         // Making a request to url and getting response
         //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
         //  Log.e(TAG, "Response from url: " + jsonStr);
-
+        String Classified_Photo;
         try {
             JSONArray ja = new JSONArray(result);
             for (int i = 0; i < ja.length(); i++) {
@@ -99,6 +102,10 @@ public class RecievingTask {
 
                         String Category_Name = jo.getString("classifieds_category_name");
                         pojoValue.setClassifieds_Category_Name(Category_Name);
+
+                        String tv_cls_product_img = jo.getString("classifieds_image");
+                        Classified_Photo = Image_Url_Classified + tv_cls_product_img;
+                        pojoValue.setClassified_image(Classified_Photo);
 
                         String Category_id = jo.getString("classifieds_category_id");
                         pojoValue.setClassifieds_Category_ID(Category_id);
@@ -129,7 +136,7 @@ public class RecievingTask {
         // Making a request to url and getting response
         //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
         //  Log.e(TAG, "Response from url: " + jsonStr);
-
+        String Classified_Photo;
         try {
             JSONArray ja = new JSONArray(result);
             for (int i = 0; i < ja.length(); i++) {
@@ -147,6 +154,11 @@ public class RecievingTask {
                         pojoValue.setClassifieds_Category_Name(classifieds_category_name);
                         String classifieds_name = jo.getString("classifieds_name");
                         pojoValue.setClassifieds_name(classifieds_name);
+
+                        String tv_cls_product_img = jo.getString("classifieds_image");
+                        Classified_Photo = Image_Url_Classified + tv_cls_product_img;
+                        pojoValue.setClassified_image(Classified_Photo);
+
                         String classifieds_area = jo.getString("classifieds_area");
                         pojoValue.setClassifieds_area(classifieds_area);
                         String contact_person_mobile = jo.getString("contact_person_mobile");
@@ -166,6 +178,7 @@ public class RecievingTask {
     //Recieve All Classified Listing Details by sending Listing ID
     public void ReciveClassifiedListingDetails(String result, POJOValue details) {
 
+        String Classified_Photo;
         try {
             JSONArray ja = new JSONArray(result);
             for (int i = 0; i < ja.length(); i++) {
@@ -187,6 +200,10 @@ public class RecievingTask {
                         details.setClassified_Contact_person_email(tv_cls_mail);
                         String tv_cls_contact_person_mob = jo.getString("contact_person_mobile");
                         details.setClassifieds_contact_person_mobile(tv_cls_contact_person_mob);
+
+                        String tv_cls_product_img = jo.getString("classifieds_image");
+                        Classified_Photo = Image_Url_Classified + tv_cls_product_img;
+                        details.setClassified_image(Classified_Photo);
 
                         String tv_cls_description = jo.getString("classifieds_description");
                         details.setClassifieds_description(tv_cls_description);
@@ -238,6 +255,66 @@ public class RecievingTask {
                         s_company_pincode=bundle.getString("category_pincode");
                         s_company_address=bundle.getString("company_address");*/
 
+                }
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+
+    //
+    //Receving all Events List
+    public void ReciveEventsList(String result, POJOValue pojoValue, ArrayList<POJOValue> arrayList,
+                                           All_EventsAdapter adapters) {
+        // HttpHandler sh = new HttpHandler();
+        // Making a request to url and getting response
+        //   String jsonStr = sh.makeServiceCall(VIEW_ALL_CATEGORIES_URL);
+        //  Log.e(TAG, "Response from url: " + jsonStr);
+        String Events_Photo;
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String Status = jo.getString("message");
+                    //  pojoValue.setMessageSuccess(true);
+                    if (Status.equals("Success")) {
+                        Log.e(TAG, "Connect for fetching from server.");
+
+                        pojoValue.setCategory_found(true);
+                        pojoValue = new POJOValue();
+
+                        String event_message = jo.getString("message");
+                        pojoValue.setEvents_message(event_message);
+
+                        String events_img = jo.getString("events_image");
+                        Events_Photo = Image_Url_Events + events_img;
+                        pojoValue.setEvents_image(Events_Photo);
+
+                        String Events_id = jo.getString("events_id");
+                        pojoValue.setEvents_id(Events_id);
+
+                        String Events_name = jo.getString("events_name");
+                        pojoValue.setEvents_name(Events_name);
+                        String Events_start_date = jo.getString("events_start_date");
+                        pojoValue.setEvents_start_date(Events_start_date);
+                        String Events_end_date = jo.getString("events_end_date");
+                        pojoValue.setEvents_end_date(Events_end_date);
+
+                        arrayList.add(pojoValue);
+
+                        adapters.notifyDataSetChanged();
+                        // String name = jo.getString("first_level_category_name");
+
+                      /*  // String id= jo.getString("first_level_category_id");
+                        HashMap<String, String> categoryName = new HashMap<>();
+                        // adding each child node to HashMap key => value
+                        categoryName.put("name", name);
+                        // categoryName.put("id", id);
+                        // categoryName.put("id", jsonArray.getString(Integer.parseInt("first_level_category_id")));
+                        // adding contact to contact list*/
+                    }
                 }
             }
         } catch (JSONException e1) {

@@ -13,13 +13,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import in.askdial.askdial.R;
 import in.askdial.askdial.dataposting.ConnectingTask;
 import in.askdial.askdial.dataposting.DataApi;
+import in.askdial.askdial.services.CustomVolleyRequest;
 import in.askdial.askdial.values.FunctionCalls;
 import in.askdial.askdial.values.POJOValue;
+import in.askdial.askdial.values.TouchImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +35,7 @@ public class ClassifiedsCat_List_Details extends Fragment {
     TextView tv_classified_name,tv_classifieds_description,tv_classified_category_name,tv_classifieds_amount,tv_company_area,tv_company_city, tv_cls_contact_person_name, tv_cls_person_mobile,tv_company_mobile2,tv_company_pincode,
             tv_classifieds_area, tv_classified_person_email,tv_company_website,tv_company_landline,tv_company_fax,tv_company_toll_free,tv_company_landmark;
 
-    String s_classified_name, s_classified_area,s_classified_description,s_company_city, s_classified_contact_person, s_classified_person_mobile,s_classified_amount,s_company_mobile2,s_company_pincode,
+    String s_classified_image,s_classified_name, s_classified_area,s_classified_description,s_company_city, s_classified_contact_person, s_classified_person_mobile,s_classified_amount,s_company_mobile2,s_company_pincode,
             s_company_address, s_classified_person_email,s_company_website,s_company_landline,s_company_fax,s_company_toll_free,s_company_landmark;
 
     LinearLayout linearLayout_classifieds_area,linearLayout_classified_name,linear_Layout_description,linearLayout_classifieds_amount,linearLayout_company_city,linearLayout__company_contact_details, linearLayout_classifieds_contact_person,
@@ -48,6 +52,9 @@ public class ClassifiedsCat_List_Details extends Fragment {
     ConnectingTask task;
     static ProgressDialog dialog = null;
     private AVLoadingIndicatorView progressBar;
+    ImageLoader imageLoader;
+    NetworkImageView imageView;
+    TouchImageView touchimgZoom;
 
     public ClassifiedsCat_List_Details() {
         // Required empty public constructor
@@ -66,6 +73,7 @@ public class ClassifiedsCat_List_Details extends Fragment {
         list_Category_Name=bundle.getString("listing_category_name");
         task = new ConnectingTask();
         pojoValue=new POJOValue();
+        touchimgZoom=new TouchImageView(getActivity());
         progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.loading_bar);
 
         linearlayout_loading_bar= (LinearLayout) view.findViewById(R.id.cls_linearlayout_loading_bar);
@@ -74,6 +82,8 @@ public class ClassifiedsCat_List_Details extends Fragment {
         linear_layout_product_details = (LinearLayout) view.findViewById(R.id.linear_layout_product_details);
 
         //Initialization
+        imageView = (NetworkImageView) view.findViewById(R.id.imageview_cls_listing_image);
+        imageLoader = CustomVolleyRequest.getInstance(getActivity()).getImageLoader();
         tv_classified_category_name=(TextView) view.findViewById(R.id.tv_cls_category_name);
         tv_classified_name = (TextView) view.findViewById(R.id.tv_classifieds_name);
         tv_classified_person_email = (TextView) view.findViewById(R.id.tv_contact_person_email);
@@ -209,6 +219,13 @@ public class ClassifiedsCat_List_Details extends Fragment {
             tv_classified_name.setText(s_classified_name);
         }
 
+        s_classified_image=pojoValue.getClassified_image();
+        imageLoader.get(s_classified_image, ImageLoader.getImageListener(imageView, R.drawable.no_preview_300_150,
+                R.drawable.no_preview_300_150));
+        imageView.setImageUrl(s_classified_image, imageLoader);
+        /*touchimgZoom.setImageResource(R.drawable.nopreview_276_183);
+        touchimgZoom.setMaxZoom(4f);
+        getActivity().setContentView(touchimgZoom);*/
 
         if(!list_Category_Name.equals("")){
             tv_classified_category_name.setText(list_Category_Name);

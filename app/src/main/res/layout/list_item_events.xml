@@ -67,7 +67,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
+            android:layout_marginLeft="1dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -76,12 +76,18 @@
                 android:layout_marginLeft="1dp"
                 android:background="@color/white">
 
-                <ImageView
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/events_image"
+                    android:layout_width="115dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/no_preview_300_150" />
+                <!--<ImageView
                     android:id="@+id/imageView"
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:src="@drawable/no_preview_300_150" />
+                    android:src="@drawable/askdial_logo" />-->
             </LinearLayout>
 
             <LinearLayout
@@ -92,21 +98,22 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textview_company_name"
+                    android:id="@+id/events_name_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="@id/imageView"
                     android:layout_toRightOf="@id/imageView"
                     android:hint="askdial"
-                    android:textColorHint="@color/colorAccent"
-                    android:textColor="@color/colorAccent"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
-                    android:textSize="21dp"
+                    android:textColor="@color/blue"
+                    android:textColorHint="@color/blue"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textview_company_area"
+
+               <!-- <TextView
+                    android:id="@+id/events_name_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="@id/imageView"
@@ -116,31 +123,35 @@
                     android:paddingLeft="10dp"
                     android:textColor="@color/green"
                     android:textColorHint="@color/green"
-                    android:textSize="19dp" />
+                    android:textSize="16dp" />-->
 
                 <TextView
-                    android:id="@+id/textview_company_mobile"
+                    android:id="@+id/events_start_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="@id/imageView"
                     android:layout_below="@id/textview_company_area"
                     android:layout_toRightOf="@id/imageView"
-                    android:hint="9164540000"
-                    android:textStyle="bold"
+                    android:hint="01-01-2017"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textview_company_email"
+                    android:id="@+id/events_end_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="@id/imageView"
                     android:layout_below="@id/textview_company_mobile"
                     android:layout_toRightOf="@id/imageView"
-                    android:hint="askdial.com "
+                    android:ellipsize="end"
+                    android:hint="10-01-2017"
+                    android:maxEms="8"
+                    android:maxLines="2"
                     android:paddingLeft="10dp"
-                    android:textSize="18dp" />
+                    android:textAlignment="viewStart"
+                    android:textSize="14dp" />
 
 
             </LinearLayout>

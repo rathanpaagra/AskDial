@@ -1,4 +1,4 @@
-package in.askdial.askdial.fragments.classifieds;
+package in.askdial.askdial.fragments.events;
 
 
 import android.content.Context;
@@ -16,21 +16,20 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.util.ArrayList;
 
 import in.askdial.askdial.R;
-import in.askdial.askdial.adapter.ViewdCategoryAdapter;
 import in.askdial.askdial.adapter.classifiedsAdapter.ClassifiedCategory_ListAdapter;
+import in.askdial.askdial.adapter.eventsAdapter.All_EventsAdapter;
 import in.askdial.askdial.dataposting.ConnectingTask;
-import in.askdial.askdial.fragments.viewmoreCategories.ViewedCategoryFragment;
 import in.askdial.askdial.values.POJOValue;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ClassifiedsCat_Listings extends Fragment {
+public class All_Events extends Fragment {
 
     ArrayList<POJOValue> arrayList = new ArrayList<POJOValue>();
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    ClassifiedCategory_ListAdapter viewdCategoryAdapter;
+    All_EventsAdapter alleventsAdapter;
     ConnectingTask task = new ConnectingTask();
     POJOValue pojoValue = new POJOValue();
     String contextview;
@@ -40,7 +39,7 @@ public class ClassifiedsCat_Listings extends Fragment {
 
     private Parcelable listState;
 
-    public ClassifiedsCat_Listings() {
+    public All_Events() {
         // Required empty public constructor
     }
 
@@ -49,23 +48,23 @@ public class ClassifiedsCat_Listings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_classifieds_cat__listings, container, false);
+        View view= inflater.inflate(R.layout.fragment_all_events, container, false);
 
-        Bundle bundle = new Bundle();
+       /* Bundle bundle = new Bundle();
         bundle = getArguments();
         Category_ID=bundle.getString("category_id");
-        Category_Name=bundle.getString("category_category_name");
+        Category_Name=bundle.getString("category_category_name");*/
 
-        progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.classified_cat_list_loading_bar);
-        recyclerView= (RecyclerView) view.findViewById(R.id.classified_cat_list_recyclerview);
+        progressBar = (AVLoadingIndicatorView) view.findViewById(R.id.all_events_loading_bar);
+        recyclerView= (RecyclerView) view.findViewById(R.id.all_events_recyclerview);
         layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
-        viewdCategoryAdapter = new ClassifiedCategory_ListAdapter(arrayList, contextview, getActivity(),ClassifiedsCat_Listings.this);
-        ConnectingTask.ClassifiedCat_Listings checkVisitors = task.new ClassifiedCat_Listings(arrayList, Category_ID,viewdCategoryAdapter, pojoValue, getActivity(),progressBar);
+        alleventsAdapter = new All_EventsAdapter(arrayList, contextview, getActivity(),All_Events.this);
+        ConnectingTask.AllEventsList checkVisitors = task.new AllEventsList(arrayList, alleventsAdapter, pojoValue, getActivity(),progressBar);
         checkVisitors.execute();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(viewdCategoryAdapter);
+        recyclerView.setAdapter(alleventsAdapter);
 
         return view;
     }

@@ -67,6 +67,7 @@ import in.askdial.askdial.fragments.AboutUSFragment;
 import in.askdial.askdial.fragments.ContactUSFragment;
 import in.askdial.askdial.fragments.HomeFragment;
 import in.askdial.askdial.fragments.classifieds.ClassifiedsCategory;
+import in.askdial.askdial.fragments.events.All_Events;
 import in.askdial.askdial.fragments.search.SearchFragment;
 import in.askdial.askdial.fragments.viewmoreCategories.MainFragment;
 import in.askdial.askdial.services.CategoriesServices;
@@ -577,20 +578,17 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        boolean handled = false;
         switch (item.getItemId()) {
             case R.id.action_logout:
-                Intent i = new Intent(CategoryActivity.this, MainActivity.class);
-                startActivity(i);
-                Toast.makeText(CategoryActivity.this, "Logout clicked", Toast.LENGTH_SHORT).show();
-                handled = true;
+                refereshactivity();
+                //Toast.makeText(CategoryActivity.this, "Logout clicked", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_setting:
-                Toast.makeText(CategoryActivity.this, "Settings clicked", Toast.LENGTH_SHORT).show();
-                handled = true;
+                startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
+               // Toast.makeText(CategoryActivity.this, "Settings clicked", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_quit:
-                handled = true;
+
                 finish();
                 break;
         }
@@ -619,7 +617,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
         } else if (id == R.id.nav_Events) {
             if (FunctionCalls.isInternetOn(CategoryActivity.this)) {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.container_main, new HomeFragment()).addToBackStack(null).commit();
+                fragmentTransaction.replace(R.id.container_main, new All_Events()).addToBackStack(null).commit();
             } else {
                 Toast.makeText(this, "Please turn on the Internet", Toast.LENGTH_SHORT).show();
             }

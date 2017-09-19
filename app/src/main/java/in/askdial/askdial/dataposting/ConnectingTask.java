@@ -18,7 +18,9 @@ import in.askdial.askdial.adapter.SearchedCategoryAdapter;
 import in.askdial.askdial.adapter.ViewdCategoryAdapter;
 import in.askdial.askdial.adapter.classifiedsAdapter.ClassifiedCategory_ListAdapter;
 import in.askdial.askdial.adapter.classifiedsAdapter.ClassifiedsCategoryAdapter;
+import in.askdial.askdial.adapter.eventsAdapter.All_EventsAdapter;
 import in.askdial.askdial.fragments.classifieds.ClassifiedsCat_Listings;
+import in.askdial.askdial.fragments.events.All_Events;
 import in.askdial.askdial.values.POJOValue;
 
 /**
@@ -255,6 +257,53 @@ public class ConnectingTask {
             recievingTask.GetSearchDetails(result, details, HashSet);
         }
     }
+
+    //JSON for listing all events information
+    //All Classifieds List Here
+    public class AllEventsList extends AsyncTask<String, String, String> {
+        String result = "", firstLevelCategory_id;
+        ArrayList<POJOValue> arrayList;
+        All_EventsAdapter all_eventsAdapter;
+        POJOValue details;
+        Context context;
+        View Progressbar;
+        private LayoutInflater mInflater;
+
+        public AllEventsList(ArrayList<POJOValue> arrayList, All_EventsAdapter mainFragmentAdapter, POJOValue detailsValue,
+                             Context context, View progressbar) {
+            this.arrayList = arrayList;
+            this.details = detailsValue;
+            this.all_eventsAdapter = mainFragmentAdapter;
+            this.details = detailsValue;
+            Progressbar = progressbar;
+            this.context = context;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            showProgress(true, context, Progressbar);
+            // super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                result = sendingTask.GetEvents();
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            showProgress(false, context, Progressbar);
+            recievingTask.ReciveEventsList(result, details, arrayList, all_eventsAdapter);
+        }
+    }
+
 
     //getcity list
     public class GetCitySearchServices extends AsyncTask<String, String, String> {

@@ -11,6 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +41,7 @@ import in.askdial.askdial.dataposting.DataApi;
 import in.askdial.askdial.fragments.categories.Listing_Category_DetailsFragment;
 import in.askdial.askdial.fragments.classifieds.ClassifiedsCat_List_Details;
 import in.askdial.askdial.fragments.classifieds.ClassifiedsCat_Listings;
+import in.askdial.askdial.services.CustomVolleyRequest;
 import in.askdial.askdial.values.FunctionCalls;
 import in.askdial.askdial.values.POJOValue;
 
@@ -52,6 +57,7 @@ public class ClassifiedCategory_ListAdapter extends RecyclerView.Adapter<Classif
     String ContextView;
     Context context;
     Activity activity;
+
     String SendCategory_listing_id;
     String LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
 
@@ -85,6 +91,10 @@ public class ClassifiedCategory_ListAdapter extends RecyclerView.Adapter<Classif
             holder.textView_classified_name.setVisibility(View.VISIBLE);
             holder.textView_classified_name.setText(cls_comapny_name);
         }*/
+        holder.imageLoader.get(pojoValue.getClassified_image(), ImageLoader.getImageListener(holder.Classified_Image,
+                R.drawable.no_preview_300_150, R.drawable.no_preview_300_150));
+        holder.Classified_Image.setImageUrl(pojoValue.getClassified_image(), holder.imageLoader);
+
         cls_company_area=pojoValue.getClassifieds_area();
 
         if(!cls_company_area.equals("") ){
@@ -125,10 +135,14 @@ public class ClassifiedCategory_ListAdapter extends RecyclerView.Adapter<Classif
 
     public class MasterFragmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView textView_classified_name, textView_classifieds_area, textView_cls_person_mobile, textView_classified_description;
+        NetworkImageView Classified_Image;
+        ImageLoader imageLoader;
 
         public MasterFragmentViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+            Classified_Image = (NetworkImageView) itemView.findViewById(R.id.clasiified_image);
+            imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
             textView_classified_name = (TextView) itemView.findViewById(R.id.cls_textview_company_name);
             textView_classifieds_area = (TextView) itemView.findViewById(R.id.cls_textview_company_area);
             textView_cls_person_mobile = (TextView) itemView.findViewById(R.id.cls_textview_company_mobile);
@@ -139,6 +153,8 @@ public class ClassifiedCategory_ListAdapter extends RecyclerView.Adapter<Classif
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();
+            // check if item still exists
+
             POJOValue content = arrayList.get(pos);
             Classified_id = content.getClassifieds_id();
 

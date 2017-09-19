@@ -11,8 +11,17 @@ public class DataApi {
      public static final String GET_CITY = "http://askdial.com/index.php/admin/api/Get_city";
     public static final String GET_CATEGORY_AUTOSUGGEST = "http://askdial.com/index.php/admin/api/Category_autosuggest";
 
+    //Image URL
+    public static final String Image_Url_Classifieds = "http://www.askdial.com/uploads/classifieds/";
+
+    //Image URL
+    public static final String Image_Url_Events = "http://www.askdial.com/uploads/events/";
+
     //View All Classifieds Here
     public static final String VIEW_ALL_CLASSIFIEDS_CATEGORIES = "http://www.askdial.com/index.php/admin/api/Classifieds_category";
+
+    //View All Events Here
+    public static final String VIEW_ALL_EVENTS = "http://www.askdial.com/index.php/admin/api/Events";
 
     public static final String GET_AREA = "http://askdial.com/index.php/admin/api/Get_area";
     //public static final String SEARCH_VIEW_ALL = "http://www.askdial.com/index.php/admin/api/Search1";
@@ -24,7 +33,7 @@ public class DataApi {
     public static final String LISTINGS_DETAILS_URL = "http://www.askdial.com/index.php/admin/api/Listing_detail/first_level/";
     public static final String CAT_LISTINGS_ALL = "http://www.askdial.com/index.php/admin/api/Listings/first_level/";
 
-    //Static Url For Properties,Food,Movie,Automotive,Shopping Malls
+    //Static Url For Properties,Food,Movie,Automotive,shopping_156_230 Malls
     public static final String CATEGORIES_URL_Property = "http://www.askdial.com/index.php/admin/api/Properties";
     public static final String CATEGORIES_URL_Food = "http://www.askdial.com/index.php/admin/api/Food";
     public static final String CATEGORIES_URL_Movie = "http://www.askdial.com/index.php/admin/api/Movie";
@@ -43,7 +52,6 @@ public class DataApi {
 
 
    // public static final String LISTINGS_DETAILS_URL = "http://www.askdial.com/index.php/admin/api/Listings/first_level/Fetch_fields";
-    public static final String Image_Url = "";
 
     public static final String Upload_image_Url = "";
     public static final String Apk_Url = "";
