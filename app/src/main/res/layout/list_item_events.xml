@@ -108,7 +108,7 @@
                     android:paddingTop="10dp"
                     android:textColor="@color/blue"
                     android:textColorHint="@color/blue"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
 
@@ -134,7 +134,7 @@
                     android:layout_toRightOf="@id/imageView"
                     android:hint="01-01-2017"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/green"
                     android:textSize="14dp"
                     android:textStyle="bold" />
 
@@ -146,6 +146,8 @@
                     android:layout_below="@id/textview_company_mobile"
                     android:layout_toRightOf="@id/imageView"
                     android:ellipsize="end"
+                    android:textStyle="bold"
+                    android:textColor="@color/red"
                     android:hint="10-01-2017"
                     android:maxEms="8"
                     android:maxLines="2"

@@ -19,6 +19,7 @@ import in.askdial.askdial.R;
 import in.askdial.askdial.dataposting.DataApi;
 import in.askdial.askdial.fragments.classifieds.ClassifiedsCat_List_Details;
 import in.askdial.askdial.fragments.events.All_Events;
+import in.askdial.askdial.fragments.events.Event_List_Details;
 import in.askdial.askdial.services.CustomVolleyRequest;
 import in.askdial.askdial.values.FunctionCalls;
 import in.askdial.askdial.values.POJOValue;
@@ -124,7 +125,7 @@ public class All_EventsAdapter extends RecyclerView.Adapter<All_EventsAdapter.Ma
             POJOValue content = arrayList.get(pos);
             str_event_id = content.getEvents_id();
             str_event_name=content.getEvents_name();
-            ClassifiedsCat_List_Details fragment = new ClassifiedsCat_List_Details();
+            Event_List_Details fragment = new Event_List_Details();
             Bundle bundle = new Bundle();
             FragmentTransaction fragmentTransaction = allEventsFragment.getActivity().getSupportFragmentManager().beginTransaction();
             bundle.putString("listing_id", str_event_id);

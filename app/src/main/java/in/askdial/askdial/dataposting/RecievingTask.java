@@ -27,6 +27,7 @@ import static android.content.ContentValues.TAG;
 public class RecievingTask {
 
     String Image_Url_Classified=DataApi.Image_Url_Classifieds;
+    String Image_Url_Classified_Category_Images=DataApi.Image_Url_Classifieds_Category;
     String Image_Url_Events=DataApi.Image_Url_Events;
     //String CATEGORIES_URL = DataApi.VIEW_ALL_CATEGORIES_URL;
    // String LISTINGS_URL = DataApi.LISTINGS_DETAILS_URL;
@@ -103,8 +104,8 @@ public class RecievingTask {
                         String Category_Name = jo.getString("classifieds_category_name");
                         pojoValue.setClassifieds_Category_Name(Category_Name);
 
-                        String tv_cls_product_img = jo.getString("classifieds_image");
-                        Classified_Photo = Image_Url_Classified + tv_cls_product_img;
+                        String tv_cls_product_img = jo.getString("classifieds_category_image");
+                        Classified_Photo = Image_Url_Classified_Category_Images + tv_cls_product_img;
                         pojoValue.setClassified_image(Classified_Photo);
 
                         String Category_id = jo.getString("classifieds_category_id");
@@ -282,7 +283,7 @@ public class RecievingTask {
                     if (Status.equals("Success")) {
                         Log.e(TAG, "Connect for fetching from server.");
 
-                        pojoValue.setCategory_found(true);
+                       // pojoValue.setCategory_found(true);
                         pojoValue = new POJOValue();
 
                         String event_message = jo.getString("message");
@@ -303,17 +304,7 @@ public class RecievingTask {
                         pojoValue.setEvents_end_date(Events_end_date);
 
                         arrayList.add(pojoValue);
-
                         adapters.notifyDataSetChanged();
-                        // String name = jo.getString("first_level_category_name");
-
-                      /*  // String id= jo.getString("first_level_category_id");
-                        HashMap<String, String> categoryName = new HashMap<>();
-                        // adding each child node to HashMap key => value
-                        categoryName.put("name", name);
-                        // categoryName.put("id", id);
-                        // categoryName.put("id", jsonArray.getString(Integer.parseInt("first_level_category_id")));
-                        // adding contact to contact list*/
                     }
                 }
             }
@@ -321,7 +312,60 @@ public class RecievingTask {
             e1.printStackTrace();
         }
     }
-    //getSearch
+
+    //Receving all Events List
+    public void ReciveEventDetails(String result, POJOValue details) {
+
+        String Events_Photo;;
+        try {
+            JSONArray ja = new JSONArray(result);
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+                if (jo != null) {
+                    String Status = jo.getString("message");
+                    //  pojoValue.setMessageSuccess(true);
+                    if (Status.equals("Success")) {
+                        Log.e(TAG, "Connect for fetching from server.");
+
+                        //details = new POJOValue();
+                        details.setEvent_ListingbyIdRecivedSuccess(true);
+
+                        /*String event_message = jo.getString("message");
+                        details.setEvents_message(event_message);*/
+
+                        String events_img = jo.getString("events_image");
+                        Events_Photo = Image_Url_Events + events_img;
+                        details.setEvents_image(Events_Photo);
+
+                        String Events_name = jo.getString("events_name");
+                        details.setEvents_name(Events_name);
+                        String Events_start_date = jo.getString("events_start_date");
+                        details.setEvents_start_date(Events_start_date);
+                        String Events_end_date = jo.getString("events_end_date");
+                        details.setEvents_end_date(Events_end_date);
+
+                        String description= jo.getString("events_description");
+                        details.setEvents_description(description);
+                        String event_location=jo.getString("events_location");
+                        details.setEvents_location(event_location);
+                        String added_on=jo.getString("added_on");
+                        details.setAdded_on(added_on);
+
+
+                    } else {
+
+                        details.setEvent_ListingbyIdRecivedFailure(true);
+                    }
+                }
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+
+
+    //getSearch details
     public void GetSearchDetails(String result, POJOValue details, HashSet<String> hashSet) {
         ArrayList<String> list = new ArrayList<>();
         try {

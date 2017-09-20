@@ -68,11 +68,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
+            android:background="@color/amber"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginRight="1dp"
                 android:layout_marginLeft="1dp"
                 android:background="@color/white">
 
@@ -87,7 +89,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="1dp"
                 android:background="@color/white"
                 android:orientation="vertical">
 
@@ -97,12 +99,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="@id/imageView"
                     android:layout_toRightOf="@id/imageView"
-                    android:hint="askdial"
+                    android:hint="Name"
                     android:textColorHint="@color/colorAccent"
                     android:textColor="@color/colorAccent"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
-                    android:textSize="21dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -116,7 +118,7 @@
                     android:paddingLeft="10dp"
                     android:textColor="@color/green"
                     android:textColorHint="@color/green"
-                    android:textSize="19dp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/textview_company_mobile"
@@ -125,11 +127,11 @@
                     android:layout_alignParentRight="@id/imageView"
                     android:layout_below="@id/textview_company_area"
                     android:layout_toRightOf="@id/imageView"
-                    android:hint="9164540000"
-                    android:textStyle="bold"
+                    android:hint="9123457689"
+                    android:textStyle="normal"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/textview_company_email"
@@ -140,7 +142,7 @@
                     android:layout_toRightOf="@id/imageView"
                     android:hint="askdial.com "
                     android:paddingLeft="10dp"
-                    android:textSize="18dp" />
+                    android:textSize="14dp" />
 
 
             </LinearLayout>

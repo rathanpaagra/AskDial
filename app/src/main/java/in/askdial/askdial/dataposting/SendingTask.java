@@ -92,6 +92,20 @@ public class SendingTask {
         }
         return response;
     }
+
+    // Sending   Listing Id to get Event Details
+    public String sendEventListing_id(String event_id) {
+        String response = "";
+        HashMap<String, String> datamap = new HashMap<>();
+        datamap.put("events_id", event_id);
+
+        try {
+            response = UrlPostConnection("Events/view_all", datamap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
     //autocomplete textview search keyword
     public String GetSearch(String search) {
         String response = "";

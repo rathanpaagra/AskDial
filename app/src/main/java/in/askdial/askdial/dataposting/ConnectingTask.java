@@ -304,6 +304,37 @@ public class ConnectingTask {
         }
     }
 
+    //request for all Classifieds listing Details
+    //getListing by event id
+    public class Event_Listings extends AsyncTask<String, String, String> {
+        String result = "";
+        String listing_id;
+        POJOValue details;
+
+
+        public Event_Listings(String Listing_id, POJOValue details) {
+            listing_id = Listing_id;
+            this.details = details;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                result = sendingTask.sendEventListing_id(listing_id);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            recievingTask.ReciveEventDetails(result, details);
+        }
+    }
+
 
     //getcity list
     public class GetCitySearchServices extends AsyncTask<String, String, String> {

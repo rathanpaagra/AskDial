@@ -26,6 +26,8 @@ public class POJOValue {
     String Classified_Contact_person_email;
     String Classifieds_amount;
 
+    private boolean Classified_ListingbyIdRecivedSuccess;
+    private boolean Classified_ListingbyIdRecivedFailure;
 
     //For Events
     String events_message;
@@ -39,27 +41,10 @@ public class POJOValue {
     String added_on;
 
 
-    private boolean Classified_ListingbyIdRecivedSuccess;
-    private boolean Classified_ListingbyIdRecivedFailure;
+    private boolean Event_ListingbyIdRecivedSuccess;
+    private boolean Event_ListingbyIdRecivedFailure;
 
     //Category Details POJO
-
-    public boolean isClassified_ListingbyIdRecivedSuccess() {
-        return Classified_ListingbyIdRecivedSuccess;
-    }
-
-    public void setClassified_ListingbyIdRecivedSuccess(boolean classified_ListingbyIdRecivedSuccess) {
-        Classified_ListingbyIdRecivedSuccess = classified_ListingbyIdRecivedSuccess;
-    }
-
-    public boolean isClassified_ListingbyIdRecivedFailure() {
-        return Classified_ListingbyIdRecivedFailure;
-    }
-
-    public void setClassified_ListingbyIdRecivedFailure(boolean classified_ListingbyIdRecivedFailure) {
-        Classified_ListingbyIdRecivedFailure = classified_ListingbyIdRecivedFailure;
-    }
-
     String company_city;
     String company_contact_person;
     String company_mobile2;
@@ -531,6 +516,23 @@ public class POJOValue {
 
     ///////////////////////////////Classified Details//////////////////////////
 
+
+    public boolean isClassified_ListingbyIdRecivedSuccess() {
+        return Classified_ListingbyIdRecivedSuccess;
+    }
+
+    public void setClassified_ListingbyIdRecivedSuccess(boolean classified_ListingbyIdRecivedSuccess) {
+        Classified_ListingbyIdRecivedSuccess = classified_ListingbyIdRecivedSuccess;
+    }
+
+    public boolean isClassified_ListingbyIdRecivedFailure() {
+        return Classified_ListingbyIdRecivedFailure;
+    }
+
+    public void setClassified_ListingbyIdRecivedFailure(boolean classified_ListingbyIdRecivedFailure) {
+        Classified_ListingbyIdRecivedFailure = classified_ListingbyIdRecivedFailure;
+    }
+
     public String getClassifieds_id() {
         return Classifieds_id;
     }
@@ -685,6 +687,23 @@ public class POJOValue {
 
     public void setAdded_on(String added_on) {
         this.added_on = added_on;
+    }
+
+
+    public boolean isEvent_ListingbyIdRecivedSuccess() {
+        return Event_ListingbyIdRecivedSuccess;
+    }
+
+    public void setEvent_ListingbyIdRecivedSuccess(boolean event_ListingbyIdRecivedSuccess) {
+        Event_ListingbyIdRecivedSuccess = event_ListingbyIdRecivedSuccess;
+    }
+
+    public boolean isEvent_ListingbyIdRecivedFailure() {
+        return Event_ListingbyIdRecivedFailure;
+    }
+
+    public void setEvent_ListingbyIdRecivedFailure(boolean event_ListingbyIdRecivedFailure) {
+        Event_ListingbyIdRecivedFailure = event_ListingbyIdRecivedFailure;
     }
     public boolean isMessageNoSuccess() {
         return MessageNoSuccess;

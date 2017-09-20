@@ -12,6 +12,7 @@ public class DataApi {
     public static final String GET_CATEGORY_AUTOSUGGEST = "http://askdial.com/index.php/admin/api/Category_autosuggest";
 
     //Image URL
+    public static final String Image_Url_Classifieds_Category = "http://www.askdial.com/uploads/classifieds_category/";
     public static final String Image_Url_Classifieds = "http://www.askdial.com/uploads/classifieds/";
 
     //Image URL

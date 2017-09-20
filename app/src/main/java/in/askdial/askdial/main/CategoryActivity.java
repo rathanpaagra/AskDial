@@ -623,7 +623,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
             }
 
 
-        } else if (id == R.id.nav_addBusinessDirectory) {
+        /*} else if (id == R.id.nav_addBusinessDirectory) {
             if (FunctionCalls.isInternetOn(CategoryActivity.this)) {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.container_main, new HomeFragment()).addToBackStack(null).commit();
@@ -632,7 +632,7 @@ public class CategoryActivity extends AppCompatActivity implements NavigationVie
             }
         } else if (id == R.id.nav_addClassifieds) {
 
-        } else if (id == R.id.nav_addEvents) {
+        } else if (id == R.id.nav_addEvents) {*/
 
         } else if (id == R.id.nav_AboutUs) {
 
