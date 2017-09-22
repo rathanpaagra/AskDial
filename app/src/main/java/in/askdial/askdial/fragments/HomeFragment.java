@@ -57,7 +57,10 @@ import in.askdial.askdial.dataposting.ConnectingTask;
 import in.askdial.askdial.dataposting.DataApi;
 import in.askdial.askdial.dataposting.HttpHandler;
 import in.askdial.askdial.fragments.categories.Visited_CatgFragment;
+import in.askdial.askdial.fragments.classifieds.ClassifiedsCategory;
+import in.askdial.askdial.fragments.events.All_Events;
 import in.askdial.askdial.fragments.viewmoreCategories.MainFragment;
+import in.askdial.askdial.main.CategoryActivity;
 import in.askdial.askdial.services.SearchServices;
 import in.askdial.askdial.values.FunctionCalls;
 import in.askdial.askdial.values.POJOValue;
@@ -113,7 +116,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
     LinearLayout linearLayout_socialmeadia_links;
 
     //Button for Most Visited Categories
-    Button button_viewMore;
+    Button button_viewMore, button_classifieds,button_events;
     TextView viewMore,viewMore1;
 
 
@@ -165,6 +168,39 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         viewMore= (TextView) view.findViewById(R.id.textView_viewmore);
         viewMore1= (TextView) view.findViewById(R.id.textView_viewmore1);
 
+
+        button_events= (Button) view.findViewById(R.id.button_events);
+        button_classifieds= (Button) view.findViewById(R.id.buuton_classifieds);
+
+        button_classifieds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (FunctionCalls.isInternetOn(getActivity())) {
+                    ClassifiedsCategory visited_catgFragment = new ClassifiedsCategory();
+                    Bundle bundle = new Bundle();
+                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    visited_catgFragment.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.container_main, visited_catgFragment).addToBackStack(null).commit();
+                } else {
+                    Toast.makeText(getActivity(), "Please turn on the Internet", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        button_events.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (FunctionCalls.isInternetOn(getActivity())) {
+                    All_Events visited_catgFragment = new All_Events();
+                    Bundle bundle = new Bundle();
+                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    visited_catgFragment.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.container_main, visited_catgFragment).addToBackStack(null).commit();
+                } else {
+                    Toast.makeText(getActivity(), "Please turn on the Internet", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         viewMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

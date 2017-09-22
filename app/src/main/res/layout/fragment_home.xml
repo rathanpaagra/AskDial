@@ -409,6 +409,7 @@
                 </HorizontalScrollView>
             </LinearLayout>
 
+
             //Copy 1
             <!-- <LinearLayout
                  android:layout_width="fill_parent"
@@ -601,6 +602,47 @@
              </LinearLayout>-->
 
         </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/amber"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/buuton_classifieds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/buttonpressed_rect_card"
+                android:text="Classifieds"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button_events"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/buttonpressed_rect_card"
+                android:text="Events"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
